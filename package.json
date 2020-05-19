@@ -1,0 +1,34 @@
+{
+  "name": "package.json",
+  "version": "1.0.0",
+  "description": "MERN stack event registration web app",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/omkarlanghe/MERN-event-registration-stack-hack_1.0.git"
+  },
+  "keywords": [
+    "javascript",
+    "node",
+    "express",
+    "react",
+    "rest"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/omkarlanghe/MERN-event-registration-stack-hack_1.0/issues"
+  },
+  "homepage": "https://github.com/omkarlanghe/MERN-event-registration-stack-hack_1.0#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongodb": "^3.5.7",
+    "nocache": "^2.1.0"
+  }
+}
