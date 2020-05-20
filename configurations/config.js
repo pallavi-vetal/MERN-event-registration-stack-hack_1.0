@@ -11,4 +11,4 @@ module.exports = {
     http_port: process.env.HTTP_PORT,
     host_name: process.env.HOST_NAME,
     database: database
-}
+};

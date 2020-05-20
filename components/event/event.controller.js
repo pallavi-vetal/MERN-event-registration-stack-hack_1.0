@@ -14,3 +14,13 @@ exports.registerEvent = async (p_registration_details) => {
         throw error;
     }
 };
+
+
+exports.uploadImage = async (req, res) => {
+    try {
+        let event = require('./event.DAL');
+        let result = await event.uploadImage(req, res);
+    } catch (error) {
+        throw error;
+    }
+};
