@@ -87,7 +87,7 @@ class BasicDetailsForm extends Component {
                           required
                           name={"file"}
                           id="file"
-                          server="http://localhost:3007/uploadImage"
+                          server="http://127.0.0.1:3007/api/uploadImage"
                           oninit={() => this.handleInit() }
                           onupdatefiles={(fileItems) => {
                               // Set current file objects to this.state
