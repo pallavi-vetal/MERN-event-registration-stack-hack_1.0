@@ -4,7 +4,7 @@ const database = {
 };
 
 const collection_names = {
-
+    registeredEvents: 'registeredEvents'
 };
 
 module.exports = { database, collection_names };
