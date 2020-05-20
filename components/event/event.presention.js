@@ -16,7 +16,7 @@ exports.registerEvent = async (p_body) => {
             throw error;
         }
 
-        if(p_body.registrationType == "self" || p_body.registrationType == 'group' || p_body.registrationType == 'corporate' || p_body.registrationType == 'others') {
+        if(p_body.registrationType == "Self" || p_body.registrationType == 'Group' || p_body.registrationType == 'Corporate' || p_body.registrationType == 'Others') {
             let result = await event.registerEvent(p_body);
             return (result);
         } else {
