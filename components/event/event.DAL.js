@@ -33,7 +33,9 @@ exports.uploadImage = (req, res) => {
                     filename: fileName
                 });
                 writestream.on('close', function (file) {
-                    return (res.status(201).json({ message: `Image uploaded successfully with ObjectID : ${file}` }));
+                    console.log("file change: ",file._id);
+                    
+                    return res.status(200).json({"id":file._id});
 
                 });
                 writestream.on('error', () => {

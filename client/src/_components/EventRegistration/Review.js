@@ -29,7 +29,7 @@ class Review extends Component {
   render() {
     const { classes } = this.props;
     
-    console.log((this.props.state1.file).length)
+    console.log(this.props.state1);
     return (
       <React.Fragment>
         <Typography variant="h6" gutterBottom>
