@@ -17,40 +17,40 @@ exports.registerEvent = async (p_registration_details) => {
 
 exports.uploadImage = (req, res) => {
     try {
-        let uploadFile = req.files.file
-        const fileName = req.files.file.name
-        uploadFile.mv(
-            `${fileName}`,
-            async (err) => {
+      	const fs = require('fs');
+        const fileName = req.files.file.name;
+				let uploadFile = req.files.file;
+			
+        uploadFile.mv( `${fileName}`, async (err) => {
                 if (err) {
                     return res.status(500).send(err)
                 }
-                var mongo = require('mongodb');
-                var Grid = require('gridfs-stream');
-                const fs = require('fs');
+					
+                let mongo = require('mongodb');
                 let mongo_client = await mongo_util.dbClient();
-                var GridFS = Grid(mongo_client, mongo);
-                var writestream = GridFS.createWriteStream({
+								let Grid = require('gridfs-stream');
+                let GridFS = Grid(mongo_client, mongo);
+                
+								let writestream = GridFS.createWriteStream({
                     filename: fileName
                 });
-                writestream.on('close', function (file) {
+					
+                writestream.on('close', (file) => {
                     console.log("file change: ",file._id);
-                    
                     return res.status(200).json({"id":file._id});
+								});
 
-                });
-                writestream.on('error', () => {
-                    return (res.status(500).json(user_defined_error.errorObject('Error uploading file.', 500)));
-                });
+								writestream.on('error', () => {
+										return (res.status(500).json(user_defined_error.errorObject('Error uploading file.', 500)));
+								});
+
                 fs.createReadStream(fileName).pipe(writestream);
+
                 fs.unlink(fileName, (err) => {
                     if (err) throw err;
                     console.log(fileName, ' deleted');
                 });
-            }
-        )
-
-
+        });
     } catch (error) {
         throw error;
     }
