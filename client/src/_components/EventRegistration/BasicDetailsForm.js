@@ -9,10 +9,10 @@ import FilePondPluginImagePreview from 'filepond-plugin-image-preview';
 import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css';
 import { Component } from 'react';
 import FormLabel from '@material-ui/core/FormLabel';
-
+import FilePondPluginImageCrop from 'filepond-plugin-image-crop';
 
 // Register the plugins
-registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview);
+registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview, FilePondPluginImageCrop);
 class BasicDetailsForm extends Component {
     constructor(props) {
         super(props);
@@ -24,7 +24,8 @@ class BasicDetailsForm extends Component {
                 options: {
                     type: ''
                 }
-            }]
+            }],
+            imageID:'',
         };
     }
     
@@ -81,19 +82,37 @@ class BasicDetailsForm extends Component {
             </FormLabel>
             <br></br>
               <FilePond ref={ref => this.pond = ref}
-                          
+                          allowImageCrop={true}
                           allowMultiple={false}
+                          allowImagePreview={true}
                           maxFiles={3}
                           required
                           name={"file"}
                           id="file"
-                          server="http://127.0.0.1:3007/api/uploadImage"
+                          
+                          server={{
+                            process: {
+                              url: 'http://127.0.0.1:3007/api/uploadImage',
+                             
+                            
+                              onload: (response) => { // Once response is received, pushed new value to Final Form value variable, and populate through the onChange handler. 
+                                console.log(JSON.parse(response).id);
+                                this.setState({"imageID":JSON.parse(response).id})
+                                this.props.onImageUpload(JSON.parse(response).id);
+                              },
+                             
+                            }
+                          }}
                           oninit={() => this.handleInit() }
                           onupdatefiles={(fileItems) => {
                               // Set current file objects to this.state
                               this.setState({
                                   file: fileItems.map(fileItem => fileItem.file)
                               });
+                              
+                          }}
+                          onloadfiles={(file)=>{
+                            console.log(file);
                           }}
                           
                           >
