@@ -32,6 +32,7 @@ exports.uploadImage = async (req, res) => {
     try {
         let event = require('./event.controller');
         let result = await event.uploadImage(req, res);
+       
     } catch (error) {
         throw error;
     }

@@ -54,6 +54,7 @@ class Register extends Component{
       email: "",
       password: "",
       password2: "",
+      adminPassCode:"",
       errors: {}
     };
   }
@@ -162,7 +163,20 @@ class Register extends Component{
               <label htmlFor="password"></label>
         <Typography variant="h8" color="error">{errors.password}</Typography> 
             </Grid>
+            <Grid item xs={12} sm={12}>
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
+                id="adminPassCode"
+                label="Admin Pass Code"
+                name="adminPassCode"
+                autoComplete="adminPassCode"
+                onChange = {this.onChange}
+              />
+              </Grid>
            </Grid>
+           
           <Button
             type="submit"
             fullWidth
@@ -175,7 +189,7 @@ class Register extends Component{
           <Grid container justify="flex-end">
             <Grid item>
               <Link  href="/login" variant="body2">
-                Already have an account? Sign in
+                Already have an admin account? Sign in
               </Link>
             </Grid>
           </Grid>

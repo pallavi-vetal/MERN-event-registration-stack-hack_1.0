@@ -68,7 +68,8 @@ class RegisterCard extends Component {
     }],
     registrationID:"",
     errors: {},
-    fileName:""
+    fileName:"",
+    imageID:''
       
     }
     this.getStepContent = this.getStepContent.bind(this)
@@ -99,14 +100,17 @@ class RegisterCard extends Component {
          fullName: this.state.fullName,
          mobile:this.state.mobile,
          registrationType:this.state.registrationType,
-         numberOfTickets:parseInt(this.state.numberOfTickets,10)
+         numberOfTickets:parseInt(this.state.numberOfTickets,10),
+         imageID: this.state.imageID
        };
        
        this.props.registerEvent(userData);
      }
     
   };
-
+handleImageUpload =(e)=>{
+  this.setState({"imageID":e})
+}
    handleBack = (e) => {
     this.setState({"activeStep":this.state.activeStep-1})
   };
@@ -120,7 +124,8 @@ class RegisterCard extends Component {
    getStepContent(step) {
     switch (step) {
       case 0:
-        return <BasicDetailsForm state1={this.state} onChange={this.onChange} onFileChange={this.onFileChange}/>;
+        return <BasicDetailsForm state1={this.state} onChange={this.onChange} 
+              onImageUpload={this.handleImageUpload}/>;
       case 1:
         return <IdentificationDetailsForm state1={this.state} onChange={this.onChange}/>;
       case 2:
