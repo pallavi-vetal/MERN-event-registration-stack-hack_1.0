@@ -138,7 +138,7 @@ class Register extends Component{
                 onChange = {this.onChange}
               />
               <label htmlFor="email"></label>
-        <Typography variant="h8" color="error">{errors.email}</Typography>
+        <Typography variant="h8" color="error">{errors.email}{errors.error}</Typography>
             </Grid>
             <Grid item xs={12}>
               <TextField
