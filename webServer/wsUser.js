@@ -15,7 +15,8 @@ exports.registerUser = async (req, res) => {
         res.status(200).json(result);
     } catch (error) {
         error.status = 400;
-        if (error.hasOwnProperty('errors')) {
+        console.log("new:",error);
+        if (!error.hasOwnProperty('message')) {
             res.status(400).json(error);
         } else {
             res.status(400).json(user_defined_error.errorObject(error.message, error.status));

@@ -7,7 +7,7 @@ import { GET_ERRORS, SET_CURRENT_USER, USER_LOADING,REGISTER_EVENT } from "../_c
 // Register User
 export const registerUser = (userData, history) => dispatch => {
   axios
-    .post("/api/users/register", userData)
+    .post("/api/registerUser", userData)
     .then(res => history.push("/login"))
     .catch(err =>
       dispatch({

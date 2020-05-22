@@ -47,7 +47,7 @@ class Home extends Component {
       <div >
        
         <br></br>
-        <Dashboard/>  
+        <Dashboard onClick={this.onLogoutClick}/>  
      
       </div>
     );

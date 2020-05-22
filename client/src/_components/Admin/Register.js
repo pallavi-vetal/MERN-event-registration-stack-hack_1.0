@@ -55,7 +55,7 @@ class Register extends Component{
       password: "",
       password2: "",
       adminPassCode:"",
-      errors: {}
+      errors:{}
     };
   }
 
@@ -64,6 +64,7 @@ class Register extends Component{
     if (this.props.auth.isAuthenticated) {
       this.props.history.push("/home");
     }
+    
   }
 
   componentWillReceiveProps(nextProps) {
@@ -74,6 +75,7 @@ class Register extends Component{
     }
   }
 
+  
   onChange = e => {
     this.setState({ [e.target.id]: e.target.value });
   };
@@ -93,7 +95,8 @@ class Register extends Component{
 
     render(){
         const {classes} = this.props;
-        const { errors } = this.state;
+        const {errors}  = this.state;
+        console.log("errors:",errors);
         //this.setState({ selectedFile: event.target.files[0] }); 
         return(
             <Container component="main" maxWidth="xs">
@@ -107,7 +110,7 @@ class Register extends Component{
         </Typography>
         <form className={classes.form} noValidate onSubmit={this.onSubmit}>
           <Grid container spacing={2}>
-            <Grid item xs={12} sm={6}>
+            <Grid item xs={12} sm={12}>
               <TextField
                 autoComplete="fname"
                 name="firstName"
@@ -115,25 +118,14 @@ class Register extends Component{
                 required
                 fullWidth
                 id="name"
-                label="First Name"
+                label="Full Name"
                 autoFocus
                 onChange = {this.onChange}
               />
               <label htmlFor="name"></label>
         <Typography variant="h8" color="error">{errors.name}</Typography> 
             </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="lastName"
-                label="Last Name"
-                name="lastName"
-                autoComplete="lname"
-                onChange = {this.onChange}
-              />
-            </Grid>
+          
             <Grid item xs={12}>
               <TextField
                 variant="outlined"
@@ -176,7 +168,7 @@ class Register extends Component{
               />
               </Grid>
            </Grid>
-           
+           <Typography variant="h8" color="error">{errors.adminPassCode}</Typography> 
           <Button
             type="submit"
             fullWidth

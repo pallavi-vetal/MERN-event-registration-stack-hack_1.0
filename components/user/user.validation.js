@@ -6,27 +6,27 @@ exports.registerValidator = (p_data) => {
     let errors = {};
 
     if (validator.isEmpty(p_data.name)) {
-        errors.name = 'name is empty.';
+        errors.name = 'Please provide name';
         bool_flag_isValid = false;
     }
 
     if (validator.isEmpty(p_data.email)) {
-        errors.email = 'email string is empty.';
+        errors.email = 'Please provide email address';
         bool_flag_isValid = false;
     }
 
     if (validator.isEmpty(p_data.password)) {
-        errors.password = 'password is empty.';
+        errors.password = 'Please provide password';
         bool_flag_isValid = false;
     }
 
     if (validator.isEmpty(p_data.adminPassCode)) {
-        errors.adminPassCode = 'admin pass code is empty.';
+        errors.adminPassCode = 'Please provide admin passcode';
         bool_flag_isValid = false;
     }
 
     if (!validator.isEmail(p_data.email)) {
-        errors.email = 'Invalid email id entered.';
+        errors.email = 'Please provide valid email address';
         bool_flag_isValid = false;
     }
 

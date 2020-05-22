@@ -9,10 +9,11 @@ exports.registerUser = async (p_body) => {
         }
 
         //validation for email and password
-        let is_user_valid = user_validator.registerValidator(p_body);
-        if (!is_user_valid.flag) {
-            let error = is_user_valid;
-            throw error;
+        let {errors,flag} = user_validator.registerValidator(p_body);
+        if (!flag) {
+            //let error = is_user_valid;
+            console.log("my errors",errors)
+            throw errors;
         }
 
         if (p_body.adminPassCode !== 'secret') {
