@@ -32,6 +32,7 @@
     "gridfs-stream": "^1.1.1",
     "mongodb": "^3.5.7",
     "multer": "^1.4.2",
-    "nocache": "^2.1.0"
+    "nocache": "^2.1.0",
+    "validator": "^13.0.0"
   }
 }

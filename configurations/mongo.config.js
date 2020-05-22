@@ -5,6 +5,7 @@ const database = {
 
 const collection_names = {
     registeredEvents: 'registeredEvents',
+    users: 'users',
     photos: 'photos'
 };
 
