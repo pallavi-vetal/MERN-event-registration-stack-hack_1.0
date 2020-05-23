@@ -1,17 +1,30 @@
 
-exports.registerUser = async (p_user_data) => {
+exports.registerUser = async (req, res) => {
     try {
         let user_defined_error = require('../../utils/error');
         let user = require('./user.DAL');
-        if (p_user_data.name == null || p_user_data.name == undefined
-            || p_user_data.email == null || p_user_data.email == undefined
-            || p_user_data.password == null || p_user_data.password == undefined
-            || p_user_data.adminPassCode == null || p_user_data.adminPassCode == undefined) {
+        if (req.body.name == null || req.body.name == undefined
+            || req.body.email == null || req.body.email == undefined
+            || req.body.password == null || req.body.password == undefined
+            || req.body.adminPassCode == null || req.body.adminPassCode == undefined) {
             let error = user_defined_error.basicError('fields cannot be null or undefined.');
             throw error;
         }
-        let result = await user.registerUser(p_user_data);
-        return (result);
+        let result = await user.registerUser(req, res);
+    } catch (error) {
+        throw error;
+    }
+};
+
+exports.loginUser = async (req, res) => {
+    try {
+        let user_defined_error = require('../../utils/error');
+        let user = require('./user.DAL');
+        if (req.body.email == null || req.body.email == undefined || req.body.password == null || req.body.password == undefined) {
+            let error = user_defined_error.basicError('fields cannot be null or undefined.');
+            throw error;
+        }
+        let result = await user.loginUser(req, res);
     } catch (error) {
         throw error;
     }
