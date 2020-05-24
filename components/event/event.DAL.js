@@ -82,3 +82,21 @@ exports.getCountOfRegistrationsAndTickets = async () => {
         throw error;
     }
 };
+
+exports.getRegisteredEventById = async (p_registration_id) => {
+    try {
+        let { ObjectId } = require('mongodb');
+        let mongo_client = await mongo_util.dbClient();
+        let response = await mongo_client.collection(mongo_config.collection_names.registeredEvents).aggregate([
+            { '$match': { '_id': new ObjectId(p_registration_id) } }
+        ]).toArray().then(result => {
+            return (result[0]);
+        }).catch(err => {
+            if (err) throw err;
+        });
+        return (response);
+    } catch (error) {
+        throw error;
+    }
+};
+

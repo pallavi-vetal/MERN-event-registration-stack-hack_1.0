@@ -44,3 +44,13 @@ exports.getCountOfRegistrationsAndTickets = async () => {
         throw error;
     }
 };
+
+exports.getRegisteredEventById = async (p_registration_id) => {
+    try {
+        let { getRegisteredEventById } = require('./event.DAL');
+        let result = await getRegisteredEventById(p_registration_id);
+        return (result);
+    } catch (error) {
+        throw error;
+    }
+};

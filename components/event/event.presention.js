@@ -57,3 +57,20 @@ exports.getCountOfRegistrationsAndTickets = async () => {
         throw error;
     }
 };
+
+exports.getRegisteredEventById = async (p_registration_id) => {
+    try {
+        let { basicError } = require('../../utils/error');
+        let { getRegisteredEventById } = require('./event.controller');
+
+        if (typeof p_registration_id != "string") {
+            let error = basicError('Registration Id is invalid.');
+            throw error;
+        }
+
+        let result = await getRegisteredEventById(p_registration_id);
+        return (result);
+    } catch (error) {
+        throw error;
+    }
+};

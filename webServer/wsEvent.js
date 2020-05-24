@@ -55,3 +55,22 @@ exports.getCountOfRegistrationsAndTickets = async (req, res) => {
         res.status(400).json(user_defined_error.errorObject(error.message, error.status));
     }
 };
+
+exports.getRegisteredEventById = async (req, res) => {
+    let { basicError, errorObject } = require('../utils/error');
+    let { isValid } = require('mongodb').ObjectId;
+    let { getRegisteredEventById } = require('../components/event/event.presention');
+
+    try {
+        let registration_id = req.params.id;
+        if (!isValid(registration_id)) {
+            let error = basicError('Registration Id is invalid.');
+            throw error;
+        }
+        let result = await getRegisteredEventById(registration_id);
+        res.status(200).json(result);
+    } catch (error) {
+        error.status = 400;
+        res.status(400).json(errorObject(error.message, error.status));
+    }
+};
