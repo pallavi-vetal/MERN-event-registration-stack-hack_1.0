@@ -2,8 +2,9 @@ const event = require('./wsEvent');
 const user = require('./wsUser');
 
 exports.navigateRoutes = async (app) => {
-    app.post('/api/registerEvent', event.registerEvent);
-    app.post('/api/uploadImage', event.uploadImage);
-    app.post('/api/registerUser', user.registerUser);
-    app.post('/api/login', user.loginUser);
+    app.post('/api/events/registerEvent', event.registerEvent);
+    app.post('/api/events/uploadImage', event.uploadImage);
+    app.get('/api/events/getAllRegisteredEvents', event.getAllRegisteredEvents);
+    app.post('/api/user/registerUser', user.registerUser);
+    app.post('/api/user/login', user.loginUser);
 };
