@@ -67,8 +67,17 @@ exports.getRegisteredEventById = async (p_registration_id) => {
             let error = basicError('Registration Id is invalid.');
             throw error;
         }
-
         let result = await getRegisteredEventById(p_registration_id);
+        return (result);
+    } catch (error) {
+        throw error;
+    }
+};
+
+exports.getRegistrationTypeDetails = async () => {
+    try {
+        let event = require('./event.controller');
+        let result = await event.getRegistrationTypeDetails();
         return (result);
     } catch (error) {
         throw error;

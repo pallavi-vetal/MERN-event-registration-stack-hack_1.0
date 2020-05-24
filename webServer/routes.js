@@ -7,6 +7,7 @@ exports.navigateRoutes = async (app) => {
     app.get('/api/events/getAllRegisteredEvents', event.getAllRegisteredEvents);
     app.get('/api/events/getCountOfRegistrationsAndTickets', event.getCountOfRegistrationsAndTickets);
     app.get('/api/events/getRegisteredEventById/:id', event.getRegisteredEventById);
+    app.get('/api/events/registrationTypeDetails', event.getRegistrationTypeDetails);
     app.post('/api/user/registerUser', user.registerUser);
     app.post('/api/user/login', user.loginUser);
 };

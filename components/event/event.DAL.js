@@ -100,3 +100,18 @@ exports.getRegisteredEventById = async (p_registration_id) => {
     }
 };
 
+exports.getRegistrationTypeDetails = async () => {
+    try {
+        let mongo_client = await mongo_util.dbClient();
+        let response = await mongo_client.collection(mongo_config.collection_names.registeredEvents).aggregate([
+            { '$group': { '_id': { 'registrationType': '$registrationType' }, 'totalAmount': { '$sum': "$numberOfTickets" } } }
+        ]).toArray().then(result => {
+            return (result);
+        }).catch(err => {
+            if (err) throw err;
+        });
+        return (response);
+    } catch (error) {
+        throw error;
+    }
+};

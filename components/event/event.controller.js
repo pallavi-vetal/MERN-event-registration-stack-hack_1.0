@@ -54,3 +54,14 @@ exports.getRegisteredEventById = async (p_registration_id) => {
         throw error;
     }
 };
+
+exports.getRegistrationTypeDetails = async () => {
+    try {
+        let event = require('./event.DAL');
+        let result = await event.getRegistrationTypeDetails();
+        return (result);
+    } catch (error) {
+        throw error;
+    }
+};
+

@@ -2,7 +2,7 @@ const mongo_util = require('../../utils/mongo.util');
 const mongo_config = require('../../configurations/mongo.config');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
-const passport = require('../../configurations/passport');
+
 
 exports.registerUser = async (req, res) => {
     try {
@@ -58,15 +58,17 @@ exports.loginUser = async (req, res) => {
                 res.status(404).json({ 'password': 'password do not match.' });
             }
 
-            const payload = { 'id': user.id, 'name': user.name };
-
+            const payload = { 'id': user[0]._id, 'name': user[0].name };
+            // console.log(payload);
             jwt.sign(payload, mongo_config.database.secretOrKey, { expiresIn: Math.floor(Date.now() / 1000) - (60 * 60) }, (err, token) => {
                 if (err) { throw err; }
                 res.json({
+                    'name': user.name,
                     'success': true,
                     'token': `Bearer token: ${token}`
                 });
             });
+
         });
     } catch (error) {
         throw error;
