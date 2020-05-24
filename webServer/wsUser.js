@@ -35,6 +35,7 @@ exports.loginUser = async (req, res) => {
         }
         
         let result = await user.loginUser(req, res);
+        
     } catch (error) {
         error.status = 400;
         if(!error.hasOwnProperty('message')) {

@@ -57,3 +57,14 @@ exports.getCountOfRegistrationsAndTickets = async () => {
         throw error;
     }
 };
+//getRegistrationTypeDetails
+
+exports.getRegistrationTypeDetails = async () => {
+    try {
+        let event = require('./event.controller');
+        let result = await event.getRegistrationTypeDetails();
+        return (result);
+    } catch (error) {
+        throw error;
+    }
+};

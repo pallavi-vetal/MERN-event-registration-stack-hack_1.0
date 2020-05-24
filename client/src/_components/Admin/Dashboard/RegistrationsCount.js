@@ -15,25 +15,25 @@ class RegistrationsCount extends Component {
     constructor(props) {
         super(props);
         this.state = {
-           
+
         }
     }
     componentDidMount() {
         // If logged in and user navigates to Register page, should redirect them to dashboard
         if (!this.props.auth.isAuthenticated) {
-          this.props.history.push("/login");
+            this.props.history.push("/login");
         }
-       this.props.fetchEventCount();
-       this.setState({events:this.props.events})
-      }
-      
+        this.props.fetchEventCount();
+        this.setState({ events: this.props.events })
+    }
+
     render() {
-        const {classes} = this.props;
+        const { classes } = this.props;
         return (
             <React.Fragment>
                 <Title>Registration Count</Title>
                 <Typography component="p" variant="h4">
-                  {this.props.events.eventCount.totalRegistrations}
+                    {this.props.events.eventCount.totalRegistrations}
                 </Typography>
                 <Typography color="textSecondary" className={classes.depositContext}>
                     Number of tickets sold : {this.props.events.eventCount.totalTickets}
@@ -49,11 +49,11 @@ class RegistrationsCount extends Component {
 }
 RegistrationsCount.propTypes = {
     auth: PropTypes.object.isRequired,
-    fetchEventCount:PropTypes.func.isRequired,
-    events:PropTypes.object.isRequired
-  };
-  const mapStateToProps = state => ({
+    fetchEventCount: PropTypes.func.isRequired,
+    events: PropTypes.object.isRequired
+};
+const mapStateToProps = state => ({
     auth: state.auth,
     events: state.events
-  });
-  export default connect(mapStateToProps, { fetchEventCount })(withStyles(useStyles)(RegistrationsCount));
+});
+export default connect(mapStateToProps, { fetchEventCount })(withStyles(useStyles)(RegistrationsCount));

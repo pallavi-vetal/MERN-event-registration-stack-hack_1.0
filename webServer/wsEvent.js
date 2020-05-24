@@ -55,3 +55,15 @@ exports.getCountOfRegistrationsAndTickets = async (req, res) => {
         res.status(400).json(user_defined_error.errorObject(error.message, error.status));
     }
 };
+//getRegistrationTypeDetails
+exports.getRegistrationTypeDetails = async (req, res) => {
+    let user_defined_error = require('../utils/error');
+    let event = require('../components/event/event.presention');
+    try {
+        let result = await event.getRegistrationTypeDetails();
+        res.status(200).json(result);
+    } catch (error) {
+        error.status = 400;
+        res.status(400).json(user_defined_error.errorObject(error.message, error.status));
+    }
+};

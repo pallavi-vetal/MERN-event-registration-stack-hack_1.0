@@ -23,7 +23,7 @@ export const loginUser = userData => dispatch => {
     .post("/api/user/login", userData)
     .then(res => {
       // Save to localStorage
-      console.log(res.data);
+      //console.log(Res)
       // Set token to localStorage
       const { token } = res.data;
       localStorage.setItem("jwtToken", token);
@@ -89,13 +89,10 @@ export const registerEvent = userData => dispatch => {
 
       // Set token to localStorage
       const { token } = res.data;
-      localStorage.setItem("jwtToken", token);
-      // Set token to Auth header
-      setAuthToken(token);
-      // Decode token to get user data
-      const decoded = jwt_decode(token);
-      // Set current user
-      dispatch(setCurrentUser(decoded));
+      localStorage.setItem("registerID", token);
+      
+      console.log(res);
+      dispatch(setCurrentRegistration(res.data.insertedId));
     })
     .catch(err =>
       dispatch({
