@@ -102,8 +102,13 @@ const styles = theme => ({
     flexDirection: 'column',
   },
   fixedHeight: {
-    height: 240,
+    height: 320,
   },
+  section: {
+    height: "100%",
+    paddingTop: 5,
+    backgroundColor: "#fff"
+  }
 });
 class Dashboard extends Component {
   constructor(props) {
