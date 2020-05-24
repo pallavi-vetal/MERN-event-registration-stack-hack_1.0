@@ -55,3 +55,13 @@ exports.uploadImage = (req, res) => {
         throw error;
     }
 };
+
+exports.getAllRegisteredEvents = async () => {
+    try {
+        let mongo_client = await mongo_util.dbClient();
+        let response = await mongo_client.collection(mongo_config.collection_names.registeredEvents).find({}).toArray();
+        return (response);
+    } catch (error) {
+        throw error;
+    }
+};

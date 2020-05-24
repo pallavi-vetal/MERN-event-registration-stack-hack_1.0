@@ -2,7 +2,7 @@ exports.registerEvent = async (p_registration_details) => {
     try {
         let user_defined_error = require('../../utils/error');
         let event = require('./event.DAL');
-        
+
         if (p_registration_details == null || p_registration_details == undefined) {
             let error = user_defined_error.basicError('Object cannot be null or undefined.');
             throw error;
@@ -16,11 +16,20 @@ exports.registerEvent = async (p_registration_details) => {
 };
 
 
-exports.uploadImage = async (req, res) => {
+exports.uploadImage = (req, res) => {
     try {
         let event = require('./event.DAL');
-        let result = await event.uploadImage(req, res);
-       
+        let result = event.uploadImage(req, res);
+    } catch (error) {
+        throw error;
+    }
+};
+
+exports.getAllRegisteredEvents = async () => {
+    try {
+        let event = require('./event.DAL');
+        let result = await event.getAllRegisteredEvents();
+        return (result);
     } catch (error) {
         throw error;
     }
