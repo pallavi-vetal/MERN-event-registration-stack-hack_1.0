@@ -4,8 +4,9 @@ const validator = require('validator').default;
 exports.registerValidator = (p_data) => {
     let bool_flag_isValid = true;
     let errors = {};
+    let only_spaces = /^\s*$/;
 
-    if (validator.isEmpty(p_data.name)) {
+    if (only_spaces.test(p_data.name)  || validator.isEmpty(p_data.name)) {
         errors.name = 'Please provide name';
         bool_flag_isValid = false;
     }
@@ -15,7 +16,7 @@ exports.registerValidator = (p_data) => {
         bool_flag_isValid = false;
     }
 
-    if (validator.isEmpty(p_data.password)) {
+    if (only_spaces.test(p_data.password) || validator.isEmpty(p_data.password)) {
         errors.password = 'Please provide password';
         bool_flag_isValid = false;
     }

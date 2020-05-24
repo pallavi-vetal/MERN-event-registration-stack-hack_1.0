@@ -6,7 +6,7 @@ const bcrypt = require('bcryptjs');
 
 exports.registerUser = async (req, res) => {
     try {
-        let user_defined_error = require('../../utils/error');
+        let { basicError } = require('../../utils/error');
         let mongo_client = await mongo_util.dbClient();
         req.body.date = new Date();
 
@@ -15,7 +15,7 @@ exports.registerUser = async (req, res) => {
         ]).toArray();
 
         if (bool_user_exists.length == 1) {
-            let error = user_defined_error.basicError('User already registered with the given email id.');
+            let error = basicError('User already registered with the given email id.');
             throw error;
         }
 
@@ -41,7 +41,7 @@ exports.registerUser = async (req, res) => {
 
 exports.loginUser = async (req, res) => {
     try {
-        let user_defined_error = require('../../utils/error');
+        let { basicError } = require('../../utils/error');
         let mongo_client = await mongo_util.dbClient();
 
         let user = await mongo_client.collection(mongo_config.collection_names.users).aggregate([
@@ -49,7 +49,7 @@ exports.loginUser = async (req, res) => {
         ]).toArray();
 
         if (user.length == 0) {
-            let error = user_defined_error.basicError(`Email id doesn't exisit.`);
+            let error = basicError(`Email id doesn't exisit.`);
             throw error;
         }
 

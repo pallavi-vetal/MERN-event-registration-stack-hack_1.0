@@ -1,46 +1,46 @@
 
 exports.registerUser = async (req, res) => {
-    let user_defined_error = require('../utils/error');
+    let { basicError, errorObject } = require('../utils/error');
+    let { registerUser } = require('../components/user/user.presentation');
     try {
-        let user = require('../components/user/user.presentation');
         if (!req._body) {
-            let error = user_defined_error.basicError('Body cannot be empty.');
+            let error = basicError('Body cannot be empty.');
             throw error;
         } else if (Object.keys(req.body).length == 0) {
-            let error = user_defined_error.basicError('Object cannot be empty.');
+            let error = basicError('Object cannot be empty.');
             throw error;
         }
 
-        let result = await user.registerUser(req, res);
+        let result = await registerUser(req, res);
     } catch (error) {
         error.status = 400;
         if (!error.hasOwnProperty('message')) {
             res.status(400).json(error);
         } else {
-            res.status(400).json(user_defined_error.errorObject(error.message, error.status));
+            res.status(400).json(errorObject(error.message, error.status));
         }
     }
 };
 
 exports.loginUser = async (req, res) => {
-    let user_defined_error = require('../utils/error');
+    let { basicError, errorObject } = require('../utils/error');
+    let { loginUser } = require('../components/user/user.presentation');
     try {
-        let user = require('../components/user/user.presentation');
-        if(!req._body) {
-            let error = user_defined_error.basicError('Body cannot be empty');
+        if (!req._body) {
+            let error = basicError('Body cannot be empty');
             throw error;
-        } else if(Object.keys(req.body).length == 0) {
-            let error = user_defined_error.basicError('Object cannot be empty.');
+        } else if (Object.keys(req.body).length == 0) {
+            let error = basicError('Object cannot be empty.');
             throw error;
         }
-        
-        let result = await user.loginUser(req, res);
+
+        let result = await loginUser(req, res);
     } catch (error) {
         error.status = 400;
-        if(!error.hasOwnProperty('message')) {
+        if (!error.hasOwnProperty('message')) {
             res.status(400).json(error);
         } else {
-            res.status(400).json(user_defined_error.errorObject(error.message, error.status));
+            res.status(400).json(errorObject(error.message, error.status));
         }
     }
 };

@@ -1,14 +1,14 @@
 exports.registerEvent = async (p_registration_details) => {
     try {
-        let user_defined_error = require('../../utils/error');
-        let event = require('./event.DAL');
+        let { basicError } = require('../../utils/error');
+        let { registerEvent } = require('./event.DAL');
 
         if (p_registration_details == null || p_registration_details == undefined) {
-            let error = user_defined_error.basicError('Object cannot be null or undefined.');
+            let error = basicError('Object cannot be null or undefined.');
             throw error;
         }
 
-        let result = await event.registerEvent(p_registration_details);
+        let result = await registerEvent(p_registration_details);
         return (result);
     } catch (error) {
         throw error;
@@ -18,8 +18,8 @@ exports.registerEvent = async (p_registration_details) => {
 
 exports.uploadImage = (req, res) => {
     try {
-        let event = require('./event.DAL');
-        let result = event.uploadImage(req, res);
+        let { uploadImage } = require('./event.DAL');
+        let result = uploadImage(req, res);
     } catch (error) {
         throw error;
     }
@@ -27,8 +27,8 @@ exports.uploadImage = (req, res) => {
 
 exports.getAllRegisteredEvents = async () => {
     try {
-        let event = require('./event.DAL');
-        let result = await event.getAllRegisteredEvents();
+        let { getAllRegisteredEvents } = require('./event.DAL');
+        let result = await getAllRegisteredEvents();
         return (result);
     } catch (error) {
         throw error;
@@ -37,8 +37,8 @@ exports.getAllRegisteredEvents = async () => {
 
 exports.getCountOfRegistrationsAndTickets = async () => {
     try {
-        let event = require('./event.DAL');
-        let result = await event.getCountOfRegistrationsAndTickets();
+        let { getCountOfRegistrationsAndTickets } = require('./event.DAL');
+        let result = await getCountOfRegistrationsAndTickets();
         return (result);
     } catch (error) {
         throw error;
@@ -57,8 +57,8 @@ exports.getRegisteredEventById = async (p_registration_id) => {
 
 exports.getRegistrationTypeDetails = async () => {
     try {
-        let event = require('./event.DAL');
-        let result = await event.getRegistrationTypeDetails();
+        let { getRegistrationTypeDetails } = require('./event.DAL');
+        let result = await getRegistrationTypeDetails();
         return (result);
     } catch (error) {
         throw error;

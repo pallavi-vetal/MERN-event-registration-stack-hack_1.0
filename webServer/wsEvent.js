@@ -1,58 +1,66 @@
 
 
 exports.registerEvent = async (req, res) => {
-    let user_defined_error = require('../utils/error');
+    let { basicError, errorObject } = require('../utils/error');
+    let { registerEvent } = require('../components/event/event.presention');
+    
     try {
-        let event = require('../components/event/event.presention');
         if (!req._body) {
-            let error = user_defined_error.basicError('Body cannot be empty.');
+            let error = basicError('Body cannot be empty.');
             throw error;
         } else if (Object.keys(req.body).length == 0) {
-            let error = user_defined_error.basicError('Object cannot be empty.');
+            let error = basicError('Object cannot be empty.');
             throw error;
         }
         let body = req.body;
-        let result = await event.registerEvent(body);
+        let result = await registerEvent(body);
         res.status(200).json(result);
     } catch (error) {
         error.status = 400;
-        res.status(400).json(user_defined_error.errorObject(error.message, error.status));
+        if (!error.hasOwnProperty('message')) {
+            res.status(400).json(error);
+        } else {
+            res.status(400).json(errorObject(error.message, error.status));
+            console.error(error);
+        }
     }
 };
 
 exports.uploadImage = (req, res) => {
-    let user_defined_error = require('../utils/error');
-    let event = require('../components/event/event.presention');
+    let { errorObject } = require('../utils/error');
+    let { uploadImage } = require('../components/event/event.presention');
+    
     try {
-        let result = event.uploadImage(req, res);
-
+        let result = uploadImage(req, res);
     } catch (error) {
         error.status = 400;
-        res.status(400).json(user_defined_error.errorObject(error.message, error.status));
+        res.status(400).json(errorObject(error.message, error.status));
     }
 };
 
 exports.getAllRegisteredEvents = async (req, res) => {
-    let user_defined_error = require('../utils/error');
-    let event = require('../components/event/event.presention');
+    let { errorObject } = require('../utils/error');
+    let { getAllRegisteredEvents } = require('../components/event/event.presention');
+    
     try {
-        let result = await event.getAllRegisteredEvents();
+        let result = await getAllRegisteredEvents();
         res.status(200).json(result);
     } catch (error) {
         error.status = 400;
-        res.status(400).json(user_defined_error.errorObject(error.message, error.status));
+        res.status(400).json(errorObject(error.message, error.status));
     }
 };
 
 exports.getCountOfRegistrationsAndTickets = async (req, res) => {
-    let user_defined_error = require('../utils/error');
-    let event = require('../components/event/event.presention');
+    let { errorObject } = require('../utils/error');
+    let { getCountOfRegistrationsAndTickets } = require('../components/event/event.presention');
+    
     try {
-        let result = await event.getCountOfRegistrationsAndTickets();
+        let result = await getCountOfRegistrationsAndTickets();
         res.status(200).json(result);
     } catch (error) {
         error.status = 400;
-        res.status(400).json(user_defined_error.errorObject(error.message, error.status));
+        res.status(400).json(errorObject(error.message, error.status));
     }
 };
 
@@ -76,13 +84,14 @@ exports.getRegisteredEventById = async (req, res) => {
 };
 
 exports.getRegistrationTypeDetails = async (req, res) => {
-    let user_defined_error = require('../utils/error');
-    let event = require('../components/event/event.presention');
+    let { errorObject } = require('../utils/error');
+    let { getRegistrationTypeDetails } = require('../components/event/event.presention');
+    
     try {
-        let result = await event.getRegistrationTypeDetails();
+        let result = await getRegistrationTypeDetails();
         res.status(200).json(result);
     } catch (error) {
         error.status = 400;
-        res.status(400).json(user_defined_error.errorObject(error.message, error.status));
+        res.status(400).json(errorObject(error.message, error.status));
     }
 };
