@@ -63,7 +63,7 @@ exports.loginUser = async (req, res) => {
             jwt.sign(payload, mongo_config.database.secretOrKey, { expiresIn: Math.floor(Date.now() / 1000) - (60 * 60) }, (err, token) => {
                 if (err) { throw err; }
                 res.json({
-                    'name': user.name,
+                    'name': user[0].name,
                     'success': true,
                     'token': `Bearer token: ${token}`
                 });
