@@ -37,15 +37,20 @@ export const fetchEvents = () => dispatch => {
   };
 
   
-  export const fetchEvents = () => dispatch => {
+  export const fetchEventCount = () => dispatch => {
     return axios
-      .get("/api/events/getAllRegisteredEvents")
+      .get("/api/events/getCountOfRegistrationsAndTickets")
       .then(res => {
-        return dispatch(setEvents(res.data));
+        return dispatch(setEventCount(res.data));
       })
       .catch(err =>
         console.log("ERror",err)
       );
   };
-
+export const setEventCount = event =>{
+  return{
+    type:FETCH_EVENTS_COUNT,
+    payload:event
+    }
+}
    

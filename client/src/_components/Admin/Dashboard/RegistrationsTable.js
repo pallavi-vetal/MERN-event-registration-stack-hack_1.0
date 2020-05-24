@@ -4,8 +4,8 @@ import MaterialTable from 'material-table'
 import { fetchEvents } from "../../../_actions/eventsActions";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-
-
+import { Link } from "react-router-dom";
+import TouchAppIcon from '@material-ui/icons/TouchApp';
 const useStyles = theme => ({
     depositContext: {
         flex: 1,
@@ -26,13 +26,16 @@ class RegistrationsTable extends Component {
        
       }
     render() {
-        const { classes } = this.props;
+       
         const columns = [
             {
                 title: "Registration ID",
-                field: "registrationID",
+                field: "_id",
                 render: rowData => (
-                  rowData['_id']
+                  <Link href="/registration" to={{pathname:`/registration/${rowData["_id"]}`}} trim="trim">
+                <TouchAppIcon /><small> </small>
+                </Link>
+                  
                 ),
                 headerStyle: {
                   backgroundColor: "#673ab7",
@@ -41,7 +44,7 @@ class RegistrationsTable extends Component {
               },
             {
               title: "Full Name",
-              field: "Full Name",
+              field:"fullName",
               render: rowData => (
                 rowData['fullName']
               ),
@@ -123,20 +126,3 @@ RegistrationsTable.propTypes = {
     events: state.events
   });
 export default connect(mapStateToProps, { fetchEvents })(withStyles(useStyles)(RegistrationsTable));
-
-// Generate Order Data
-function createData(id, date, name, shipTo, paymentMethod, amount) {
-    return { id, date, name, shipTo, paymentMethod, amount };
-}
-
-const rows = [
-    createData(0, '16 Mar, 2019', 'Elvis Presley', 'Tupelo, MS', 'VISA ⠀•••• 3719', 312.44),
-    createData(1, '16 Mar, 2019', 'Paul McCartney', 'London, UK', 'VISA ⠀•••• 2574', 866.99),
-    createData(2, '16 Mar, 2019', 'Tom Scholz', 'Boston, MA', 'MC ⠀•••• 1253', 100.81),
-    createData(3, '16 Mar, 2019', 'Michael Jackson', 'Gary, IN', 'AMEX ⠀•••• 2000', 654.39),
-    createData(4, '15 Mar, 2019', 'Bruce Springsteen', 'Long Branch, NJ', 'VISA ⠀•••• 5919', 212.79),
-];
-
-function preventDefault(event) {
-    event.preventDefault();
-}

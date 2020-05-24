@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../_actions/usersActions";
-import { fetchEvents } from "../../_actions/eventsActions";
 import { withStyles } from "@material-ui/core/styles";
 import Dashboard from './Dashboard/Dashboard'
+import {fetchEventCount} from '../../_actions/eventsActions';
 const styles = theme => ({
   snack: {
     width:"50%",
@@ -31,8 +31,9 @@ class Home extends Component {
     if (!this.props.auth.isAuthenticated) {
       this.props.history.push("/login");
     }
-    //this.props.fetchEvents();
+    this.props.fetchEventCount();
     
+   
    
   }
   onLogoutClick = e => {
@@ -42,8 +43,7 @@ class Home extends Component {
   };
   
   render() {
-    const {classes} = this.props;
-   
+    
     console.log(this.state.userLocation);
     return (
       <div >
@@ -58,10 +58,11 @@ class Home extends Component {
 Home.propTypes = {
   auth: PropTypes.object.isRequired,
   logoutUser: PropTypes.func.isRequired,
-  fetchEvents:PropTypes.func.isRequired
+  fetchEventCount:PropTypes.func.isRequired,
+  events:PropTypes.object.isRequired
 };
 const mapStateToProps = state => ({
   auth: state.auth,
-  events: state.events
+  events: state.eventCount
 });
-export default connect(mapStateToProps, { logoutUser,fetchEvents })(withStyles(styles)(Home));
+export default connect(mapStateToProps, { logoutUser,fetchEventCount })(withStyles(styles)(Home));

@@ -46,7 +46,7 @@ class App extends Component{
         <Route exact path="/feedback" component={Feedback} />
         <Switch>
           <PrivateRoute exact path="/home" component={Home} />
-          <PrivateRoute  path="/register/:id" component={RegistrationDetails} />
+          <PrivateRoute  path="/registration/:id" component={RegistrationDetails} />
         </Switch>
         
         </div>
