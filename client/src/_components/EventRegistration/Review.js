@@ -35,8 +35,8 @@ class Review extends Component {
         <Typography variant="h6" gutterBottom>
           Registration summary
       </Typography>
-        <TableContainer>
-          <Table className={classes.table} aria-label="custom pagination table">
+        <TableContainer >
+          <Table className={classes.table} aria-label="custom pagination table" >
             <TableBody>
 
               <TableRow key={this.props.state1.fullName}>

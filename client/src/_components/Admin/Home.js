@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import HomeNavBar from "../Navigation/HomeNavBar";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../_actions/usersActions";
+import { fetchEvents } from "../../_actions/eventsActions";
 import { withStyles } from "@material-ui/core/styles";
 import Dashboard from './Dashboard/Dashboard'
 const styles = theme => ({
@@ -31,6 +31,8 @@ class Home extends Component {
     if (!this.props.auth.isAuthenticated) {
       this.props.history.push("/login");
     }
+    //this.props.fetchEvents();
+    
    
   }
   onLogoutClick = e => {
@@ -55,9 +57,11 @@ class Home extends Component {
 }
 Home.propTypes = {
   auth: PropTypes.object.isRequired,
-  logoutUser: PropTypes.func.isRequired
+  logoutUser: PropTypes.func.isRequired,
+  fetchEvents:PropTypes.func.isRequired
 };
 const mapStateToProps = state => ({
-  auth: state.auth
+  auth: state.auth,
+  events: state.events
 });
-export default connect(mapStateToProps, { logoutUser })(withStyles(styles)(Home));
+export default connect(mapStateToProps, { logoutUser,fetchEvents })(withStyles(styles)(Home));

@@ -142,7 +142,7 @@ class Dashboard extends Component {
   render() { 
     const { classes } = this.props;
     const { user } = this.props.auth;
-    
+    console.log(localStorage.getItem('user'))
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
     return ( 
@@ -164,7 +164,8 @@ class Dashboard extends Component {
           </Typography>
           {this.props.auth.isAuthenticated && (
               <div>
-                {user.name.split(" ")[0]}
+                {user.name}
+                
                 <IconButton
                   aria-label="account of current user"
                   aria-controls="menu-appbar"

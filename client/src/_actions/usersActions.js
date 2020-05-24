@@ -7,7 +7,7 @@ import { GET_ERRORS, SET_CURRENT_USER, USER_LOADING,REGISTER_EVENT } from "../_c
 // Register User
 export const registerUser = (userData, history) => dispatch => {
   axios
-    .post("/api/registerUser", userData)
+    .post("/api/user/registerUser", userData)
     .then(res => history.push("/login"))
     .catch(err =>
       dispatch({
@@ -20,10 +20,10 @@ export const registerUser = (userData, history) => dispatch => {
 // Login - get user token
 export const loginUser = userData => dispatch => {
   axios
-    .post("/api/users/login", userData)
+    .post("/api/user/login", userData)
     .then(res => {
       // Save to localStorage
-
+      console.log(res.data);
       // Set token to localStorage
       const { token } = res.data;
       localStorage.setItem("jwtToken", token);
@@ -31,6 +31,7 @@ export const loginUser = userData => dispatch => {
       setAuthToken(token);
       // Decode token to get user data
       const decoded = jwt_decode(token);
+      console.log(localStorage.getItem("jwtToken"))
       // Set current user
       dispatch(setCurrentUser(decoded));
     })
@@ -82,16 +83,19 @@ export const submitFeedback = (userData, history) => dispatch => {
 //Register for event
 export const registerEvent = userData => dispatch => {
   axios
-    .post("http://localhost:3007/api/registerEvent", userData)
+    .post("/api/events/registerEvent", userData)
     .then(res => {
       // Save to localStorage
 
       // Set token to localStorage
       const { token } = res.data;
-      localStorage.setItem("registerID", token);
-      
-      console.log(res);
-      dispatch(setCurrentRegistration(res.data.insertedId));
+      localStorage.setItem("jwtToken", token);
+      // Set token to Auth header
+      setAuthToken(token);
+      // Decode token to get user data
+      const decoded = jwt_decode(token);
+      // Set current user
+      dispatch(setCurrentUser(decoded));
     })
     .catch(err =>
       dispatch({

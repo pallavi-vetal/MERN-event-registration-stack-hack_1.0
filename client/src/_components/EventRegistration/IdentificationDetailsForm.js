@@ -44,7 +44,7 @@ class IdentificationDetailsForm extends Component {
       <Typography variant="h6" gutterBottom>
         Event details
       </Typography>
-      <Grid container spacing={3}>
+      <Grid container spacing={2} xs={9} md={12} lg={12}>
         <Grid item  md={6}>
           <br></br>
         <FormControl className={classes.formControl}>

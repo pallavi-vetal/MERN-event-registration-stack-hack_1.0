@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
-import Link from '@material-ui/core/Link';
 import { withStyles } from '@material-ui/core/styles';
 import MaterialTable from 'material-table'
-import Title from './Title';
+import { fetchEvents } from "../../../_actions/eventsActions";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+
+
 const useStyles = theme => ({
     depositContext: {
         flex: 1,
@@ -13,39 +16,114 @@ class RegistrationsTable extends Component {
         super(props);
         this.state = {}
     }
+    componentDidMount() {
+        // If logged in and user navigates to Register page, should redirect them to dashboard
+        if (!this.props.auth.isAuthenticated) {
+          this.props.history.push("/login");
+        }
+        this.props.fetchEvents();
+        
+       
+      }
     render() {
         const { classes } = this.props;
+        const columns = [
+            {
+                title: "Registration ID",
+                field: "registrationID",
+                render: rowData => (
+                  rowData['_id']
+                ),
+                headerStyle: {
+                  backgroundColor: "#673ab7",
+                  color: "#ffffff"
+                }
+              },
+            {
+              title: "Full Name",
+              field: "Full Name",
+              render: rowData => (
+                rowData['fullName']
+              ),
+              headerStyle: {
+                backgroundColor: "#673ab7",
+                color: "#ffffff"
+              }
+            },
+            {
+              title: "Email ID",
+              field: "email",
+              render: rowData => (
+               rowData["email"]
+              ),
+              headerStyle: {
+                backgroundColor: "#673ab7",
+                color: "#ffffff"
+              }
+            },
+            {
+              title: "Registration Type",
+              field: "registrationType",
+              render: rowData => (
+              rowData["registrationType"]
+              ),
+              headerStyle: {
+                backgroundColor: "#673ab7",
+                color: "#ffffff"
+              }
+            },
+            {
+                title: "Number of Tickets",
+                field: "numberOfTickets",
+                render: rowData => (
+                rowData["numberOfTickets"]
+                ),
+                headerStyle: {
+                  backgroundColor: "#673ab7",
+                  color: "#ffffff"
+                }
+              },
+              {
+                title: "Date Registered",
+                field: "date",
+                render: rowData => (
+                  rowData['date']
+                ),
+                headerStyle: {
+                  backgroundColor: "#673ab7",
+                  color: "#ffffff"
+                }
+              },  
+           
+          ];
         return (
             <React.Fragment>
                 
                 <MaterialTable
-                    title="Recent Registrations"
-                    columns={[
-                        { title: 'FullName', field: 'name' },
-                        { title: 'Email ID', field: 'surname' },
-                        { title: 'Date Registered', field: 'birthYear', type: 'date' },
-                        { title: 'Registration Type', field: 'birthCity' },
-                       
-                    ]}
-                    data={[
-                        { name: 'Mehmet', surname: 'Baran', birthYear: 1987, birthCity: 63 },
-                        { name: 'Zerya Betül', surname: 'Baran', birthYear: 2017, birthCity: 34 },
-                    ]}
-                    options={{
-                        filtering: true
-                    }}
-                />
-                <div className={classes.seeMore}>
-                    <Link color="primary" href="#" onClick={preventDefault}>
-                        See more orders
-              </Link>
-                </div>
+          title="Restaurant List"
+          columns={columns}
+          data={this.props.events.events}
+          
+          options={{
+            sorting: true,
+            filtering: true
+          }}
+        />
+                
             </React.Fragment>
         );
     }
 }
+RegistrationsTable.propTypes = {
+    auth: PropTypes.object.isRequired,
+    fetchEvents:PropTypes.func.isRequired
+  };
+  const mapStateToProps = state => ({
+    auth: state.auth,
+    events: state.events
+  });
+export default connect(mapStateToProps, { fetchEvents })(withStyles(useStyles)(RegistrationsTable));
 
-export default (withStyles(useStyles)(RegistrationsTable));
 // Generate Order Data
 function createData(id, date, name, shipTo, paymentMethod, amount) {
     return { id, date, name, shipTo, paymentMethod, amount };

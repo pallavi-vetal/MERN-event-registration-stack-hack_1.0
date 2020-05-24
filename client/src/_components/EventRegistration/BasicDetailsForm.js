@@ -35,11 +35,11 @@ class BasicDetailsForm extends Component {
 
     render() { 
         return ( 
-            <React.Fragment>
+            <React.Fragment >
             <Typography variant="h6" gutterBottom>
               Basic Details
             </Typography>
-            <Grid container spacing={3}>
+            <Grid container spacing={2} xs={9} md={12} lg={12} >
             <Grid item xs={12}>
                 <TextField
                   required
@@ -92,7 +92,7 @@ class BasicDetailsForm extends Component {
                           
                           server={{
                             process: {
-                              url: 'http://127.0.0.1:3007/api/uploadImage',
+                              url: 'http://127.0.0.1:3007/api/events/uploadImage',
                              
                             
                               onload: (response) => { // Once response is received, pushed new value to Final Form value variable, and populate through the onChange handler. 
