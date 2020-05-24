@@ -65,3 +65,20 @@ exports.getAllRegisteredEvents = async () => {
         throw error;
     }
 };
+
+exports.getCountOfRegistrationsAndTickets = async () => {
+    try {
+        let mongo_client = await mongo_util.dbClient();
+        let response = await mongo_client.collection(mongo_config.collection_names.registeredEvents).aggregate([
+            { '$group': { '_id': '$source', 'totalTickets': { '$sum': '$numberOfTickets' }, 'totalRegistrations': { '$sum': 1 } } },
+            { '$project': { '_id': 0 } }
+        ]).toArray().then(result => {
+            return (result[0]);
+        }).catch(err => {
+            if (err) throw err;
+        });
+        return (response);
+    } catch (error) {
+        throw error;
+    }
+};
