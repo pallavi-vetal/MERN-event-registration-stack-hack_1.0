@@ -1,3 +1,4 @@
+import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Table from '@material-ui/core/Table';
@@ -5,9 +6,11 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableRow from '@material-ui/core/TableRow';
-
-import React, { Component } from 'react';
-const useStyles = (theme) => ({
+import Avatar from '@material-ui/core/Avatar';
+import { fetchImage } from "../../_actions/eventsActions";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+const styles = (theme) => ({
   listItem: {
     padding: theme.spacing(1, 0),
   },
@@ -20,12 +23,35 @@ const useStyles = (theme) => ({
   table: {
     minWidth: 500,
   },
+  avatar:{
+    height:"100%",
+    width:"100%"
+}
 });
 class Review extends Component {
   constructor(props) {
     super(props);
-    this.state = {}
+    this.state = {
+      img:''
+    }
   }
+  async componentDidMount(){
+    var base64Flag = 'data:image/jpeg;base64,';
+    //var imageStr = this.arrayBufferToBase64(data.img.data.data);
+    if(this.props.state1.imageID)
+    {
+      await this.props.fetchImage(this.props.state1.imageID);
+    var imageStr = this.arrayBufferToBase64(this.props.events.eventImage.imageBuffer.data);
+    this.setState({img: base64Flag + imageStr});
+    }
+    
+  }
+  arrayBufferToBase64 = (buffer) =>{
+    var binary = '';
+    var bytes = [].slice.call(new Uint8Array(buffer));
+    bytes.forEach((b) => binary += String.fromCharCode(b));
+    return window.btoa(binary);
+};  
   render() {
     const { classes } = this.props;
     
@@ -35,10 +61,15 @@ class Review extends Component {
         <Typography variant="h6" gutterBottom>
           Registration summary
       </Typography>
+            
         <TableContainer >
           <Table className={classes.table} aria-label="custom pagination table" >
             <TableBody>
-
+              <TableRow>
+                
+              <Avatar alt="Identification document" variant="rounded" src={this.state.img} className={classes.avatar} />
+      
+              </TableRow>
               <TableRow key={this.props.state1.fullName}>
                 <TableCell component="th" scope="row">
                   <b>Name</b>
@@ -94,6 +125,18 @@ class Review extends Component {
   }
 }
 
-export default withStyles(useStyles)(Review);
+Review.propTypes = {
+  auth: PropTypes.object.isRequired,
+  events : PropTypes.object.isRequired,
+  fetchImage : PropTypes.func.isRequired
+};
+const mapStateToProps = state => ({
+  auth: state.auth,
+  events : state.events
+}); 
+export default connect(mapStateToProps,{fetchImage})(
+  withStyles(styles)(Review)
+);
+
 
 
