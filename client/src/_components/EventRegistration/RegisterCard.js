@@ -116,22 +116,7 @@ class RegisterCard extends Component {
   handleBack = (e) => {
     this.setState({ "activeStep": this.state.activeStep - 1 })
   };
-  handleHome = (e) => {
-    this.setState({
-      activeStep: 0,
-      registrationType: "",
-      numberOfTickets: '',
-      fullName: "",
-      email: "",
-      mobile: "",
-      selectedFile: "",
-      registrationID: "",
-      errors: {},
-      fileName: "",
-      imageID: ''
-    })
-    this.setState({ "activeStep": 0 })
-  };
+ 
   onChange = (e) => {
     console.log(e.target.id)
 
@@ -181,7 +166,7 @@ class RegisterCard extends Component {
     function Greeting(state) {
       //const {state1} = state;
       //console.log(state,"232323")
-      if (state.state.errors.error || state.state.errors && !state.state.registrationID) {
+      if (state.state.errors) {
         return <Alert severity="error">Something Went Wrong. <br></br>
       Error Message :  <b>{state.state.errors.error}<br></br>
       {state.state.errors.name}<br></br>
