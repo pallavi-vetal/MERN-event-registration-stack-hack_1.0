@@ -29,7 +29,8 @@ class IdentificationDetailsForm extends Component {
   onChange = e => {
 
     this.setState({ [e.target.id]: e.target.value });
-    
+    if(e.target.id==="registrationType" && e.target.value==="Self")
+      this.setState({numberOfTickets:"1"})
     console.log(this.state);
     
   };
