@@ -26,7 +26,7 @@ export const fetchEvents = () => dispatch => {
 };
 export const fetchEventsByID = (id) => dispatch => {
   return axios
-    .get(`/api/restaurants/search/${id}`)
+    .get(`/api/events/getRegisteredEventById/${id}`)
     .then(res => {
       console.log(res.data);
       return dispatch(setEventByID(res.data));

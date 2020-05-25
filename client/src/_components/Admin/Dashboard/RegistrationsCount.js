@@ -36,13 +36,9 @@ class RegistrationsCount extends Component {
                     {this.props.events.eventCount.totalRegistrations}
                 </Typography>
                 <Typography color="textSecondary" className={classes.depositContext}>
-                    Number of tickets sold : {this.props.events.eventCount.totalTickets}
+                    Number of tickets sold  {this.props.events.eventCount.totalTickets}
                 </Typography>
-                <div>
-                    <Link color="primary" href="#" >
-                        View Registrations
-                    </Link>
-                </div>
+                
             </React.Fragment>
         );
     }
