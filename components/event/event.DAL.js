@@ -120,3 +120,34 @@ exports.getRegistrationTypeDetails = async () => {
         throw error;
     }
 };
+
+exports.getImageById = async (req, res) => {
+    try {
+        let { errorObject } = require('../../utils/error');
+        let { GridFSBucket, ObjectId } = require('mongodb');
+        let mongo_client = await mongo_util.dbClient();
+        let image_id = new ObjectId(req.params.id);
+        let buffer_object = null;
+        
+        let bucket = new GridFSBucket(mongo_client, {
+            bucketName: 'fs'
+        });
+
+        let download_stream = bucket.openDownloadStream(image_id);
+
+        download_stream.on('data', (chunk) => {
+            buffer_object = chunk;
+        });
+
+        download_stream.on('error', () => {
+            return (res.status(500).json(errorObject('Error retreiving file from storage.', 500)));
+        });
+
+        download_stream.on('end', () => {
+            res.status(200).json({ 'id': image_id, 'imageBuffer': buffer_object });
+        });
+
+    } catch (error) {
+        throw error;
+    }
+};

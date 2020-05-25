@@ -3,7 +3,7 @@
 exports.registerEvent = async (req, res) => {
     let { basicError, errorObject } = require('../utils/error');
     let { registerEvent } = require('../components/event/event.presention');
-    
+
     try {
         if (!req._body) {
             let error = basicError('Body cannot be empty.');
@@ -29,7 +29,7 @@ exports.registerEvent = async (req, res) => {
 exports.uploadImage = (req, res) => {
     let { errorObject } = require('../utils/error');
     let { uploadImage } = require('../components/event/event.presention');
-    
+
     try {
         let result = uploadImage(req, res);
     } catch (error) {
@@ -41,7 +41,7 @@ exports.uploadImage = (req, res) => {
 exports.getAllRegisteredEvents = async (req, res) => {
     let { errorObject } = require('../utils/error');
     let { getAllRegisteredEvents } = require('../components/event/event.presention');
-    
+
     try {
         let result = await getAllRegisteredEvents();
         res.status(200).json(result);
@@ -54,7 +54,7 @@ exports.getAllRegisteredEvents = async (req, res) => {
 exports.getCountOfRegistrationsAndTickets = async (req, res) => {
     let { errorObject } = require('../utils/error');
     let { getCountOfRegistrationsAndTickets } = require('../components/event/event.presention');
-    
+
     try {
         let result = await getCountOfRegistrationsAndTickets();
         res.status(200).json(result);
@@ -86,7 +86,7 @@ exports.getRegisteredEventById = async (req, res) => {
 exports.getRegistrationTypeDetails = async (req, res) => {
     let { errorObject } = require('../utils/error');
     let { getRegistrationTypeDetails } = require('../components/event/event.presention');
-    
+
     try {
         let result = await getRegistrationTypeDetails();
         res.status(200).json(result);
@@ -95,3 +95,19 @@ exports.getRegistrationTypeDetails = async (req, res) => {
         res.status(400).json(errorObject(error.message, error.status));
     }
 };
+
+exports.getImageById = (req, res) => {
+    let { basicError, errorObject } = require('../utils/error');
+    let { isValid } = require('mongodb').ObjectId;
+    let { getImageById } = require('../components/event/event.presention');
+    try {
+        if (!isValid(req.params.id)) {
+            let error = basicError('Image Id is invalid.');
+            throw error;
+        }
+        getImageById(req, res);
+    } catch (error) {
+        error.status = 400;
+        res.status(400).json(errorObject(error.message, error.status));
+    }
+}

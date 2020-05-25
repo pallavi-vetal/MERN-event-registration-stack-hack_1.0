@@ -82,3 +82,18 @@ exports.getRegistrationTypeDetails = async () => {
         throw error;
     }
 };
+
+exports.getImageById = (req, res) => {
+    try {
+        let { basicError } = require('../../utils/error');
+        let { getImageById } = require('./event.controller');
+
+        if (typeof req.params.id != 'string') {
+            let error = basicError('Image Id is invalid.');
+            throw error;
+        }
+        getImageById(req, res);
+    } catch (error) {
+        throw error;
+    }
+};

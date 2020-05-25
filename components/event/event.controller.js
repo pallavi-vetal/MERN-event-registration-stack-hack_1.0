@@ -65,3 +65,11 @@ exports.getRegistrationTypeDetails = async () => {
     }
 };
 
+exports.getImageById = (req, res) => {
+    try {
+        let { getImageById } = require('./event.DAL');
+        getImageById(req, res);
+    } catch (error) {
+        throw error;
+    }
+};
