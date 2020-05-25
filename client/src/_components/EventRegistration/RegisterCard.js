@@ -24,7 +24,7 @@ const useStyles = theme => ({
       marginLeft: 'auto',
       marginRight: 'auto',
     },
-    marginTop:"0%"
+    marginTop: "0%"
   },
   paper: {
     marginTop: theme.spacing(2),
@@ -52,94 +52,109 @@ const useStyles = theme => ({
 class RegisterCard extends Component {
   constructor(props) {
     super(props);
-    this.state = { 
-      activeStep : 0,
-      registrationType : "",
-      numberOfTickets : '',
-      fullName:"",
-      email:"",
-      mobile:"",
-      selectedFile:"",
+    this.state = {
+      activeStep: 0,
+      registrationType: "",
+      numberOfTickets: '',
+      fullName: "",
+      email: "",
+      mobile: "",
+      selectedFile: "",
       file: [{
         source: '',
         options: {
-            type: ''
+          type: ''
         }
-    }],
-    registrationID:"",
-    errors: {},
-    fileName:"",
-    imageID:''
-      
+      }],
+      registrationID: "",
+      errors: this.props.errors,
+      fileName: "",
+      imageID: ''
+
     }
     this.getStepContent = this.getStepContent.bind(this)
   }
   componentWillReceiveProps(nextProps) {
-    
+
     if (nextProps.errors) {
       this.setState({
         errors: nextProps.errors
-        
+
       });
     }
-    if(nextProps.registrationID){
+    if (nextProps.registrationID) {
       this.setState({
         registrationID: nextProps.registrationID
-        
+
       });
+
     }
   }
-   handleNext = (e) => {
-     this.setState({"activeStep":this.state.activeStep+1})
-     if(this.state.activeStep===2){
-       console.log(this.state.activeStep)
-       e.preventDefault();
 
-       const userData = {
-         email: this.state.email,
-         fullName: this.state.fullName,
-         mobile:this.state.mobile,
-         registrationType:this.state.registrationType,
-         numberOfTickets:parseInt(this.state.numberOfTickets,10),
-         imageID: this.state.imageID
-       };
-       
-       this.props.registerEvent(userData);
-     }
-    
+  handleNext = (e) => {
+    this.setState({ "activeStep": this.state.activeStep + 1 })
+    if (this.state.activeStep === 2) {
+      console.log(this.state.activeStep)
+      e.preventDefault();
+
+      const userData = {
+        email: this.state.email,
+        fullName: this.state.fullName,
+        mobile: this.state.mobile,
+        registrationType: this.state.registrationType,
+        numberOfTickets: parseInt(this.state.numberOfTickets, 10),
+        imageID: this.state.imageID
+      };
+
+      this.props.registerEvent(userData);
+    }
+
   };
-handleImageUpload =(e)=>{
-  this.setState({"imageID":e})
-}
-   handleBack = (e) => {
-    this.setState({"activeStep":this.state.activeStep-1})
+  handleImageUpload = (e) => {
+    this.setState({ "imageID": e })
+  }
+  handleBack = (e) => {
+    this.setState({ "activeStep": this.state.activeStep - 1 })
   };
   handleHome = (e) => {
-    this.setState({"activeStep":0})
+    this.setState({
+      activeStep: 0,
+      registrationType: "",
+      numberOfTickets: '',
+      fullName: "",
+      email: "",
+      mobile: "",
+      selectedFile: "",
+      registrationID: "",
+      errors: {},
+      fileName: "",
+      imageID: ''
+    })
+    this.setState({ "activeStep": 0 })
   };
   onChange = (e) => {
     console.log(e.target.id)
-    
+
     this.setState({ [e.target.id]: e.target.value });
-    
+
   };
-   getStepContent(step) {
+  getStepContent(step) {
     switch (step) {
       case 0:
-        return <BasicDetailsForm state1={this.state} onChange={this.onChange} 
-              onImageUpload={this.handleImageUpload}/>;
+        return <BasicDetailsForm state1={this.state} onChange={this.onChange}
+          onImageUpload={this.handleImageUpload} />;
       case 1:
-        return <IdentificationDetailsForm state1={this.state} onChange={this.onChange}/>;
+        return <IdentificationDetailsForm state1={this.state} onChange={this.onChange} />;
       case 2:
-        return <Review state1 = {this.state}/>;
+        return <Review state1={this.state} />;
       default:
         throw new Error('Unknown step');
     }
   }
-  
-  render() { 
-    
-    const {classes} = this.props;
+
+  render() {
+
+    const { classes } = this.props;
     function Copyright() {
       return (
         <Typography variant="body2" color="textSecondary" align="center">
@@ -152,79 +167,85 @@ handleImageUpload =(e)=>{
         </Typography>
       );
     }
-    
-    
-    
+
+
+
     const steps = ['Basic Details', 'Event details', 'Review your order'];
     //issue
     const { errors } = this.state.errors;
-    const {registrationID} = this.state.registrationID;
-    console.log("my errors:",errors,"registrationID",registrationID)
+    const { registrationID } = this.state.registrationID;
+    console.log("my errors:", errors, "registrationID", registrationID)
     function Greeting(state) {
       //const {state1} = state;
-      console.log(state,"232323")
-      if (state.state.errors.error) {
-      return <Alert severity="error">Something Went Wrong. <br></br>
-      Error Message :  <b>{state.state.errors.error}</b></Alert>;
+      //console.log(state,"232323")
+      if (state.state.errors.error || state.state.errors && !state.state.registrationID) {
+        return <Alert severity="error">Something Went Wrong. <br></br>
+      Error Message :  <b>{state.state.errors.error}<br></br>
+      {state.state.errors.name}<br></br>
+      {state.state.errors.mobile}<br></br>
+      {state.state.errors.email}<br></br>{
+      state.state.errors.registrationType}</b></Alert>;
       }
       return <Alert severity="success">Thanks for showing interest in event. <br></br>Please note your registration number : &nbsp;
        <b>{state.state.registrationID.registrationID}</b></Alert>;
     }
     let activeStep = this.state.activeStep;
-    return ( 
+    return (
       <React.Fragment>
-    
-      <main className={classes.layout}>
-        <Paper className={classes.paper}>
-          <Typography component="h1" variant="h4" align="center">
-            Register for Event
+
+        <main className={classes.layout}>
+          <Paper className={classes.paper}>
+            <Typography component="h1" variant="h4" align="center">
+              Register for Event
           </Typography>
-          <Stepper activeStep={activeStep} className={classes.stepper}>
-            {steps.map((label) => (
-              <Step key={label}>
-                <StepLabel>{label}</StepLabel>
-              </Step>
-            ))}
-          </Stepper>
-          <React.Fragment>
-            {activeStep === steps.length ? (
-              <React.Fragment>
-                <Typography variant="h5" gutterBottom>
-                  Thank you for your time.
+            <Stepper activeStep={activeStep} className={classes.stepper}>
+              {steps.map((label) => (
+                <Step key={label}>
+                  <StepLabel>{label}</StepLabel>
+                </Step>
+              ))}
+            </Stepper>
+            <React.Fragment>
+              {activeStep === steps.length ? (
+                <React.Fragment>
+                  <Typography variant="h5" gutterBottom>
+                    Thank you for your time.
                 </Typography>
-                <Typography variant="subtitle1">
-                  <Greeting state={this.state} />
-                  <Button onClick={this.handleHome} className={classes.button}>
+                  <Typography variant="subtitle1">
+                    <Greeting state={this.props} />
+
+                    <Link href="/" to={{ pathname: `/` }} trim="trim">
                       Home
-                    </Button>
-                </Typography>
-              </React.Fragment>
-            ) : (
-              <React.Fragment>
-                {this.getStepContent(activeStep)}
-                <div className={classes.buttons}>
-                  {activeStep !== 0 && (
-                    <Button onClick={this.handleBack} className={classes.button}>
-                      Back
-                    </Button>
-                  )}
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    onClick={this.handleNext}
-                    className={classes.button}
-                  >
-                    {activeStep === steps.length - 1 ? 'Submit' : 'Next'}
-                  </Button>
-                </div>
-              </React.Fragment>
-            )}
-          </React.Fragment>
-        </Paper>
-        <Copyright />
-      </main>
-    </React.Fragment>
-     );
+                </Link>
+
+                  </Typography>
+                </React.Fragment>
+              ) : (
+                  <React.Fragment>
+                    {this.getStepContent(activeStep)}
+                    <div className={classes.buttons}>
+                      {activeStep !== 0 && (
+                        <Button onClick={this.handleBack} className={classes.button}>
+                          Back
+                        </Button>
+                      )}
+                      <Button
+                        variant="contained"
+                        color="primary"
+                        onClick={this.handleNext}
+                        className={classes.button}
+                      >
+                        {activeStep === steps.length - 1 ? 'Submit' : 'Next'}
+                      </Button>
+                    </div>
+                  </React.Fragment>
+                )}
+            </React.Fragment>
+          </Paper>
+          <Copyright />
+        </main>
+      </React.Fragment>
+    );
   }
 }
 RegisterCard.propTypes = {
@@ -237,6 +258,6 @@ const mapStateToProps = state => ({
   errors: state.errors
 });
 
-export default connect(mapStateToProps,{ registerEvent })(withStyles(useStyles)(RegisterCard));
+export default connect(mapStateToProps, { registerEvent })(withStyles(useStyles)(RegisterCard));
 
 

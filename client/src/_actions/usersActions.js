@@ -89,6 +89,7 @@ export const registerEvent = userData => dispatch => {
 
       // Set token to localStorage
       const { token } = res.data;
+      console.log(res.data);
       localStorage.setItem("registerID", token);
       
       console.log(res);
