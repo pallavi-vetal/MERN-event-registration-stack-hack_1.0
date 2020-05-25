@@ -1,4 +1,4 @@
-import { FETCH_EVENTS, FETCH_EVENTS_BY_ID, FETCH_EVENTS_COUNT,FETCH_EVENTS_TYPE } from '../_constants/eventsConstants';
+import { FETCH_EVENTS, FETCH_EVENTS_BY_ID, FETCH_EVENTS_COUNT,FETCH_EVENTS_TYPE, FETCH_EVENTS_IMAGE } from '../_constants/eventsConstants';
 import axios from "axios";
 
 export const setEvents = events => {
@@ -68,5 +68,22 @@ export const setRegistrationTypeData = event => {
   return {
     type: FETCH_EVENTS_TYPE,
     payload: event
+  }
+}
+export const fetchImage = (id) => dispatch => {
+  return axios
+    .get(`/api/events/getImageById/${id}`)
+    .then(res => {
+      console.log(res.data);
+      return dispatch(setImage(res.data));
+    })
+    .catch(err =>
+      console.log("ERror", err)
+    );
+};
+export const setImage = img =>{
+  return {
+    type:FETCH_EVENTS_IMAGE,
+    payload:img
   }
 }

@@ -5,14 +5,12 @@ import { withStyles } from "@material-ui/core/styles";
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import Divider from '@material-ui/core/Divider';
-import ListItemText from '@material-ui/core/ListItemText';
-import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
 import HomeNavBar from '../Navigation/HomeNavBar';
 import Container from '@material-ui/core/Container';
 import { Paper } from '@material-ui/core';
-import { fetchEventsByID } from "../../_actions/eventsActions";
+import { fetchEventsByID, fetchImage } from "../../_actions/eventsActions";
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -81,12 +79,12 @@ const styles = theme => ({
       appBarSpacer: theme.mixins.toolbar,
       content: {
         flexGrow: 1,
-        height: '100vh',
+        height: '200vh',
         overflow: 'auto',
       },
       container: {
-        paddingTop: theme.spacing(4),
-        paddingBottom: theme.spacing(4),
+        paddingTop: theme.spacing(2),
+        paddingBottom: theme.spacing(2),
       },
       paper: {
         padding: theme.spacing(2),
@@ -95,33 +93,51 @@ const styles = theme => ({
         flexDirection: 'column',
       },
       fixedHeight: {
-        height: 320,
+        height: 420,
       },
       section: {
         height: "100%",
         paddingTop: 5,
         backgroundColor: "#fff"
+      },
+      avatar:{
+          height:"100%",
+          width:"100%"
       }
 })
 
 class RegistrationDetails extends Component {
     constructor(props) {
         super(props);
-        this.state = {  }
+        this.state = { 
+            img:''
+         }
     }
-    componentDidMount(){
+    async componentDidMount(){
         const { match: { params } } = this.props;
         if (!this.props.auth.isAuthenticated) {
   
             this.props.history.push("/login");
           }
-        this.props.fetchEventsByID(params.id);
+        var base64Flag = 'data:image/jpeg;base64,';
+        //var imageStr = this.arrayBufferToBase64(data.img.data.data);
+        await this.props.fetchEventsByID(params.id);
+        await this.props.fetchImage(this.props.events.eventID.imageID);
+        var imageStr = this.arrayBufferToBase64(this.props.events.eventImage.imageBuffer.data);
+        this.setState({img: base64Flag + imageStr});
+        
     }
     onLogoutClick = e => {
         e.preventDefault();
         this.props.logoutUser();
         this.props.history.push("/");
       };
+    arrayBufferToBase64 = (buffer) =>{
+        var binary = '';
+        var bytes = [].slice.call(new Uint8Array(buffer));
+        bytes.forEach((b) => binary += String.fromCharCode(b));
+        return window.btoa(binary);
+    };  
     render() { 
         const {classes} = this.props;
         return ( 
@@ -133,31 +149,29 @@ class RegistrationDetails extends Component {
             <Paper className={classes.paper}>
             <List className={classes.root}>
             <ListItem alignItems="flex-start">
-              <ListItemAvatar>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
-              </ListItemAvatar>
-              <ListItemText
-                primary={"Registration details"}
-                secondary={
-                  <React.Fragment>
-                    <Typography
-                      component="span"
-                      variant="body2"
-                      className={classes.inline}
-                      color="textPrimary"
-                    >
-                    
-                    </Typography>
-                    <br></br>
+              <ListItem>
+                <Avatar alt="Identification document" variant="rounded" src={this.state.img} className={classes.avatar} />
+              </ListItem>
+             
+            </ListItem>
+            <ListItem>
+           
                     <TableContainer >
-          <Table className={classes.table} aria-label="custom pagination table" >
+          <Table className={classes.table} aria-label="custom pagination table"  >
             <TableBody>
-
+            <TableRow>
+                <TableCell component="th">
+                <Typography variant="h6" gutterBottom>
+              Basic Details
+            </Typography>
+                </TableCell>
+           
+            </TableRow>
               <TableRow key={this.props.events.eventID.fullName}>
                 <TableCell component="th" scope="row">
                   <b>Name</b>
                 </TableCell>
-                <TableCell component="th" scope="row">
+                <TableCell component="td" scope="row">
                   {this.props.events.eventID.fullName}
                 </TableCell>
               </TableRow>
@@ -165,7 +179,7 @@ class RegistrationDetails extends Component {
                 <TableCell component="th" scope="row">
                   <b>Mobile No</b>
                 </TableCell>
-                <TableCell component="th" scope="row">
+                <TableCell component="td" scope="row">
                   {this.props.events.eventID.mobile}
                 </TableCell>
               </TableRow>
@@ -173,23 +187,23 @@ class RegistrationDetails extends Component {
                 <TableCell component="th" scope="row">
                   <b>Email ID</b>
                 </TableCell>
-                <TableCell component="th" scope="row">
+                <TableCell component="td" scope="row">
                   {this.props.events.eventID.email}
                 </TableCell>
               </TableRow>
-              <TableRow key={this.props.events.eventID.email}>
+              <TableRow key={this.props.events.eventID.registrationType}>
                 <TableCell component="th" scope="row">
                   <b>Registration Type</b>
                 </TableCell>
-                <TableCell component="th" scope="row">
+                <TableCell component="td" scope="row">
                   {this.props.events.eventID.registrationType}
                 </TableCell>
               </TableRow>
-              <TableRow key={this.props.events.eventID.email}>
+              <TableRow key={this.props.events.eventID.numberOfTickets}>
                 <TableCell component="th" scope="row">
                   <b>Number of Tickets</b>
                 </TableCell>
-                <TableCell component="th" scope="row">
+                <TableCell component="td" scope="row">
                   {this.props.events.eventID.numberOfTickets}
                 </TableCell>
               </TableRow>
@@ -201,10 +215,7 @@ class RegistrationDetails extends Component {
 
           </Table>
         </TableContainer>
-                  </React.Fragment>
-                }
-              />
-            </ListItem>
+        </ListItem>
             <Divider variant="inset" component="li" />
           
           </List>
@@ -220,12 +231,13 @@ RegistrationDetails.propTypes = {
     auth: PropTypes.object.isRequired,
     fetchEventsByID:PropTypes.func.isRequired,
     events : PropTypes.object.isRequired,
-    logoutUser: PropTypes.func.isRequired
+    logoutUser: PropTypes.func.isRequired,
+    fetchImage : PropTypes.func.isRequired
   };
   const mapStateToProps = state => ({
     auth: state.auth,
     events : state.events
   }); 
-  export default connect(mapStateToProps,{fetchEventsByID,logoutUser})(
+  export default connect(mapStateToProps,{fetchEventsByID,logoutUser,fetchImage})(
     withStyles(styles)(RegistrationDetails)
   );
