@@ -10,9 +10,10 @@ import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css';
 import { Component } from 'react';
 import FormLabel from '@material-ui/core/FormLabel';
 import FilePondPluginImageCrop from 'filepond-plugin-image-crop';
+import FilePondPluginFileValidateType from 'filepond-plugin-file-validate-type';
 
 // Register the plugins
-registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview, FilePondPluginImageCrop);
+registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview, FilePondPluginImageCrop,FilePondPluginFileValidateType);
 class BasicDetailsForm extends Component {
     constructor(props) {
         super(props);
@@ -89,7 +90,7 @@ class BasicDetailsForm extends Component {
                           required
                           name={"file"}
                           id="file"
-                          
+                          acceptedFileTypes={['image/png', 'image/jpeg']}
                           server={{
                             process: {
                               url: 'http://127.0.0.1:3007/api/events/uploadImage',

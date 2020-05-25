@@ -114,7 +114,9 @@ handleImageUpload =(e)=>{
    handleBack = (e) => {
     this.setState({"activeStep":this.state.activeStep-1})
   };
-  
+  handleHome = (e) => {
+    this.setState({"activeStep":0})
+  };
   onChange = (e) => {
     console.log(e.target.id)
     
@@ -192,6 +194,9 @@ handleImageUpload =(e)=>{
                 </Typography>
                 <Typography variant="subtitle1">
                   <Greeting state={this.state} />
+                  <Button onClick={this.handleHome} className={classes.button}>
+                      Home
+                    </Button>
                 </Typography>
               </React.Fragment>
             ) : (
