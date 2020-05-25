@@ -111,3 +111,16 @@ exports.getImageById = (req, res) => {
         res.status(400).json(errorObject(error.message, error.status));
     }
 }
+
+exports.getTimeSeriesDataForCurrentMonth = async (req, res) => {
+    let { errorObject } = require('../utils/error');
+    let { getTimeSeriesDataForCurrentMonth } = require('../components/event/event.presention');
+    
+    try {
+        let result = await getTimeSeriesDataForCurrentMonth();
+        res.status(200).json(result);
+    } catch (error) {
+        error.status = 400;
+        res.status(400).json(errorObject(error.message, error.status));
+    }
+};

@@ -128,7 +128,7 @@ exports.getImageById = async (req, res) => {
         let mongo_client = await mongo_util.dbClient();
         let image_id = new ObjectId(req.params.id);
         let buffer_object = null;
-        
+
         let bucket = new GridFSBucket(mongo_client, {
             bucketName: 'fs'
         });
@@ -147,6 +147,46 @@ exports.getImageById = async (req, res) => {
             res.status(200).json({ 'id': image_id, 'imageBuffer': buffer_object });
         });
 
+    } catch (error) {
+        throw error;
+    }
+};
+
+exports.getTimeSeriesDataForCurrentMonth = async () => {
+    try {
+        let mongo_client = await mongo_util.dbClient();
+        let month_list = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
+
+        let response = await mongo_client.collection(mongo_config.collection_names.registeredEvents).aggregate([
+            {
+                '$group': {
+                    '_id': {
+                        'day': { '$dayOfMonth': '$date' },
+                        'month': { '$month': '$date' },
+                        'year': { '$year': '$date' }
+                    },
+                    'totalAmount': { '$sum': '$numberOfTickets' },
+                    'count': { '$sum': 1 }
+                }
+            }, {
+                '$project': {
+                    '_id': 0,
+                    'day': '$_id.day',
+                    'month': '$_id.month',
+                    'year': '$_id.year',
+                    'totalTicketsPerDay': '$totalAmount',
+                    'registeredCount': '$count'
+                }
+            }
+        ]).toArray().then(result => {
+            for (let i = 0; i < result.length; i++) {
+                result[i].month = month_list[result[i].month - 1]
+            }
+            return (result);
+        }).catch(err => {
+            if (err) throw err;
+        });
+        return (response);
     } catch (error) {
         throw error;
     }
