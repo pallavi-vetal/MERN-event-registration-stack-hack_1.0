@@ -1,24 +1,25 @@
 exports.registerUser = async (req, res) => {
     try {
-        let user_defined_error = require('../../utils/error');
-        let user_validator = require('./user.validation');
-        let user = require('./user.controller');
+        let { basicError } = require('../../utils/error');
+        let { registerValidator } = require('./user.validation');
+        let { registerUser } = require('./user.controller');
+
         if (typeof req.body.name != 'string' || typeof req.body.email != 'string' || typeof req.body.password != 'string' || typeof req.body.adminPassCode != 'string') {
-            let error = user_defined_error.basicError('Invalid type of fields');
+            let error = basicError('Invalid type of fields');
             throw error;
         }
         //validation for email and password
-        let { errors, flag } = user_validator.registerValidator(req.body);
-        
+        let { errors, flag } = registerValidator(req.body);
+
         if (!flag) {
             throw errors;
         }
 
         if (req.body.adminPassCode !== 'secret') {
-            let error = user_defined_error.basicError('Invalid admin pass code.');
+            let error = basicError('Invalid admin pass code.');
             throw error;
         }
-        let result = await user.registerUser(req, res);
+        let result = await registerUser(req, res);
     } catch (error) {
         throw error;
     }
@@ -27,21 +28,22 @@ exports.registerUser = async (req, res) => {
 
 exports.loginUser = async (req, res) => {
     try {
-        let user_defined_error = require('../../utils/error');
-        let user_validator = require('./user.validation');
-        let user = require('./user.controller');
+        let { basicError } = require('../../utils/error');
+        let { loginValidator } = require('./user.validation');
+        let { loginUser } = require('./user.controller');
+        
         if (typeof req.body.email != 'string' || typeof req.body.password != 'string') {
-            let error = user_defined_error.basicError('Invalid type of fields');
+            let error = basicError('Invalid type of fields');
             throw error;
         }
         //validaton for email and password
-        let { errors, flag } = user_validator.loginValidator(req.body);
-        
-        if(!flag) {
+        let { errors, flag } = loginValidator(req.body);
+
+        if (!flag) {
             throw errors;
         }
-        
-        let result = await user.loginUser(req, res);
+
+        let result = await loginUser(req, res);
     } catch (error) {
         throw error;
     }

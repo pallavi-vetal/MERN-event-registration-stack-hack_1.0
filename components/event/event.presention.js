@@ -1,26 +1,26 @@
 
 exports.registerEvent = async (p_body) => {
     try {
-        let user_defined_error = require('../../utils/error');
-        let event = require('./event.controller');
+        let { basicError } = require('../../utils/error');
+        let { registerEvent } = require('./event.controller');
+        let { eventValidator } = require('./event.validation');
 
         if (typeof p_body.fullName != 'string' || typeof p_body.email != 'string' || typeof p_body.registrationType != 'string' || typeof p_body.numberOfTickets != 'number') {
-            let error = user_defined_error.basicError('Invalid type of fields.');
+            let error = basicError('Invalid type of fields.');
             throw error;
         }
 
-        let regex_for_email_validation = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        let { errors, flag } = eventValidator(p_body);
 
-        if (!regex_for_email_validation.test(p_body.email)) {
-            let error = user_defined_error.basicError('Invalid email id entered.');
-            throw error;
+        if (!flag) {
+            throw errors;
         }
 
         if (p_body.registrationType == "Self" || p_body.registrationType == 'Group' || p_body.registrationType == 'Corporate' || p_body.registrationType == 'Others') {
-            let result = await event.registerEvent(p_body);
+            let result = await registerEvent(p_body);
             return (result);
         } else {
-            let error = user_defined_error.basicError('Invalid registration type.');
+            let error = basicError('Invalid registration type.');
             throw error;
         }
     } catch (error) {
@@ -30,9 +30,8 @@ exports.registerEvent = async (p_body) => {
 
 exports.uploadImage = (req, res) => {
     try {
-        let event = require('./event.controller');
-        let result = event.uploadImage(req, res);
-
+        let { uploadImage } = require('./event.controller');
+        let result = uploadImage(req, res);
     } catch (error) {
         throw error;
     }
@@ -40,8 +39,8 @@ exports.uploadImage = (req, res) => {
 
 exports.getAllRegisteredEvents = async () => {
     try {
-        let event = require('./event.controller');
-        let result = await event.getAllRegisteredEvents();
+        let { getAllRegisteredEvents } = require('./event.controller');
+        let result = await getAllRegisteredEvents();
         return (result);
     } catch (error) {
         throw error;
@@ -50,8 +49,8 @@ exports.getAllRegisteredEvents = async () => {
 
 exports.getCountOfRegistrationsAndTickets = async () => {
     try {
-        let event = require('./event.controller');
-        let result = await event.getCountOfRegistrationsAndTickets();
+        let { getCountOfRegistrationsAndTickets } = require('./event.controller');
+        let result = await getCountOfRegistrationsAndTickets();
         return (result);
     } catch (error) {
         throw error;
@@ -76,8 +75,8 @@ exports.getRegisteredEventById = async (p_registration_id) => {
 
 exports.getRegistrationTypeDetails = async () => {
     try {
-        let event = require('./event.controller');
-        let result = await event.getRegistrationTypeDetails();
+        let { getRegistrationTypeDetails } = require('./event.controller');
+        let result = await getRegistrationTypeDetails();
         return (result);
     } catch (error) {
         throw error;
