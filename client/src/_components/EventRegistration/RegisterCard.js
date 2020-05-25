@@ -166,7 +166,7 @@ class RegisterCard extends Component {
     function Greeting(state) {
       //const {state1} = state;
       //console.log(state,"232323")
-      if (state.state.errors) {
+      if (state.state.errors.hasOwnProperty("error") || Object.keys(state.state.errors).length>0) {
         return <Alert severity="error">Something Went Wrong. <br></br>
       Error Message :  <b>{state.state.errors.error}<br></br>
       {state.state.errors.name}<br></br>
