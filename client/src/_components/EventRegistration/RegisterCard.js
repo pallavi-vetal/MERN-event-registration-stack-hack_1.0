@@ -154,7 +154,7 @@ handleImageUpload =(e)=>{
     
     
     const steps = ['Basic Details', 'Event details', 'Review your order'];
-    
+    //issue
     const { errors } = this.state.errors;
     const {registrationID} = this.state.registrationID;
     console.log("my errors:",errors,"registrationID",registrationID)
