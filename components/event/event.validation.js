@@ -6,12 +6,12 @@ exports.eventValidator = (p_data) => {
     let errors = {};
     let only_spaces = /^\s*$/;
 
-    if (only_spaces.test(p_data.fullName) ||  validator.isEmpty(p_data.fullName)) {
+    if (only_spaces.test(p_data.fullName) || validator.isEmpty(p_data.fullName)) {
         errors.name = 'Please provide full name';
         bool_flag_isValid = false;
     }
 
-    if (only_spaces.test(p_data.mobile) || validator.isEmpty(p_data.mobile)) {
+    if (only_spaces.test(p_data.mobile) || validator.isEmpty(p_data.mobile) || !validator.isMobilePhone(p_data.mobile, 'en-IN')) {
         errors.mobile = 'Please provide valid contact number';
         bool_flag_isValid = false;
     }
