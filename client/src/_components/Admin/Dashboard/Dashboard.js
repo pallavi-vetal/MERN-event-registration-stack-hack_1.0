@@ -26,7 +26,9 @@ import Chart from './Chart';
 import RegistrationsCount from './RegistrationsCount';
 import RegistrationsTable from './RegistrationsTable';
 import Example from './PieChart';
+import HomeNavBar from '../../Navigation/HomeNavBar';
 const drawerWidth = 240;
+
 const styles = theme => ({
   root: {
     display: 'flex',
@@ -152,102 +154,25 @@ class Dashboard extends Component {
 
     return ( 
       <div className={classes.root}>
-      <CssBaseline />
-      <AppBar position="absolute" className={clsx(classes.appBar, this.state.open && classes.appBarShift)}>
-        <Toolbar className={classes.toolbar}>
-          <IconButton
-            edge="start"
-            color="inherit"
-            aria-label="open drawer"
-            onClick={this.handleDrawerOpen}
-            className={clsx(classes.menuButton, this.state.open && classes.menuButtonHidden)}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
-            Dashboard
-          </Typography>
-          {this.props.auth.isAuthenticated && (
-              <div>
-                {user.name}
-                
-                <IconButton
-                  aria-label="account of current user"
-                  aria-controls="menu-appbar"
-                  aria-haspopup="true"
-                  onClick={this.handleMenu}
-                  color="inherit"
-                >
-                  <AccountCircle />
-                </IconButton>
-                <Menu
-                  id="menu-appbar"
-                  anchorEl={this.state.anchorEl}
-                  anchorOrigin={{
-                    vertical: "top",
-                    horizontal: "right"
-                  }}
-                  keepMounted
-                  transformOrigin={{
-                    vertical: "top",
-                    horizontal: "right"
-                  }}
-                  open={Boolean(this.state.anchorEl)}
-                  onClose={this.handleClose}
-                >
-                  <MenuItem onClick={this.handleClose}>Profile</MenuItem>
-                  <MenuItem onClick={this.handleClose}>My account</MenuItem>
-                  <MenuItem onClick={this.props.onClick}>Sign Out</MenuItem>
-                </Menu>
-              </div>
-            )}
-             {!(this.props.auth.isAuthenticated) && (
-              <div>
-               
-              
-               <Typography variant="h7" className={classes.title}>
-              <Link to="/login" href="/login" color='inherit' style={{textDecoration: "none"}}>Sign In</Link>
-            </Typography>
-            
-                
-              </div>
-            )}
-        </Toolbar>
-      </AppBar>
-      <Drawer
-        variant="permanent"
-        classes={{
-          paper: clsx(classes.drawerPaper, !this.state.open && classes.drawerPaperClose),
-        }}
-        open={this.state.open}
-      >
-        <div className={classes.toolbarIcon}>
-          <IconButton onClick={this.handleDrawerClose}>
-            <ChevronLeftIcon />
-          </IconButton>
-        </div>
-        <Divider />
-        <List>{mainListItems}</List>
-        <Divider />
-        <List>{secondaryListItems}</List>
-      </Drawer>
+     
+      <HomeNavBar onClick={this.props.onClick}/>
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>
-          <Grid container spacing={3}>
+          <Grid container spacing={1}>
             {/* Chart */}
-            <Grid item xs={6} md={4} lg={4}>
+            <Grid item xs={12} md={4} lg={4}>
               <Paper className={fixedHeightPaper}>
                 <Chart />
               </Paper>
             </Grid>
-            <Grid item xs={6} md={4} lg={5}>
+            <Grid item xs={12} md={4} lg={6}>
               <Paper className={fixedHeightPaper}>
                 <Example />
               </Paper>
             </Grid>
             {/* Recent RegistrationsCount */}
-            <Grid item xs={12} md={4} lg={3}>
+            <Grid item xs={12} md={4} lg={2}>
               <Paper className={fixedHeightPaper}>
                 <RegistrationsCount />
               </Paper>

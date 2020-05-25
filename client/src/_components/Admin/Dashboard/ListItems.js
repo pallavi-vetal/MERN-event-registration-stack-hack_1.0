@@ -6,11 +6,15 @@ import ListSubheader from '@material-ui/core/ListSubheader';
 import DashboardIcon from '@material-ui/icons/Dashboard';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import { Link } from "react-router-dom";
+const HomeLink = props => <Link href="/home" to={{pathname:`/home`}} {...props} />;
+
 export const mainListItems = (
   <div>
-    <ListItem button>
+    <ListItem button component={HomeLink}>
       <ListItemIcon>
-        <DashboardIcon />
+        <DashboardIcon >
+        </DashboardIcon>
       </ListItemIcon>
       <ListItemText primary="Dashboard" />
     </ListItem>

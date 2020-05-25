@@ -94,7 +94,7 @@ const renderActiveShape = (props) => {
             <React.Fragment>
                 <Title>Registration Type</Title>
                 <ResponsiveContainer>
-                <PieChart width={800} height={200}>
+                <PieChart >
         <Pie 
         	activeIndex={this.state.activeIndex}
           activeShape={renderActiveShape} 
