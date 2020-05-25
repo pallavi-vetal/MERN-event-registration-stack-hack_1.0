@@ -19,38 +19,43 @@ exports.uploadImage = (req, res) => {
     try {
         const fs = require('fs');
         const fileName = req.files.file.name;
+        let { errorObject } = require('../../utils/error');
         let uploadFile = req.files.file;
 
-        uploadFile.mv(`${fileName}`, async (err) => {
-            if (err) {
-                return res.status(500).send(err)
-            }
+        if ((uploadFile.mimetype === 'image/jpeg') || (uploadFile.mimetype === 'image/png')) {
+            uploadFile.mv(`${fileName}`, async (err) => {
+                if (err) {
+                    return res.status(500).send(err)
+                }
 
-            let mongo = require('mongodb');
-            let mongo_client = await mongo_util.dbClient();
-            let Grid = require('gridfs-stream');
-            let GridFS = Grid(mongo_client, mongo);
+                let mongo = require('mongodb');
+                let mongo_client = await mongo_util.dbClient();
+                let Grid = require('gridfs-stream');
+                let GridFS = Grid(mongo_client, mongo);
 
-            let writestream = GridFS.createWriteStream({
-                filename: fileName
+                let writestream = GridFS.createWriteStream({
+                    filename: fileName
+                });
+
+                writestream.on('close', (file) => {
+                    //console.log("file change: ", file._id);
+                    return res.status(200).json({ "id": file._id });
+                });
+
+                writestream.on('error', () => {
+                    return (res.status(500).json(errorObject('Error uploading file.', 500)));
+                });
+
+                fs.createReadStream(fileName).pipe(writestream);
+
+                fs.unlink(fileName, (err) => {
+                    if (err) throw err;
+                    console.log(fileName, ' deleted');
+                });
             });
-
-            writestream.on('close', (file) => {
-                //console.log("file change: ", file._id);
-                return res.status(200).json({ "id": file._id });
-            });
-
-            writestream.on('error', () => {
-                return (res.status(500).json(user_defined_error.errorObject('Error uploading file.', 500)));
-            });
-
-            fs.createReadStream(fileName).pipe(writestream);
-
-            fs.unlink(fileName, (err) => {
-                if (err) throw err;
-                console.log(fileName, ' deleted');
-            });
-        });
+        } else {
+            return (res.status(400).json(errorObject('File is of invalid type', 400)));
+        }
     } catch (error) {
         throw error;
     }
