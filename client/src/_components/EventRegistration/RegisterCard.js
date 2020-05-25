@@ -136,6 +136,9 @@ class RegisterCard extends Component {
     console.log(e.target.id)
 
     this.setState({ [e.target.id]: e.target.value });
+    if(e.target.id==="registrationType" && e.target.value==="Self")
+    this.setState({numberOfTickets:"1"})
+    
 
   };
   getStepContent(step) {

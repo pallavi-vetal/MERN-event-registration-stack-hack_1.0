@@ -125,7 +125,7 @@ class BasicDetailsForm extends Component {
                   name="fileName"
                   
                   fullWidth
-                  value={this.state.file[0].name}
+                  value={this.state.file.sources}
                   autoComplete="fileName"
                   
                 />
