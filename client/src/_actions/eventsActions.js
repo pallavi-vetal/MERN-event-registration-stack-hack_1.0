@@ -1,4 +1,6 @@
-import { FETCH_EVENTS, FETCH_EVENTS_BY_ID, FETCH_EVENTS_COUNT,FETCH_EVENTS_TYPE, FETCH_EVENTS_IMAGE } from '../_constants/eventsConstants';
+import { FETCH_EVENTS, FETCH_EVENTS_BY_ID, 
+  FETCH_EVENTS_COUNT,FETCH_EVENTS_TYPE, 
+  FETCH_EVENTS_IMAGE, FETCH_EVENT_TIMESERIES_DATA } from '../_constants/eventsConstants';
 import axios from "axios";
 
 export const setEvents = events => {
@@ -85,5 +87,22 @@ export const setImage = img =>{
   return {
     type:FETCH_EVENTS_IMAGE,
     payload:img
+  }
+}
+export const fetchTimeSeriesData = () => dispatch => {
+  return axios
+    .get(`/api/events/month/getTimeSeriesData`)
+    .then(res => {
+      console.log(res.data);
+      return dispatch(setTimeSeriesData(res.data));
+    })
+    .catch(err =>
+      console.log("ERror", err)
+    );
+};
+export const setTimeSeriesData = data =>{
+  return {
+    type:FETCH_EVENT_TIMESERIES_DATA,
+    payload:data
   }
 }

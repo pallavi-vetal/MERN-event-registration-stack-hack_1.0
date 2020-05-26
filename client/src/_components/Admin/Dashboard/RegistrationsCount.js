@@ -5,6 +5,7 @@ import Title from './Title';
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { fetchEventCount } from "../../../_actions/eventsActions";
+import { Link } from "react-router-dom";
 const useStyles = theme => ({
     depositContext: {
         flex: 1,
@@ -37,7 +38,11 @@ class RegistrationsCount extends Component {
                 <Typography color="textSecondary" className={classes.depositContext}>
                     Number of tickets sold  {this.props.events.eventCount.totalTickets}
                 </Typography>
-                
+                <div>
+        <Link color="primary"href="/registrations" to={{pathname:`/registrations`}}  >
+          View all registrations
+        </Link>
+      </div>
             </React.Fragment>
         );
     }

@@ -14,6 +14,7 @@ import RegistrationDetails from "./_components/EventRegistration/RegistrationDet
 import 'mapbox-gl/dist/mapbox-gl.css';
 import Feedback from "./_components/Other/Feedback";
 import About from "./_components/Other/About";
+import RegistrationsTable from './_components/Admin/Dashboard/RegistrationsTable';
 if (localStorage.jwtToken) {
   // Set auth token header auth
   const token = localStorage.jwtToken;
@@ -47,6 +48,7 @@ class App extends Component{
         <Switch>
           <PrivateRoute exact path="/home" component={Home} />
           <PrivateRoute  path="/registration/:id" component={RegistrationDetails} />
+          <PrivateRoute  path="/registrations" component={RegistrationsTable} />
         </Switch>
         
         </div>

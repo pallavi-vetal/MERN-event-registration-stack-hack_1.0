@@ -6,9 +6,41 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import TouchAppIcon from '@material-ui/icons/TouchApp';
+import HomeNavBar from '../../Navigation/HomeNavBar';
+import Container from '@material-ui/core/Container';
+import { logoutUser } from "../../../_actions/usersActions";
+const drawerWidth = 240;
 const useStyles = theme => ({
     depositContext: {
         flex: 1,
+    },
+    root: {
+      display: 'flex',
+    },
+    appBar: {
+      zIndex: theme.zIndex.drawer + 1,
+      transition: theme.transitions.create(['width', 'margin'], {
+        easing: theme.transitions.easing.sharp,
+        duration: theme.transitions.duration.leavingScreen,
+      }),
+    },
+    appBarShift: {
+      marginLeft: drawerWidth,
+      width: `calc(100% - ${drawerWidth}px)`,
+      transition: theme.transitions.create(['width', 'margin'], {
+        easing: theme.transitions.easing.sharp,
+        duration: theme.transitions.duration.enteringScreen,
+      }),
+    },
+    appBarSpacer: theme.mixins.toolbar,
+    content: {
+      flexGrow: 1,
+      height: '200vh',
+      overflow: 'auto',
+    },
+    container: {
+      paddingTop: theme.spacing(2),
+      paddingBottom: theme.spacing(2),
     },
 });
 class RegistrationsTable extends Component {
@@ -25,8 +57,13 @@ class RegistrationsTable extends Component {
         
        
       }
+      onLogoutClick = e => {
+        e.preventDefault();
+        this.props.logoutUser();
+        this.props.history.push("/");
+      };
     render() {
-       
+       const {classes}  = this.props;
         const columns = [
             {
                 title: "Registration ID",
@@ -37,10 +74,7 @@ class RegistrationsTable extends Component {
                 </Link>
                   
                 ),
-                headerStyle: {
-                  backgroundColor: "#673ab7",
-                  color: "#ffffff"
-                }
+               
               },
             {
               title: "Full Name",
@@ -48,10 +82,7 @@ class RegistrationsTable extends Component {
               render: rowData => (
                 rowData['fullName']
               ),
-              headerStyle: {
-                backgroundColor: "#673ab7",
-                color: "#ffffff"
-              }
+             
             },
             {
               title: "Email ID",
@@ -59,10 +90,7 @@ class RegistrationsTable extends Component {
               render: rowData => (
                rowData["email"]
               ),
-              headerStyle: {
-                backgroundColor: "#673ab7",
-                color: "#ffffff"
-              }
+             
             },
             {
               title: "Registration Type",
@@ -70,10 +98,7 @@ class RegistrationsTable extends Component {
               render: rowData => (
               rowData["registrationType"]
               ),
-              headerStyle: {
-                backgroundColor: "#673ab7",
-                color: "#ffffff"
-              }
+              
             },
             {
                 title: "Number of Tickets",
@@ -81,10 +106,7 @@ class RegistrationsTable extends Component {
                 render: rowData => (
                 rowData["numberOfTickets"]
                 ),
-                headerStyle: {
-                  backgroundColor: "#673ab7",
-                  color: "#ffffff"
-                }
+               
               },
               {
                 title: "Date Registered",
@@ -92,18 +114,21 @@ class RegistrationsTable extends Component {
                 render: rowData => (
                   rowData['date']
                 ),
-                headerStyle: {
-                  backgroundColor: "#673ab7",
-                  color: "#ffffff"
-                }
+               
               },  
            
           ];
         return (
-            <React.Fragment>
+          <div className={classes.root}>
+            <HomeNavBar onClick={this.onLogoutClick}/>
+            <main className={classes.content}>
+        <div className={classes.appBarSpacer} />
+        <Container maxWidth="lg" className={classes.container}>
+            
+             <React.Fragment>
                 
                 <MaterialTable
-          title="Restaurant List"
+          title="Registration List"
           columns={columns}
           data={this.props.events.events}
           
@@ -114,15 +139,20 @@ class RegistrationsTable extends Component {
         />
                 
             </React.Fragment>
+           </Container> 
+           </main>
+          </div>
+           
         );
     }
 }
 RegistrationsTable.propTypes = {
     auth: PropTypes.object.isRequired,
-    fetchEvents:PropTypes.func.isRequired
+    fetchEvents:PropTypes.func.isRequired,
+    logoutUser:PropTypes.func.isRequired
   };
   const mapStateToProps = state => ({
     auth: state.auth,
     events: state.events
   });
-export default connect(mapStateToProps, { fetchEvents })(withStyles(useStyles)(RegistrationsTable));
+export default connect(mapStateToProps, { fetchEvents,logoutUser })(withStyles(useStyles)(RegistrationsTable));

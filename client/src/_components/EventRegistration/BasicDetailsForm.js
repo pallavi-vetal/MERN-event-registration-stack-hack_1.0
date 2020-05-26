@@ -11,9 +11,9 @@ import { Component } from 'react';
 import FormLabel from '@material-ui/core/FormLabel';
 import FilePondPluginImageCrop from 'filepond-plugin-image-crop';
 import FilePondPluginFileValidateType from 'filepond-plugin-file-validate-type';
+import FilePondPluginImageResize from 'filepond-plugin-image-resize';
 
-// Register the plugins
-registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview, FilePondPluginImageCrop,FilePondPluginFileValidateType);
+registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview, FilePondPluginImageResize,FilePondPluginImageCrop,FilePondPluginFileValidateType);
 class BasicDetailsForm extends Component {
     constructor(props) {
         super(props);

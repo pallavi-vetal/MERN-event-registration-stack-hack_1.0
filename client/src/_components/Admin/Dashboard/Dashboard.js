@@ -11,7 +11,6 @@ import Paper from '@material-ui/core/Paper';
 import Link from '@material-ui/core/Link';
 import Chart from './Chart';
 import RegistrationsCount from './RegistrationsCount';
-import RegistrationsTable from './RegistrationsTable';
 import Example from './PieChart';
 import HomeNavBar from '../../Navigation/HomeNavBar';
 
@@ -95,7 +94,7 @@ class Dashboard extends Component {
         <Container maxWidth="lg" className={classes.container}>
           <Grid container spacing={1}>
             {/* Chart */}
-            <Grid item xs={12} md={4} lg={4}>
+            <Grid item xs={12} md={4} lg={12}>
               <Paper className={fixedHeightPaper}>
                 <Chart />
               </Paper>
@@ -106,17 +105,12 @@ class Dashboard extends Component {
               </Paper>
             </Grid>
             {/* Recent RegistrationsCount */}
-            <Grid item xs={12} md={4} lg={2}>
+            <Grid item xs={12} md={4} lg={6}>
               <Paper className={fixedHeightPaper}>
                 <RegistrationsCount />
               </Paper>
             </Grid>
-            {/* Recent RegistrationsTable */}
-            <Grid item xs={12}>
-            
-                <RegistrationsTable />
-             
-            </Grid>
+          
           </Grid>
           <Box pt={4}>
             <Copyright />
