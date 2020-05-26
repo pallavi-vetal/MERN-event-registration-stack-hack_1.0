@@ -8,7 +8,7 @@ import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import { Link } from "react-router-dom";
 const HomeLink = props => <Link href="/home" to={{pathname:`/home`}} {...props} />;
-
+const RegistrationsLink = props => <Link href="/registrations" to={{pathname:`/registrations`}} {...props} />;
 export const mainListItems = (
   <div>
     <ListItem button component={HomeLink}>
@@ -18,7 +18,7 @@ export const mainListItems = (
       </ListItemIcon>
       <ListItemText primary="Dashboard" />
     </ListItem>
-    <ListItem button>
+    <ListItem button component={RegistrationsLink}>
       <ListItemIcon>
         <ShoppingCartIcon />
       </ListItemIcon>

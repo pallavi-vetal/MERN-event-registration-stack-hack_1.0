@@ -66,9 +66,9 @@ class Review extends Component {
           <Table className={classes.table} aria-label="custom pagination table" >
             <TableBody>
               <TableRow>
-                
+              <TableCell component="th" scope="row">
               <Avatar alt="Identification document" variant="rounded" src={this.state.img} className={classes.avatar} />
-      
+              </TableCell>
               </TableRow>
               <TableRow key={this.props.state1.fullName}>
                 <TableCell component="th" scope="row">

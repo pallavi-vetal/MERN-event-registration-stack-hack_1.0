@@ -17,6 +17,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableRow from '@material-ui/core/TableRow';
 import { logoutUser } from "../../_actions/usersActions";
+import Link from '@material-ui/core/Link';
 const drawerWidth = 240;
 const styles = theme => ({
     root: {
@@ -123,8 +124,11 @@ class RegistrationDetails extends Component {
         //var imageStr = this.arrayBufferToBase64(data.img.data.data);
         await this.props.fetchEventsByID(params.id);
         await this.props.fetchImage(this.props.events.eventID.imageID);
-        var imageStr = this.arrayBufferToBase64(this.props.events.eventImage.imageBuffer.data);
-        this.setState({img: base64Flag + imageStr});
+        if(this.props.events.eventImage.hasOwnProperty("imageBuffer")){
+          var imageStr = this.arrayBufferToBase64(this.props.events.eventImage.imageBuffer.data);
+          this.setState({img: base64Flag + imageStr});
+        }
+       
         
     }
     onLogoutClick = e => {
@@ -147,6 +151,9 @@ class RegistrationDetails extends Component {
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>
             <Paper className={classes.paper}>
+            <Link href="/registrations" to={{ pathname: `/registrations` }} trim="trim">
+                      Back
+                </Link>
             <List className={classes.root}>
             <ListItem alignItems="flex-start">
               <ListItem>

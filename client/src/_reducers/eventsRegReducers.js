@@ -3,7 +3,8 @@ import {
   FETCH_EVENTS_BY_ID,
   FETCH_EVENTS_COUNT,
   FETCH_EVENTS_TYPE,
-  FETCH_EVENTS_IMAGE
+  FETCH_EVENTS_IMAGE,
+  FETCH_EVENT_TIMESERIES_DATA
 } from "../_constants/eventsConstants";
 
 const initialState = {
@@ -11,7 +12,8 @@ const initialState = {
   eventID: [],
   eventCount:[],
   eventType:[],
-  eventImage:[]
+  eventImage:[],
+  eventTimeSeries:[],
 };
 
 export default function (state = initialState, action) {
@@ -41,6 +43,11 @@ export default function (state = initialState, action) {
           ...state,
           eventImage: action.payload
         };  
+    case FETCH_EVENT_TIMESERIES_DATA:
+      return {
+        ...state,
+        eventTimeSeries: action.payload
+      };     
     default:
       return state;
   }
