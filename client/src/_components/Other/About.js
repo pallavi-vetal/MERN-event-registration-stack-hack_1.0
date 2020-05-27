@@ -29,7 +29,9 @@ const useStyles = makeStyles((theme) => ({
     height: '90vh',
   
   },
-  
+  list:{
+    backgroundColor: theme.palette.background.paper,
+  },
   avatar: {
     height: "46vh",
     width: "45vh"
@@ -76,15 +78,15 @@ export default function About() {
       </IconButton>
          </List>
           </Grid>
-          <Grid item xs={12} md={4} lg={2}>
-         <List > 
+          <Grid item xs={12} md={4} lg={3}>
+         <List className={classes.list}> 
          <Avatar alt="Travis Howard" className={classes.avatar} variant="rounded" src={Omkar} />
         <br></br>
           <ListItem>
-            <ListItemText 
+            <ListItemText style={{width:"52vh"}}
               primary="Omkar Langhe"
               secondary={
-                <React.Fragment>
+                <React.Fragment >
                   <Typography
                     component="span"
                     variant="body2"
