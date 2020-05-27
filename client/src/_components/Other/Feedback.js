@@ -20,7 +20,7 @@ import clsx from 'clsx';
 const useStyles = theme => ({
 
   paper: {
-    marginTop: theme.spacing(10),
+    marginTop: theme.spacing(9),
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -57,6 +57,9 @@ const useStyles = theme => ({
   iconVariant: {
     opacity: 0.9,
     marginRight: theme.spacing(1),
+  },
+  snack:{
+    marginTop: theme.spacing(9),
   },
   appBarSpacer: theme.mixins.toolbar,
 });
@@ -127,7 +130,7 @@ class Feedback extends Component {
       <div  >
         <HomeNavBar onClick={this.onLogoutClick} />
         <Container component="main" maxWidth="xs" >
-        <div className={classes.paper} >
+        <div className={classes.snack} >
             {this.state.iserror && (<div>
 
               <SnackbarContent
