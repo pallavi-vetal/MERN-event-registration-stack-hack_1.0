@@ -31,3 +31,31 @@ exports.eventValidator = (p_data) => {
     }
     return ({ 'errors': errors, 'flag': bool_flag_isValid });
 };
+
+exports.feedbackValidator = (p_data) => {
+    let bool_flag_isValid = true;
+    let errors = {};
+    let only_spaces = /^\s*$/;
+
+    if (only_spaces.test(p_data.name) || validator.isEmpty(p_data.name)) {
+        errors.name = 'Please provide valid name';
+        bool_flag_isValid = false;
+    }
+
+    if (validator.isEmpty(p_data.email)) {
+        errors.email = 'Please provide email address';
+        bool_flag_isValid = false;
+    }
+
+    if (!validator.isEmail(p_data.email)) {
+        errors.email = 'Please provide valid email address';
+        bool_flag_isValid = false;
+    }
+
+    if (only_spaces.test(p_data.feedback) || validator.isEmpty(p_data.feedback)) {
+        errors.feedback = 'Please provide valid feedback';
+        bool_flag_isValid = false;
+    }
+
+    return ({ 'errors': errors, 'flag': bool_flag_isValid });
+};
