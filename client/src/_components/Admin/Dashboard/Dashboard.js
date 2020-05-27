@@ -3,36 +3,26 @@ import clsx from 'clsx';
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { withStyles } from "@material-ui/core/styles";
-import Box from '@material-ui/core/Box';
-import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
-import Link from '@material-ui/core/Link';
 import Chart from './Chart';
 import RegistrationsCount from './RegistrationsCount';
 import Example from './PieChart';
 import HomeNavBar from '../../Navigation/HomeNavBar';
-
 const styles = theme => ({
   root: {
     display: 'flex',
-  },
-  appBar: {
-    zIndex: theme.zIndex.drawer + 1,
-    transition: theme.transitions.create(['width', 'margin'], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
+    marginTop:"-1.5%"
   },
   appBarSpacer: theme.mixins.toolbar,
   content: {
     flexGrow: 1,
-    height: '100vh',
+    height: '130vh',
     overflow: 'auto',
   },
   container: {
-    paddingTop: theme.spacing(4),
+    paddingTop: theme.spacing(2),
     paddingBottom: theme.spacing(4),
   },
   paper: {
@@ -42,7 +32,7 @@ const styles = theme => ({
     flexDirection: 'column',
   },
   fixedHeight: {
-    height: 320,
+    height: 350,
   },
   
 });
@@ -112,9 +102,7 @@ class Dashboard extends Component {
             </Grid>
           
           </Grid>
-          <Box pt={4}>
-            <Copyright />
-          </Box>
+          
         </Container>
       </main>
     </div>
@@ -131,18 +119,6 @@ export default connect(mapStateToProps)(
   withStyles(styles)(Dashboard)
 );
 
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
 
 
   

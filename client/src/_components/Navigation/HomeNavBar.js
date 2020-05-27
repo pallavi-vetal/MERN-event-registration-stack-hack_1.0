@@ -87,7 +87,7 @@ class HomeNavBar extends Component {
   constructor(props) {
     super(props);
     this.state = { 
-      open:false,
+      open:true,
       anchorEl: null,
       auth: false
      }
@@ -175,8 +175,8 @@ class HomeNavBar extends Component {
                   open={Boolean(this.state.anchorEl)}
                   onClose={this.handleClose}
                 >
-                  <MenuItem onClick={this.handleClose}>Profile</MenuItem>
-                  <MenuItem onClick={this.handleClose}>My account</MenuItem>
+                  <MenuItem onClick={this.handleClose}>My Profile</MenuItem>
+        
                   <MenuItem onClick={this.props.onClick}>Sign Out</MenuItem>
                 </Menu>
               </div>

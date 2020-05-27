@@ -9,6 +9,7 @@ import TouchAppIcon from '@material-ui/icons/TouchApp';
 import HomeNavBar from '../../Navigation/HomeNavBar';
 import Container from '@material-ui/core/Container';
 import { logoutUser } from "../../../_actions/usersActions";
+import { Copyright } from '../../Other/Footer';
 const drawerWidth = 240;
 const useStyles = theme => ({
     depositContext: {
@@ -35,7 +36,7 @@ const useStyles = theme => ({
     appBarSpacer: theme.mixins.toolbar,
     content: {
       flexGrow: 1,
-      height: '200vh',
+      height: '100vh',
       overflow: 'auto',
     },
     container: {
@@ -139,6 +140,7 @@ class RegistrationsTable extends Component {
         />
                 
             </React.Fragment>
+            <Copyright/>
            </Container> 
            </main>
           </div>

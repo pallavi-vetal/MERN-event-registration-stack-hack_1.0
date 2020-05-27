@@ -14,6 +14,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { registerEvent } from "../../_actions/usersActions";
 import Alert from '@material-ui/lab/Alert';
+import {Copyright} from '../Other/Footer';
 const useStyles = theme => ({
   layout: {
     width: 'auto',
@@ -27,7 +28,7 @@ const useStyles = theme => ({
     marginTop: "0%"
   },
   paper: {
-    marginTop: theme.spacing(2),
+    marginTop: theme.spacing(10),
     marginBottom: theme.spacing(2),
     padding: theme.spacing(2),
     [theme.breakpoints.up(600 + theme.spacing(3) * 2)]: {
@@ -143,18 +144,7 @@ class RegisterCard extends Component {
   render() {
 
     const { classes } = this.props;
-    function Copyright() {
-      return (
-        <Typography variant="body2" color="textSecondary" align="center">
-          {'Copyright © '}
-          <Link color="inherit" href="https://material-ui.com/">
-            Your Website
-          </Link>{' '}
-          {new Date().getFullYear()}
-          {'.'}
-        </Typography>
-      );
-    }
+    
 
 
 
