@@ -11,7 +11,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { submitFeedback } from "../../_actions/usersActions";
 import SendIcon from '@material-ui/icons/Send';
-import { green } from '@material-ui/core/colors';
+import { green, red } from '@material-ui/core/colors';
 import HomeNavBar from "../Navigation/VerticalNav";
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import SnackbarContent from '@material-ui/core/SnackbarContent';
@@ -20,7 +20,7 @@ import clsx from 'clsx';
 const useStyles = theme => ({
 
   paper: {
-    marginTop: theme.spacing(10),
+    marginTop: theme.spacing(9),
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -42,6 +42,11 @@ const useStyles = theme => ({
     opacity: 0.9,
     marginRight: theme.spacing(1),
   },
+  error: {
+    backgroundColor: red[600],
+    opacity: 0.9,
+    marginRight: theme.spacing(1),
+  },
   message: {
     display: 'flex',
     alignItems: 'center',
@@ -52,6 +57,9 @@ const useStyles = theme => ({
   iconVariant: {
     opacity: 0.9,
     marginRight: theme.spacing(1),
+  },
+  snack:{
+    marginTop: theme.spacing(9),
   },
   appBarSpacer: theme.mixins.toolbar,
 });
@@ -66,6 +74,7 @@ class Feedback extends Component {
       errors: {},
       isSubmit: false,
     };
+    this.onSubmit = this.onSubmit.bind(this);
   }
 
   onLogoutClick = e => {
@@ -77,16 +86,21 @@ class Feedback extends Component {
   componentWillReceiveProps(nextProps) {
     if (nextProps.errors) {
       this.setState({
-        errors: nextProps.errors
+        errors: nextProps.errors,
+        iserror:true
       });
+    }
+    else{
+      this.setState({isSubmit:true})
     }
   }
 
   onChange = e => {
     this.setState({ [e.target.id]: e.target.value });
+    this.setState({errors:{}})
   };
 
-  onSubmit = e => {
+   async onSubmit(e) {
     e.preventDefault();
 
     const newFeedback = {
@@ -96,20 +110,45 @@ class Feedback extends Component {
 
     };
 
-    this.props.submitFeedback(newFeedback, this.props.history);
-    this.setState({ isSubmit: true })
+     await this.props.submitFeedback(newFeedback, this.props.history);
+    if(!this.props.errors.name || !this.props.errors.email||!this.props.errors.feedback)
+    {
+      this.setState({iserror:true})
+    }
+    else
+     {
+      this.setState({iserror:false,isSubmit:true})
+     }
   };
-
+ 
   render() {
     const { classes } = this.props;
     const { errors } = this.state;
+   
 
     return (
       <div  >
         <HomeNavBar onClick={this.onLogoutClick} />
         <Container component="main" maxWidth="xs" >
+        <div className={classes.snack} >
+            {this.state.iserror && (<div>
+
+              <SnackbarContent
+                autoHideDuration={6000}
+                className={classes.error}
+                aria-describedby="feedback-snackbar"
+                message={
+                  <span id="feedback-snackbar" className={classes.message}>
+                    <CheckCircleIcon className={clsx(classes.icon, classes.iconVariant)} />
+                    {"Please Check errors!"}
+                  </span>
+                }
+
+              />
+            </div>)}
+            </div>
           <div className={classes.paper} >
-            {this.state.isSubmit && (<div>
+            {this.state.isSubmit && !this.state.iserror&& (<div>
 
               <SnackbarContent
                 autoHideDuration={6000}
@@ -198,6 +237,7 @@ class Feedback extends Component {
           <Copyright />
 
         </Container>
+      
       </div>
 
     );
