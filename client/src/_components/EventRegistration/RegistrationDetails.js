@@ -18,6 +18,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableRow from '@material-ui/core/TableRow';
 import { logoutUser } from "../../_actions/usersActions";
 import Link from '@material-ui/core/Link';
+import { Copyright } from '../Other/Footer';
 const drawerWidth = 240;
 const styles = theme => ({
     root: {
@@ -80,7 +81,7 @@ const styles = theme => ({
       appBarSpacer: theme.mixins.toolbar,
       content: {
         flexGrow: 1,
-        height: '200vh',
+        height: '100vh',
         overflow: 'auto',
       },
       container: {
@@ -169,10 +170,10 @@ class RegistrationDetails extends Component {
             <TableRow>
                 <TableCell component="th">
                 <Typography variant="h6" gutterBottom>
-              Basic Details
+              Registration ID : <small>{this.props.events.eventID._id}</small>
             </Typography>
                 </TableCell>
-           
+               
             </TableRow>
               <TableRow key={this.props.events.eventID.fullName}>
                 <TableCell component="th" scope="row">
@@ -224,11 +225,13 @@ class RegistrationDetails extends Component {
         </TableContainer>
         </ListItem>
             <Divider variant="inset" component="li" />
-          
+           
           </List>
           </Paper>
+          <Copyright />
           </Container>
           </main>
+        
           </div>
          
          );

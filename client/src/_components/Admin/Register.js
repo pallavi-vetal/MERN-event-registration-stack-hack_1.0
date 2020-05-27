@@ -6,17 +6,17 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
 import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
-import Box from '@material-ui/core/Box';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { registerUser } from "../../_actions/usersActions";
-
+import {Copyright} from '../Other/Footer';
+import VerticalNav from '../Navigation/VerticalNav';
 const useStyles = theme => ({
     paper: {
-        marginTop: theme.spacing(8),
+        marginTop: theme.spacing(10),
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
@@ -33,18 +33,6 @@ const useStyles = theme => ({
         margin: theme.spacing(3, 0, 2),
       },
   });
-  function Copyright() {
-    return (
-      <Typography variant="body2" color="textSecondary" align="center">
-        {'Copyright © '}
-        <Link color="inherit">
-          HackerEarth
-        </Link>{' '}
-        {new Date().getFullYear()}
-        {'.'}
-      </Typography>
-    );
-  }
   
 class Register extends Component{
   constructor() {
@@ -100,6 +88,7 @@ class Register extends Component{
         //this.setState({ selectedFile: event.target.files[0] }); 
         return(
             <Container component="main" maxWidth="xs">
+              <VerticalNav />
       <CssBaseline />
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>
@@ -178,18 +167,16 @@ class Register extends Component{
           >
             Sign Up
           </Button>
-          <Grid container justify="flex-end">
-            <Grid item>
-              <Link  href="/login" variant="body2">
+          <Grid container justify="center">
+            <Grid item alignItems="flex-center">
+              <Link  href="/login" variant="body2" align="center">
                 Already have an admin account? Sign in
               </Link>
             </Grid>
           </Grid>
         </form>
       </div>
-      <Box mt={5}>
-        <Copyright />
-      </Box>
+     <Copyright/>
     </Container>
         );
     }

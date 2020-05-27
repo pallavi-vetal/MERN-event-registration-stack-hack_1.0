@@ -13,12 +13,14 @@ import Container from '@material-ui/core/Container';
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { loginUser } from "../../_actions/usersActions";
+import VerticalNav from '../Navigation/VerticalNav';
+import {Copyright} from '../Other/Footer';
 const useStyles = theme => ({
     margin: {
       margin: theme.spacing(1),
     },
     paper: {
-        marginTop: theme.spacing(8),
+        marginTop: theme.spacing(10),
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
@@ -36,18 +38,7 @@ const useStyles = theme => ({
       },
       
   });
-  function Copyright() {
-    return (
-      <Typography variant="body2" color="textSecondary" align="center">
-        {'Copyright © '}
-        <Link color="inherit">
-          HackerEarth
-        </Link>{' '}
-        {new Date().getFullYear()}
-        {'.'}
-      </Typography>
-    );
-  }
+ 
   
 class Login extends Component{
   constructor(props){
@@ -99,6 +90,7 @@ class Login extends Component{
         const { errors } = this.state;
         return(
             <Container component="main" maxWidth="xs">
+              <VerticalNav />
             <CssBaseline />
             <div className={classes.paper}>
               <Avatar className={classes.avatar}>
@@ -145,7 +137,7 @@ class Login extends Component{
                 >
                   Sign In
                 </Button>
-                <Grid container>
+                <Grid container justify="center">
                   
                   <Grid item>
                     <Link href="/register" variant="body2">

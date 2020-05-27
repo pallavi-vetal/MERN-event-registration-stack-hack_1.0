@@ -1,26 +1,7 @@
 import React from "react";
-import clsx from "clsx";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
-import Drawer from "@material-ui/core/Drawer";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import List from "@material-ui/core/List";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import Typography from "@material-ui/core/Typography";
-import Divider from "@material-ui/core/Divider";
-import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
-import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
-import ChevronRightIcon from "@material-ui/icons/ChevronRight";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
-import ListItemText from "@material-ui/core/ListItemText";
-import PersonAddIcon from "@material-ui/icons/PersonAdd";
-import ExitToAppIcon from "@material-ui/icons/ExitToApp";
-import InfoIcon from "@material-ui/icons/Info";
-import PermContactCalendarIcon from "@material-ui/icons/PermContactCalendar";
-import { Link } from "react-router-dom";
+import { makeStyles } from "@material-ui/core/styles";
 import RegisterCard from '../EventRegistration/RegisterCard';
+import VerticalNav from './VerticalNav';
 const drawerWidth = 240;
 
 const useStyles = makeStyles(theme => ({
@@ -87,141 +68,11 @@ const useStyles = makeStyles(theme => ({
 
 export default function NavBar() {
   const classes = useStyles();
-  const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
-
-  const handleDrawerOpen = () => {
-    setOpen(true);
-  };
-
-  const handleDrawerClose = () => {
-    setOpen(false);
-  };
-
+  
   return (
     <div className={classes.root}>
-      <CssBaseline />
-      <AppBar
-        position="fixed"
-        className={clsx(classes.appBar, {
-          [classes.appBarShift]: open
-        })}
-      >
-        <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            edge="start"
-            className={clsx(classes.menuButton, {
-              [classes.hide]: open
-            })}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" noWrap>
-            StackHack1.0
-          </Typography>
-        </Toolbar>
-      </AppBar>
-      <Drawer
-        variant="permanent"
-        className={clsx(classes.drawer, {
-          [classes.drawerOpen]: open,
-          [classes.drawerClose]: !open
-        })}
-        classes={{
-          paper: clsx({
-            [classes.drawerOpen]: open,
-            [classes.drawerClose]: !open
-          })
-        }}
-      >
-        <div className={classes.toolbar}>
-          <IconButton onClick={handleDrawerClose}>
-            {theme.direction === "rtl" ? (
-              <ChevronRightIcon />
-            ) : (
-              <ChevronLeftIcon />
-            )}
-          </IconButton>
-        </div>
-        <Divider />
-        <List>
-          <ListItem button key="Admin Register">
-            <ListItemIcon>
-              <Link
-                to="/register"
-                style={{
-                  width: "100px",
-                  borderRadius: "3px",
-                  letterSpacing: "1.5px"
-                }}
-                className="btn btn-outline-primary "
-              >
-               
-                <PersonAddIcon />
-              </Link>
-            </ListItemIcon>
-            <ListItemText primary="Admin Sign Up" />
-          </ListItem>
-          <ListItem button key="Admin Sign In">
-            <ListItemIcon>
-              <Link
-                to="/login"
-                style={{
-                  width: "100px",
-                  borderRadius: "3px",
-                  letterSpacing: "1.5px"
-                }}
-                className="btn btn-outline-primary "
-              >
-                <ExitToAppIcon />
-              </Link>
-            </ListItemIcon>
-
-            <ListItemText primary="Admin Login" />
-          </ListItem>
-        </List>
-        <Divider />
-        <List>
-        <ListItem button key="About Us">
-            <ListItemIcon>
-              <Link
-                to="/about"
-                style={{
-                  width: "100px",
-                  borderRadius: "3px",
-                  letterSpacing: "1.5px"
-                }}
-                className="btn btn-outline-primary "
-              >
-                <InfoIcon />
-              </Link>
-            </ListItemIcon>
-
-            <ListItemText primary="About Us" />
-          </ListItem>
-          <ListItem button key="Contact Us">
-            <ListItemIcon>
-              <Link
-                to="/feedback"
-                style={{
-                  width: "100px",
-                  borderRadius: "3px",
-                  letterSpacing: "1.5px"
-                }}
-                className="btn btn-outline-primary "
-              >
-                <PermContactCalendarIcon />
-              </Link>
-            </ListItemIcon>
-
-            <ListItemText primary="Contact Us" />
-          </ListItem>
-         
-        </List>
-      </Drawer>
+      
+      <VerticalNav />
       <main className={classes.content}>
         <div className={classes.toolbar} />
         <RegisterCard />

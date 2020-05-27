@@ -8,9 +8,7 @@ import { fetchRegistrationTypeDetails } from "../../../_actions/eventsActions";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 const useStyles = theme => ({
-  depositContext: {
-      flex: 1,
-  },
+ 
 });
 
 const renderActiveShape = (props) => {
@@ -82,6 +80,7 @@ const renderActiveShape = (props) => {
         });
       }
     render() {
+      const {classes} = this.props;
         let data = this.props.events.eventType.map((row=>{
             console.log(row)
             return {
@@ -99,10 +98,11 @@ const renderActiveShape = (props) => {
         	activeIndex={this.state.activeIndex}
           activeShape={renderActiveShape} 
           data={data} 
-         
+          className={classes.content}
           innerRadius={60}
           outerRadius={80} 
           fill="#8884d8"
+          
           onMouseEnter={this.onPieEnter}
         />
        </PieChart>

@@ -4,14 +4,15 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import DashboardIcon from '@material-ui/icons/Dashboard';
-import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
-import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import AssignmentIndIcon from '@material-ui/icons/AssignmentInd';
+import AssignmentIcon from '@material-ui/icons/Assignment';
 import { Link } from "react-router-dom";
 const HomeLink = props => <Link href="/home" to={{pathname:`/home`}} {...props} />;
 const RegistrationsLink = props => <Link href="/registrations" to={{pathname:`/registrations`}} {...props} />;
+const EventPageLink = props => <Link href="/" to={{pathname:`/`}} {...props} />;
 export const mainListItems = (
   <div>
-    <ListItem button component={HomeLink}>
+    <ListItem button component={HomeLink} justify="flex-start">
       <ListItemIcon>
         <DashboardIcon >
         </DashboardIcon>
@@ -20,7 +21,7 @@ export const mainListItems = (
     </ListItem>
     <ListItem button component={RegistrationsLink}>
       <ListItemIcon>
-        <ShoppingCartIcon />
+        <AssignmentIcon />
       </ListItemIcon>
       <ListItemText primary="Registrations" />
     </ListItem>
@@ -30,12 +31,12 @@ export const mainListItems = (
 
 export const secondaryListItems = (
   <div>
-    <ListSubheader inset>Want to go?</ListSubheader>
-    <ListItem button>
+    <ListSubheader inset container justify="flex-start">Register for event?</ListSubheader>
+    <ListItem button justify="flex-start" component={EventPageLink}>
       <ListItemIcon>
-        <ExitToAppIcon />
+        <AssignmentIndIcon />
       </ListItemIcon>
-      <ListItemText primary="Log Out" />
+      <ListItemText primary="Event Registration" />
     </ListItem>
     
   </div>
