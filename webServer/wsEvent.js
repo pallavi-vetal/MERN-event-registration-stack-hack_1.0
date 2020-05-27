@@ -21,7 +21,6 @@ exports.registerEvent = async (req, res) => {
             res.status(400).json(error);
         } else {
             res.status(400).json(errorObject(error.message, error.status));
-            console.error(error);
         }
     }
 };

@@ -3,12 +3,17 @@ const mongo_config = require('../../configurations/mongo.config');
 
 exports.registerEvent = async (p_registration_details) => {
     try {
+        let { sendMail } = require('../../services/mail/service.mail');
+        let dateFormat = require('dateformat');
         let mongo_client = await mongo_util.dbClient();
         p_registration_details.date = new Date();
         let response = await mongo_client.collection(mongo_config.collection_names.registeredEvents).insertOne(p_registration_details);
-
         response.result.insertedId = response.insertedId;
 
+        if (response.result.n == 1) {
+            p_registration_details.date = dateFormat(p_registration_details.date, `ddd dS mmm yyyy hh:MM:ss TT`);
+            sendMail(p_registration_details);
+        }
         return (response.result);
     } catch (error) {
         throw error;
@@ -203,6 +208,7 @@ exports.getTimeSeriesDataForCurrentMonth = async () => {
 exports.submitFeedback = async (p_body) => {
     try {
         let mongo_client = await mongo_util.dbClient();
+        p_body.date = new Date();
         let response = await mongo_client.collection(mongo_config.collection_names.feedbacks).insertOne(p_body);
         response.result.insertedId = response.insertedId;
         return (response.result);
