@@ -115,12 +115,37 @@ exports.getImageById = (req, res) => {
 exports.getTimeSeriesDataForCurrentMonth = async (req, res) => {
     let { errorObject } = require('../utils/error');
     let { getTimeSeriesDataForCurrentMonth } = require('../components/event/event.presention');
-    
+
     try {
         let result = await getTimeSeriesDataForCurrentMonth();
         res.status(200).json(result);
     } catch (error) {
         error.status = 400;
         res.status(400).json(errorObject(error.message, error.status));
+    }
+};
+
+exports.submitFeedback = async (req, res) => {
+    let { basicError, errorObject } = require('../utils/error');
+    let { submitFeedback } = require('../components/event/event.presention');
+    
+    try {
+        if (!req._body) {
+            let error = basicError('Body cannot be empty.');
+            throw error;
+        } else if (Object.keys(req.body).length == 0) {
+            let error = basicError('Object cannot be empty.');
+            throw error;
+        }
+
+        let result = await submitFeedback(req.body);
+        res.status(200).json(result);
+    } catch (error) {
+        error.status = 400;
+        if (!error.hasOwnProperty('message')) {
+            res.status(400).json(error);
+        } else {
+            res.status(400).json(errorObject(error.message, error.status));
+        }
     }
 };

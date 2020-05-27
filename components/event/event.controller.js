@@ -83,3 +83,13 @@ exports.getTimeSeriesDataForCurrentMonth = async () => {
         throw error;
     }
 };
+
+exports.submitFeedback = async (p_body) => {
+    try {
+        let { submitFeedback } = require('./event.DAL');
+        let result = await submitFeedback(p_body);
+        return (result);
+    } catch (error) {
+        throw error;
+    }
+};

@@ -107,3 +107,28 @@ exports.getTimeSeriesDataForCurrentMonth = async () => {
         throw error;
     }
 }
+
+exports.submitFeedback = async (p_body) => {
+    try {
+        let { basicError } = require('../../utils/error');
+        let { submitFeedback } = require('./event.controller');
+        let { feedbackValidator } = require('./event.validation');
+        
+        if (typeof p_body.name != 'string' || typeof p_body.email != 'string' || typeof p_body.feedback != 'string') {
+            let error = basicError('Invalid type of fields.');
+            throw error;
+        }
+
+        // validation against empty string or string containing only spaces
+        let { errors, flag } = feedbackValidator(p_body);
+
+        if (!flag) {
+            throw errors;
+        }
+
+        let result = await submitFeedback(p_body);
+        return (result);
+    } catch (error) {
+        throw error;
+    }
+};
