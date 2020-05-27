@@ -70,7 +70,7 @@ export const logoutUser = () => dispatch => {
 };
 export const submitFeedback = (userData, history) => dispatch => {
   axios
-    .post("/api/users/feedback", userData)
+    .post("/api/feedback", userData)
     .then(res => console.log(res))
     .catch(err =>
       dispatch({

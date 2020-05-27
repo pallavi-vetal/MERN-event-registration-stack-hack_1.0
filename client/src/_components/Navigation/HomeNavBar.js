@@ -19,7 +19,7 @@ import AccountCircle from "@material-ui/icons/AccountCircle";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
 import { mainListItems, secondaryListItems } from '../Admin/Dashboard/ListItems';
-
+import logo from '../../assets/images/logo.png';
 const drawerWidth = 240;
 
 const styles = theme => ({
@@ -32,7 +32,7 @@ const styles = theme => ({
   toolbarIcon: {
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'flex-end',
+    justifyContent: 'flex-center',
     padding: '0 8px',
     ...theme.mixins.toolbar,
   },
@@ -80,7 +80,10 @@ const styles = theme => ({
       width: theme.spacing(9),
     },
   },
-  
+  logo:{
+    width:"100px",
+    height:"40px"
+  }
   
 });
 class HomeNavBar extends Component {
@@ -204,6 +207,7 @@ class HomeNavBar extends Component {
         <div className={classes.toolbarIcon}>
           <IconButton onClick={this.handleDrawerClose}>
             <ChevronLeftIcon />
+            <img alt="Travis Howard" className={classes.logo} variant="rounded" src={logo} />
           </IconButton>
         </div>
         <Divider />

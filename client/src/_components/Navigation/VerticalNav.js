@@ -10,9 +10,10 @@ import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
-import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
-import ChevronRightIcon from "@material-ui/icons/ChevronRight";
+import ChevronLeftRoundedIcon from '@material-ui/icons/ChevronLeftRounded';
+import ChevronRightRoundedIcon from '@material-ui/icons/ChevronRightRounded';
 import { mainListItems, secondaryListItems } from './ListItemsHome';
+import logo from '../../assets/images/logo.png';
 const drawerWidth = 240;
 
 const useStyles = makeStyles(theme => ({
@@ -74,7 +75,10 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1,
     padding: theme.spacing(3)
   },
-
+  logo:{
+    width:"100px",
+    height:"40px"
+  }
 }));
 
 export default function NavBar() {
@@ -129,98 +133,22 @@ export default function NavBar() {
           })
         }}
       >
+       
         <div className={classes.toolbar}>
-          <IconButton onClick={handleDrawerClose}>
-            {theme.direction === "ltr" ? (
-              <ChevronRightIcon />
+
+          <IconButton  onClick={handleDrawerClose}>
+            {theme.direction === "rtl" ? (
+              <ChevronRightRoundedIcon  />
             ) : (
-                <ChevronLeftIcon />
+                <ChevronLeftRoundedIcon />
               )}
+              <img alt="Travis Howard" className={classes.logo} variant="rounded" src={logo} />
+              
+               
           </IconButton>
         </div>
         <Divider />
-      {/*  <List>
-          <ListItem button key="Admin Register">
-            <Tooltip title="Need admin account? Please sign up!" aria-label="sign-up">
-              <ListItemIcon>
-               
-                <Link to="/register"
-                  style={{
-                    width: "50px",
-                    textDecoration: 'none',
-                    height: "20%",
-                    fontSize: "18px"
-                  }}
-
-                >
-                <span><PersonAddIcon /> <small style={{paddingLeft:"10px",fontSize:"18px"}}>Admin Sign Up</small></span>
-              </Link>
-              </ListItemIcon>
-            </Tooltip>
-          </ListItem>
-          <ListItem button key="Admin Sign In">
-            <Tooltip title="Have admin account? Please sign in!" aria-label="sign-in">
-              <ListItemIcon>
-              
-                <Link
-                  to="/login"
-                  style={{
-                    width: "50px",
-                    textDecoration: 'none',
-                    height: "20%",
-                    fontSize: "18px"
-                  }}
-                  className="btn btn-outline-primary "
-                >
-                   <span><ExitToAppIcon /> <small style={{paddingLeft:"10px",fontSize:"18px"}}>Admin Sign In</small></span>
-              </Link>
-              </ListItemIcon>
-            </Tooltip>
-          </ListItem>
-        </List>
-        <Divider />
-        <List>
-          <ListItem button key="About Us">
-            <Tooltip title="Want to know about developers?" aria-label="About">
-              <ListItemIcon>
-               
-                <Link
-                  to="/about"
-                  style={{
-                    width: "50px",
-                    textDecoration: 'none',
-                    height: "20%",
-                    fontSize: "18px"
-                  }}
-                  className="btn btn-outline-primary "
-                >
-              <span><InfoIcon /> <small style={{paddingLeft:"10px",fontSize:"18px"}}>About Us</small></span>
-              </Link>
-              </ListItemIcon>
-            </Tooltip>
-          </ListItem>
-          <ListItem button key="Contact Us">
-            <Tooltip title="Your feedback matters.Let us know your feedback!" aria-label="feedback">
-              <ListItemIcon>
-                
-                <Link
-                  to="/feedback"
-                  style={{
-                    width: "50px",
-                    textDecoration: 'none',
-                    height: "20%",
-                    fontSize: "18px"
-                  }}
-                  className="btn btn-outline-primary "
-                >
-                   <span><PermContactCalendarIcon /> <small style={{paddingLeft:"10px",fontSize:"18px"}}>Feedback</small></span>
-              </Link>
-              </ListItemIcon>
-            </Tooltip>
-          </ListItem>
-
-        </List>
-                */}
+      
                  <List>{mainListItems}</List>
         <Divider />
         <List>{secondaryListItems}</List>
