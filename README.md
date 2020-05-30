@@ -1,5 +1,5 @@
 # MERN-event-registration-stack-hack_1.0
-# (Application Overview)
+## (Application Overview)
 ## On Front End:
 
 ### A form on the UI which captures :
