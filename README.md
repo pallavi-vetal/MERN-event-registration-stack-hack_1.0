@@ -31,3 +31,42 @@
   - #### MERN (mongoDb-Express-React-Node)
 
 ## Table of Contents
+- [Folder Structure](#folder-structure)
+
+## Folder Structure
+
+```
+MERN-EVENT-REGISTRATION-STACK-HACK_1.0/
+    client/
+    components/
+        event/
+            event.controller.js
+            event.DAL.js
+            event.presentation.js
+            event.validation.js
+        user/
+            user.controller.js
+            user.DAL.js
+            user.presentation.js
+            user.validation.js
+    configurations/
+        config.js
+        mongo.config.js
+        passport.js
+    node_modules/
+    services/
+        mail/
+            service.mail.js
+    utils/
+        error.js
+        mongo.util.js
+    webServer/
+        routes.js
+        wsEvent.js
+        wsUser.js
+    .env
+    .gitignore
+    package.json
+    README.md
+    server.js
+```
