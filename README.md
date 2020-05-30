@@ -33,6 +33,7 @@
 ## Table of Contents
 - [Sending Feedback](#sending-feedback)
 - [Folder Structure](#folder-structure)
+- [Available Scripts](#available-scripts)
 
 ## Sending Feedback
 
@@ -74,3 +75,29 @@ MERN-EVENT-REGISTRATION-STACK-HACK_1.0/
     README.md
     server.js
 ```
+## Available Scripts
+In this project directory, you can run:
+
+### `npm run server or node server.js`
+Runs node express server in development mode on http://localhost/3007.<br>
+
+### `npm run client or npm start --prefix client`
+Runs the app in the development mode.<br>
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+The page will reload if you make edits.<br>
+You will also see any lint errors in the console.
+
+### `npm run build --prefix client`
+Builds the app for production to the `build` folder.<br>
+It correctly bundles React in production mode and optimizes the build for the best performance.
+
+The build is minified and the filenames include the hashes.<br>
+Your app is ready to be deployed!
+
+See the section about [deployment](#deployment) for more information.
+
+### Supported Browsers
+By default, the generated project uses the latest version of React.
+
+You can refer [to the React documentation](https://reactjs.org/docs/react-dom.html#browser-support) for more information about supported browsers.
