@@ -11,6 +11,7 @@ import { withStyles } from "@material-ui/core/styles";
 import { fetchRegistrationTypeDetails } from "../../../_actions/eventsActions";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import { Typography } from '@material-ui/core';
 const useStyles = theme => ({
 
 });
@@ -89,10 +90,15 @@ class Example extends Component {
         "name": row._id.registrationType
       }
     }))
-    console.log(data)
+    let heading;
+    if (data.length===0) {
+      heading = <Typography variant="h6" color="textSecondary">Enough data is not available</Typography>;
+    } 
+    
     return (
       <React.Fragment>
         <Title>Registration Type</Title>
+        {heading}
         <ResponsiveContainer>
           <PieChart >
             <Pie

@@ -28,7 +28,8 @@ class Chart extends Component {
       this.props.history.push("/login");
     }
     await this.props.fetchTimeSeriesData();
-    this.setState({ month: this.props.events.eventTimeSeries[1].month })
+    if(this.props.events.eventTimeSeries[0]!==undefined)
+      this.setState({ month: this.props.events.eventTimeSeries[0].month })
   }
 
   render() {
@@ -36,9 +37,9 @@ class Chart extends Component {
     Prepare time series data in required format. Put count 0 if no registration made on particular day
    */
     let mdata = new Map();
-    for (let i = 1; i < 31; i++)
+    for (let i = 1; i <= 31; i++)
       mdata.set(i, 0);
-    for (let i1 = 1; i1 < 31; i1++) {
+    for (let i1 = 1; i1 <= 31; i1++) {
       this.props.events.eventTimeSeries.sort().map((row) => {
         if (mdata.has(row["day"])) {
           mdata.set(row["day"],
@@ -82,12 +83,7 @@ class Chart extends Component {
         <ResponsiveContainer>
           <AreaChart
             data={data}
-            margin={{
-              top: 16,
-              right: 16,
-              bottom: 0,
-              left: 24,
-            }}
+           
           >
             <XAxis dataKey="Day"  >
               <Label
@@ -104,10 +100,10 @@ class Chart extends Component {
               </Label>
             </YAxis>
             <CartesianGrid strokeDasharray="3 3" />
-            <Tooltip />
+            <Tooltip wrapperStyle={{ top: -50, left: 200,right:300 }}/>
             <Legend />
-            <Area type="monotone" dataKey="Total number of tickets sold" stroke="#8884d8" fill="#82ca9d" activeDot={{ r: 8 }} />
-            <Area type="monotone" dataKey="Total number of regitrations" stroke="#82ca9d" />
+            <Area type="monotone" dataKey="Total number of tickets sold"  stroke="#82ca9d"  stackId="1" fill="#82ca9d" activeDot={{ r: 8 }} />
+            <Area type="monotone" dataKey="Total number of regitrations" stroke="#8884d8"   stackId="1" />
           </AreaChart>
         </ResponsiveContainer>
       </React.Fragment>

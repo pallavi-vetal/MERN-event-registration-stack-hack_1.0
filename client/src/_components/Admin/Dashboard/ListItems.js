@@ -13,6 +13,7 @@ import { Link } from "react-router-dom";
 const HomeLink = props => <Link href="/home" to={{pathname:`/home`}} {...props} />;
 const RegistrationsLink = props => <Link href="/registrations" to={{pathname:`/registrations`}} {...props} />;
 const EventPageLink = props => <Link href="/" to={{pathname:`/`}} {...props} />;
+const FeedbackLink = props => <Link href="/adminfeedbacks" to={{pathname:`/adminfeedbacks`}} {...props} />;
 export const mainListItems = (
   <div>
     <ListItem button component={HomeLink} justify="flex-start">
@@ -40,6 +41,12 @@ export const secondaryListItems = (
         <AssignmentIndIcon />
       </ListItemIcon>
       <ListItemText primary="Event Registration" />
+    </ListItem>
+    <ListItem button justify="flex-start" component={FeedbackLink}>
+      <ListItemIcon>
+        <AssignmentIndIcon />
+      </ListItemIcon>
+      <ListItemText primary="Feedbacks" />
     </ListItem>
     
   </div>

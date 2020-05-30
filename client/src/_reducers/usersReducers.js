@@ -1,4 +1,4 @@
-import {  SET_CURRENT_USER, USER_LOADING ,REGISTER_EVENT} from "../_constants/authConst";
+import {  SET_CURRENT_USER, USER_LOADING ,REGISTER_EVENT ,FETCH_FEEDBACKS} from "../_constants/authConst";
 const isEmpty = require('is-empty');
 const initialState ={
     isAuthenticated:false,
@@ -24,7 +24,12 @@ export default function(state = initialState,action){
             return{
                 ...state,
                 registrationID:action.payload
-            }    
+            }  
+        case FETCH_FEEDBACKS:
+            return{
+                ...state,
+                feedbacks:action.payload
+            }       
         default:
             return state;        
     }

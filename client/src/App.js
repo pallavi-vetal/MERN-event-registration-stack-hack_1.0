@@ -15,6 +15,7 @@ import Feedback from "./_components/Other/Feedback";
 import About from "./_components/Other/About";
 import RegistrationsTable from './_components/Admin/Dashboard/RegistrationsTable';
 import HomeEvent from './_components/Navigation/HomeEvent';
+import AdminFeedbacks from './_components/Admin/Dashboard/AdminFeedbacks';
 if (localStorage.jwtToken) {
   // Set auth token header auth
   const token = localStorage.jwtToken;
@@ -48,6 +49,7 @@ class App extends Component{
           <PrivateRoute exact path="/home" component={Home} />
           <PrivateRoute  path="/registration/:id" component={RegistrationDetails} />
           <PrivateRoute  path="/registrations" component={RegistrationsTable} />
+          <PrivateRoute  path="/adminfeedbacks" component={AdminFeedbacks} />
         </Switch>
         
         </div>

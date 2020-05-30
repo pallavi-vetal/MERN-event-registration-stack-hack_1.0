@@ -2,7 +2,7 @@ import axios from "axios"; //axios to create GET/POST request to server
 import setAuthToken from "../utils/setAuthToken"; //require for jwt authentication token
 import jwt_decode from "jwt-decode"; //require to decode jwt token
 
-import { GET_ERRORS, SET_CURRENT_USER, USER_LOADING, REGISTER_EVENT } from "../_constants/authConst";
+import { GET_ERRORS, SET_CURRENT_USER, USER_LOADING, REGISTER_EVENT,FETCH_FEEDBACKS } from "../_constants/authConst";
 
 // Register User
 export const registerUser = (userData, history) => dispatch => {
@@ -70,7 +70,7 @@ export const logoutUser = () => dispatch => {
 //Submit feedback
 export const submitFeedback = (userData, history) => dispatch => {
   axios
-    .post("/api/feedback", userData)
+    .post("/api/feedback/submitFeedback", userData)
     .then(res => console.log(res))
     .catch(err =>
       dispatch({
@@ -107,3 +107,21 @@ export const setCurrentRegistration = decoded => {
     payload: decoded
   };
 };
+
+/* Dispatch setFeedbacks action to get all feedbacks */
+export const fetchFeedbacks = () => dispatch => {
+  return axios
+    .get("/api/feedback/getAllFeedbacks")
+    .then(res => {
+      return dispatch(setFeedbacks(res.data));
+    })
+    .catch(err =>
+      console.log("ERror", err)
+    );
+};
+export const setFeedbacks = feedbacks => {
+  return {
+    type: FETCH_FEEDBACKS,
+    payload: feedbacks
+  };
+}
