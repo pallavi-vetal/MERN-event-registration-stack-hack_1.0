@@ -102,8 +102,8 @@ class Chart extends Component {
             <CartesianGrid strokeDasharray="3 3" />
             <Tooltip wrapperStyle={{ top: -50, left: 200,right:300 }}/>
             <Legend />
-            <Area type="monotone" dataKey="Total number of tickets sold" stroke="#8884d8" fill="#82ca9d" activeDot={{ r: 8 }} />
-            <Area type="monotone" dataKey="Total number of regitrations" stroke="#82ca9d" />
+            <Area type="monotone" dataKey="Total number of tickets sold" stroke="#8884d8"  stackId="1" fill="#82ca9d" activeDot={{ r: 8 }} />
+            <Area type="monotone" dataKey="Total number of regitrations" stroke="#82ca9d"  stackId="1" />
           </AreaChart>
         </ResponsiveContainer>
       </React.Fragment>

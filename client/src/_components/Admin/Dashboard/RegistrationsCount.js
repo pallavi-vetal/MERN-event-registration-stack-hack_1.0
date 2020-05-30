@@ -37,7 +37,6 @@ class RegistrationsCount extends Component {
 
     render() {
         const { classes } = this.props;
-       
         return (
             <React.Fragment>
                 <Title>Registration Count</Title>
@@ -48,10 +47,10 @@ class RegistrationsCount extends Component {
                     Number of tickets sold  {this.state.countTotalTick}
                 </Typography>
                 <div>
-        <Link color="primary"href="/registrations" to={{pathname:`/registrations`}}  >
-          View all registrations
-        </Link>
-      </div>
+                    <Link color="primary"href="/registrations" to={{pathname:`/registrations`}}  >
+                    View all registrations
+                    </Link>
+                </div>
             </React.Fragment>
         );
     }

@@ -14,6 +14,7 @@ import Chart from './Chart';
 import RegistrationsCount from './RegistrationsCount';
 import Example from './PieChart';
 import HomeNavBar from '../../Navigation/HomeNavBar';
+import AdminFeedbacks from './AdminFeedbacks';
 const styles = theme => ({
   root: {
     display: 'flex',
@@ -22,7 +23,7 @@ const styles = theme => ({
   appBarSpacer: theme.mixins.toolbar,
   content: {
     flexGrow: 1,
-    height: '130vh',
+    height: '200vh',
     overflow: 'auto',
   },
   container: {
@@ -105,7 +106,11 @@ class Dashboard extends Component {
                 <RegistrationsCount />
               </Paper>
             </Grid>
-          
+            <Grid item xs={12} md={4} lg={12}>
+             
+                <AdminFeedbacks />
+               
+            </Grid>
           </Grid>
           
         </Container>
