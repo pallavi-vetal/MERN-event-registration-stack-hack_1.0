@@ -30,4 +30,4 @@
 ## Ideal Stack Used:
   - #### MERN (mongoDb-Express-React-Node)
 
-# Project directory structure
+## Table of Contents
