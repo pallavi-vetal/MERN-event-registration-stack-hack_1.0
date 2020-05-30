@@ -1,6 +1,6 @@
 # MERN-event-registration-stack-hack_1.0
 ## (Application Overview)
-## On Front End:
+## On Front End :
 
 ### A form on the UI which captures :
   - Fields for Data Capture (All fields are mandatory)
@@ -19,7 +19,7 @@
   - Store all the information captured in a local database (we have used mongoDb)
   - (Registration Date is generated as system date and get stored in Database)
 
-## On Back end:
+## On Back end :
   - This Backend has database bindings to store the event registration info received from the Front End.
   - The backend is able to receive from and render to Front End all the event information, also store in and fetch from the database.
   - Admin Login functionality using jwt and passport authenctication strategy.
@@ -27,18 +27,18 @@
   - List all Registrations (Registration No, Date, Name fields should be displayed)
   - Hyperlink to view on Click on Registration No
 
-## Ideal Stack Used:
+## Ideal Stack Used :
   - #### MERN (mongoDb-Express-React-Node)
 
-## Table of Contents
+## Table of Contents :
 - [Sending Feedback](#sending-feedback)
 - [Folder Structure](#folder-structure)
 - [Available Scripts](#available-scripts)
 
-## Sending Feedback
+## Sending Feedback :
 
 We are always open to [your feedback](https://github.com/omkarlanghe/MERN-event-registration-stack-hack_1.0/issues).
-## Folder Structure
+## Folder Structure :
 
 ```
 MERN-EVENT-REGISTRATION-STACK-HACK_1.0/
@@ -75,7 +75,7 @@ MERN-EVENT-REGISTRATION-STACK-HACK_1.0/
     README.md
     server.js
 ```
-## Available Scripts
+## Available Scripts :
 In this project directory, you can run:
 
 ### `npm run server or node server.js`
