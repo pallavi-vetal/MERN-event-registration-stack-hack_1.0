@@ -19,27 +19,33 @@ class RegistrationsCount extends Component {
     constructor(props) {
         super(props);
         this.state = {
-
+            countTotalTick:0,
+            countRegistrations:0
         }
     }
-    componentDidMount() {
+    async componentDidMount() {
         if (!this.props.auth.isAuthenticated) {
             this.props.history.push("/login");
         }
-        this.props.fetchEventCount();
-        this.setState({ events: this.props.events })
+        await this.props.fetchEventCount();
+        this.setState({ 
+            events: this.props.events,
+            countTotalTick:this.props.events.eventCount.totalTickets,
+            countRegistrations:this.props.events.eventCount.totalRegistrations
+         })
     }
 
     render() {
         const { classes } = this.props;
+       
         return (
             <React.Fragment>
                 <Title>Registration Count</Title>
                 <Typography component="p" variant="h4">
-                    {this.props.events.eventCount.totalRegistrations}
+                    {this.state.countRegistrations}
                 </Typography>
                 <Typography color="textSecondary" className={classes.depositContext}>
-                    Number of tickets sold  {this.props.events.eventCount.totalTickets}
+                    Number of tickets sold  {this.state.countTotalTick}
                 </Typography>
                 <div>
         <Link color="primary"href="/registrations" to={{pathname:`/registrations`}}  >
