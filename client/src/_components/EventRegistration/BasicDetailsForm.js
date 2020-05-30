@@ -90,7 +90,7 @@ class BasicDetailsForm extends Component {
               acceptedFileTypes={['image/png', 'image/jpeg']}
               server={{
                 process: {
-                  url: 'http://127.0.0.1:3007/api/events/uploadImage',
+                  url: '/api/events/uploadImage',
                   onload: (response) => {
                     this.setState({ "imageID": JSON.parse(response).id })
                     this.props.onImageUpload(JSON.parse(response).id);
