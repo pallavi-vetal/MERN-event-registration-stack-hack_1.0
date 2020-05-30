@@ -39,7 +39,7 @@
 
 We are always open to [your feedback](https://github.com/omkarlanghe/MERN-event-registration-stack-hack_1.0/issues).
 ## Folder Structure
-
+This node express server directory structure, error handling guidelines, etc is inspired from [node.js best practices](#https://github.com/goldbergyoni/nodebestpractices). 
 ```
 MERN-EVENT-REGISTRATION-STACK-HACK_1.0/
     client/
