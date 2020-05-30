@@ -216,3 +216,22 @@ exports.submitFeedback = async (p_body) => {
         throw error;
     }
 };
+
+exports.getAllFeedbacks = async () => {
+    try {
+        let dateFormat = require('dateformat');
+        let mongo_client = await mongo_util.dbClient();
+        let response = await mongo_client.collection(mongo_config.collection_names.feedbacks).find({}).toArray().then(result => {
+            for (let i = 0; i < result.length; i++) {
+                result[i].date = dateFormat(result[i].date, `ddd dS mmm yyyy hh:MM:ss TT`);
+            }
+            return (result);
+        }).catch(err => {
+            throw err;
+        });
+
+        return (response);
+    } catch (error) {
+        throw error;
+    }
+};

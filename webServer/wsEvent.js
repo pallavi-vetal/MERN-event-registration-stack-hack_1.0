@@ -131,7 +131,7 @@ exports.getTimeSeriesDataForCurrentMonth = async (req, res) => {
 exports.submitFeedback = async (req, res) => {
     let { basicError, errorObject } = require('../utils/error');
     let { submitFeedback } = require('../components/event/event.presention');
-    
+
     try {
         if (!req._body) {
             let error = basicError('Body cannot be empty.');
@@ -150,5 +150,18 @@ exports.submitFeedback = async (req, res) => {
         } else {
             res.status(400).json(errorObject(error.message, error.status));
         }
+    }
+};
+
+exports.getAllFeedbacks = async (req, res) => {
+    let { errorObject } = require('../utils/error');
+    let { getAllFeedbacks } = require('../components/event/event.presention');
+
+    try {
+        let result = await getAllFeedbacks();
+        res.status(200).json(result);
+    } catch (error) {
+        error.status = 400;
+        res.status(400).json(errorObject(error.message, error.status));
     }
 };

@@ -113,7 +113,7 @@ exports.submitFeedback = async (p_body) => {
         let { basicError } = require('../../utils/error');
         let { submitFeedback } = require('./event.controller');
         let { feedbackValidator } = require('./event.validation');
-        
+
         if (typeof p_body.name != 'string' || typeof p_body.email != 'string' || typeof p_body.feedback != 'string') {
             let error = basicError('Invalid type of fields.');
             throw error;
@@ -127,6 +127,16 @@ exports.submitFeedback = async (p_body) => {
         }
 
         let result = await submitFeedback(p_body);
+        return (result);
+    } catch (error) {
+        throw error;
+    }
+};
+
+exports.getAllFeedbacks = async () => {
+    try {
+        let { getAllFeedbacks } = require('./event.controller');
+        let result = await getAllFeedbacks();
         return (result);
     } catch (error) {
         throw error;
