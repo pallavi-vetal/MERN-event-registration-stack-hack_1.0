@@ -92,3 +92,13 @@ exports.submitFeedback = async (p_body) => {
         throw error;
     }
 };
+
+exports.getAllFeedbacks = async () => {
+    try {
+        let { getAllFeedbacks } = require('./event.DAL');
+        let result = await getAllFeedbacks();
+        return (result);
+    } catch (error) {
+        throw error;
+    }
+};
