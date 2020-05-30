@@ -1,5 +1,4 @@
 import React, { Component} from 'react';
-import  NavBar  from "./_components/Navigation/NavBar";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Register from "./_components/Admin/Register";
 import Login from "./_components/Admin/Login";
@@ -15,6 +14,7 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 import Feedback from "./_components/Other/Feedback";
 import About from "./_components/Other/About";
 import RegistrationsTable from './_components/Admin/Dashboard/RegistrationsTable';
+import HomeEvent from './_components/Navigation/HomeEvent';
 if (localStorage.jwtToken) {
   // Set auth token header auth
   const token = localStorage.jwtToken;
@@ -28,7 +28,6 @@ if (localStorage.jwtToken) {
   if (decoded.exp < currentTime) {
     // Logout user
     store.dispatch(logoutUser());
-
     // Redirect to login
     window.location.href = "./login";
   }
@@ -40,7 +39,7 @@ class App extends Component{
       <Router>
       <div className="App">
        
-        <Route exact path="/" component={NavBar} />
+        <Route exact path="/" component={HomeEvent} />
         <Route exact path="/register" component={Register} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/about" component={About} />

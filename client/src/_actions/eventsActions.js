@@ -1,21 +1,13 @@
-import { FETCH_EVENTS, FETCH_EVENTS_BY_ID, 
-  FETCH_EVENTS_COUNT,FETCH_EVENTS_TYPE, 
-  FETCH_EVENTS_IMAGE, FETCH_EVENT_TIMESERIES_DATA } from '../_constants/eventsConstants';
-import axios from "axios";
+//import all constants related to events
+import {
+  FETCH_EVENTS, FETCH_EVENTS_BY_ID,
+  FETCH_EVENTS_COUNT, FETCH_EVENTS_TYPE,
+  FETCH_EVENTS_IMAGE, FETCH_EVENT_TIMESERIES_DATA
+} from '../_constants/eventsConstants';
 
-export const setEvents = events => {
-  return {
-    type: FETCH_EVENTS,
-    payload: events
-  };
-}
-export const setEventByID = event => {
-  return {
-    type: FETCH_EVENTS_BY_ID,
-    payload: event
-  };
-}
+import axios from "axios"; //axios to create GET/POST request to server
 
+/* Dispatch setEvents action to get all registrations */
 export const fetchEvents = () => dispatch => {
   return axios
     .get("/api/events/getAllRegisteredEvents")
@@ -26,6 +18,14 @@ export const fetchEvents = () => dispatch => {
       console.log("ERror", err)
     );
 };
+export const setEvents = events => {
+  return {
+    type: FETCH_EVENTS,
+    payload: events
+  };
+}
+
+/* Dispatch setEventByID action to get registration details by registration ID */
 export const fetchEventsByID = (id) => dispatch => {
   return axios
     .get(`/api/events/getRegisteredEventById/${id}`)
@@ -37,8 +37,14 @@ export const fetchEventsByID = (id) => dispatch => {
       console.log("ERror", err)
     );
 };
+export const setEventByID = event => {
+  return {
+    type: FETCH_EVENTS_BY_ID,
+    payload: event
+  };
+}
 
-
+/* Dispatch setEventCount action to get total number of registrations made and total tickets sold */
 export const fetchEventCount = () => dispatch => {
   return axios
     .get("/api/events/getCountOfRegistrationsAndTickets")
@@ -56,6 +62,9 @@ export const setEventCount = event => {
   }
 }
 
+/* Dispatch setRegistrationTypeData action to get different registration type data which 
+ * we will use to render pie chart
+ */
 export const fetchRegistrationTypeDetails = () => dispatch => {
   return axios
     .get("/api/events/registrationTypeDetails")
@@ -72,6 +81,8 @@ export const setRegistrationTypeData = event => {
     payload: event
   }
 }
+
+/* Dispatch setImage action to upload id card image on server */
 export const fetchImage = (id) => dispatch => {
   return axios
     .get(`/api/events/getImageById/${id}`)
@@ -83,12 +94,17 @@ export const fetchImage = (id) => dispatch => {
       console.log("ERror", err)
     );
 };
-export const setImage = img =>{
+export const setImage = img => {
   return {
-    type:FETCH_EVENTS_IMAGE,
-    payload:img
+    type: FETCH_EVENTS_IMAGE,
+    payload: img
   }
 }
+
+/* Dispatch setTimeSeriesData action to get details of registration count
+ * and tickets count on each day in current month.
+ * We will use this data to render time series area graph
+ */
 export const fetchTimeSeriesData = () => dispatch => {
   return axios
     .get(`/api/events/month/getTimeSeriesData`)
@@ -100,9 +116,9 @@ export const fetchTimeSeriesData = () => dispatch => {
       console.log("ERror", err)
     );
 };
-export const setTimeSeriesData = data =>{
+export const setTimeSeriesData = data => {
   return {
-    type:FETCH_EVENT_TIMESERIES_DATA,
-    payload:data
+    type: FETCH_EVENT_TIMESERIES_DATA,
+    payload: data
   }
 }

@@ -66,7 +66,7 @@ const useStyles = makeStyles(theme => ({
   
 }));
 
-export default function NavBar() {
+export default function HomeEvent() {
   const classes = useStyles();
   
   return (

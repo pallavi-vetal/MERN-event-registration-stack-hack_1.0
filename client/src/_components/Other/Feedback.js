@@ -1,3 +1,4 @@
+/* Feedback Page */
 import React, { Component } from "react";
 import { withStyles } from "@material-ui/core/styles";
 import Avatar from '@material-ui/core/Avatar';
@@ -31,7 +32,7 @@ const useStyles = theme => ({
     backgroundColor: theme.palette.secondary.main,
   },
   form: {
-    width: '100%', // Fix IE 11 issue.
+    width: '100%',
     marginTop: theme.spacing(3),
   },
   submit: {
@@ -58,7 +59,7 @@ const useStyles = theme => ({
     opacity: 0.9,
     marginRight: theme.spacing(1),
   },
-  snack:{
+  snack: {
     marginTop: theme.spacing(9),
   },
   appBarSpacer: theme.mixins.toolbar,
@@ -87,20 +88,26 @@ class Feedback extends Component {
     if (nextProps.errors) {
       this.setState({
         errors: nextProps.errors,
-        iserror:true
+        iserror: true
+      });
+      this.setState({
+        name: "",
+        email: "",
+        feedback: ""
       });
     }
-    else{
-      this.setState({isSubmit:true})
+    else {
+      this.setState({ isSubmit: true });
+
     }
   }
 
   onChange = e => {
     this.setState({ [e.target.id]: e.target.value });
-    this.setState({errors:{}})
+    this.setState({ errors: {} })
   };
 
-   async onSubmit(e) {
+  async onSubmit(e) {
     e.preventDefault();
 
     const newFeedback = {
@@ -110,29 +117,35 @@ class Feedback extends Component {
 
     };
 
-     await this.props.submitFeedback(newFeedback, this.props.history);
-    if(!this.props.errors.name || !this.props.errors.email||!this.props.errors.feedback)
-    {
-      this.setState({iserror:true})
+    await this.props.submitFeedback(newFeedback, this.props.history);
+    if (!this.props.errors.name || !this.props.errors.email || !this.props.errors.feedback) {
+      this.setState({ iserror: true });
+      this.setState({
+        name: "",
+        email: "",
+        feedback: ""
+      })
     }
-    else
-     {
-      this.setState({iserror:false,isSubmit:true})
-     }
+    else {
+      this.setState({ iserror: false, isSubmit: true });
+      this.setState({
+        name: "",
+        email: "",
+        feedback: ""
+      })
+
+    }
   };
- 
+
   render() {
     const { classes } = this.props;
     const { errors } = this.state;
-   
-
     return (
       <div  >
         <HomeNavBar onClick={this.onLogoutClick} />
         <Container component="main" maxWidth="xs" >
-        <div className={classes.snack} >
+          <div className={classes.snack} >
             {this.state.iserror && (<div>
-
               <SnackbarContent
                 autoHideDuration={6000}
                 className={classes.error}
@@ -143,13 +156,11 @@ class Feedback extends Component {
                     {"Please Check errors!"}
                   </span>
                 }
-
               />
             </div>)}
-            </div>
+          </div>
           <div className={classes.paper} >
-            {this.state.isSubmit && !this.state.iserror&& (<div>
-
+            {this.state.isSubmit && !this.state.iserror && (<div>
               <SnackbarContent
                 autoHideDuration={6000}
                 className={classes.success}
@@ -157,10 +168,9 @@ class Feedback extends Component {
                 message={
                   <span id="feedback-snackbar" className={classes.message}>
                     <CheckCircleIcon className={clsx(classes.icon, classes.iconVariant)} />
-                    {"Your Feedback submitted successfully!"}
+                    {"Your Feedback submitted successfully!"}<br></br>{"Thank you for your feedback!!!"}
                   </span>
                 }
-
               />
             </div>)}
             <Avatar className={classes.avatar}>
@@ -181,6 +191,7 @@ class Feedback extends Component {
                     id="name"
                     label="Your Name"
                     autoFocus
+                    value={this.state.name}
                     onChange={this.onChange}
                   />
                   <label htmlFor="name"></label>
@@ -197,6 +208,7 @@ class Feedback extends Component {
                     id="email"
                     label="Your Email Address"
                     autoFocus
+                    value={this.state.email}
                     onChange={this.onChange}
                   />
                   <label htmlFor="email"></label>
@@ -214,6 +226,7 @@ class Feedback extends Component {
                     id="feedback"
                     label="Feedback"
                     autoFocus
+                    value={this.state.feedback}
                     onChange={this.onChange}
                   />
                   <label htmlFor="feedback"></label>
@@ -230,14 +243,10 @@ class Feedback extends Component {
               >
                 Submit Feedback
           </Button>
-
             </form>
           </div>
-
           <Copyright />
-
         </Container>
-      
       </div>
 
     );

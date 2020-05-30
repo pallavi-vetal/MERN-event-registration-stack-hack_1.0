@@ -80,29 +80,28 @@ const styles = theme => ({
       width: theme.spacing(9),
     },
   },
-  logo:{
-    width:"100px",
-    height:"40px"
+  logo: {
+    width: "100px",
+    height: "40px"
   }
-  
+
 });
 class HomeNavBar extends Component {
   constructor(props) {
     super(props);
-    this.state = { 
-      open:true,
+    this.state = {
+      open: true,
       anchorEl: null,
       auth: false
-     }
+    }
   }
-  componentDidMount(){
-   
-    if (!this.props.auth.isAuthenticated) {
+  componentDidMount() {
 
-        this.props.history.push("/login");
-      }
-    
-}
+    if (!this.props.auth.isAuthenticated) {
+      this.props.history.push("/login");
+    }
+
+  }
   handleChange = event => {
     this.setState({
       anchorEl: event.target.checked
@@ -120,40 +119,36 @@ class HomeNavBar extends Component {
       anchorEl: null
     });
   };
-  
+
   handleDrawerOpen = () => {
-    this.setState({open:true})
+    this.setState({ open: true })
   };
   handleDrawerClose = () => {
-    this.setState({open:false})
+    this.setState({ open: false })
   };
-  render() { 
+  render() {
     const { classes } = this.props;
     const { user } = this.props.auth;
-    console.log(localStorage.getItem('user'))
-
-
-    return ( 
+    return (
       <div className={classes.root}>
-      <CssBaseline />
-      <AppBar position="absolute" className={clsx(classes.appBar, this.state.open && classes.appBarShift)}>
-        <Toolbar className={classes.toolbar}>
-          <IconButton
-            edge="start"
-            color="inherit"
-            aria-label="open drawer"
-            onClick={this.handleDrawerOpen}
-            className={clsx(classes.menuButton, this.state.open && classes.menuButtonHidden)}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
-            Dashboard
+        <CssBaseline />
+        <AppBar position="absolute" className={clsx(classes.appBar, this.state.open && classes.appBarShift)}>
+          <Toolbar className={classes.toolbar}>
+            <IconButton
+              edge="start"
+              color="inherit"
+              aria-label="open drawer"
+              onClick={this.handleDrawerOpen}
+              className={clsx(classes.menuButton, this.state.open && classes.menuButtonHidden)}
+            >
+              <MenuIcon />
+            </IconButton>
+            <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
+              Dashboard
           </Typography>
-          {this.props.auth.isAuthenticated && (
+            {this.props.auth.isAuthenticated && (
               <div>
                 {user.name}
-                
                 <IconButton
                   aria-label="account of current user"
                   aria-controls="menu-appbar"
@@ -178,53 +173,47 @@ class HomeNavBar extends Component {
                   open={Boolean(this.state.anchorEl)}
                   onClose={this.handleClose}
                 >
-                  <MenuItem onClick={this.handleClose}>My Profile</MenuItem>
-        
                   <MenuItem onClick={this.props.onClick}>Sign Out</MenuItem>
                 </Menu>
               </div>
             )}
-             {!(this.props.auth.isAuthenticated) && (
+            {!(this.props.auth.isAuthenticated) && (
               <div>
-               
-              
-               <Typography variant="h7" className={classes.title}>
-              <Link to="/login" href="/login" color='inherit' style={{textDecoration: "none"}}>Sign In</Link>
-            </Typography>
-            
-                
+                <Typography variant="h7" className={classes.title}>
+                  <Link to="/login" href="/login" color='inherit' style={{ textDecoration: "none" }}>Sign In</Link>
+                </Typography>
               </div>
             )}
-        </Toolbar>
-      </AppBar>
-      <Drawer
-        variant="permanent"
-        classes={{
-          paper: clsx(classes.drawerPaper, !this.state.open && classes.drawerPaperClose),
-        }}
-        open={this.state.open}
-      >
-        <div className={classes.toolbarIcon}>
-          <IconButton onClick={this.handleDrawerClose}>
-            <ChevronLeftIcon />
-            <img alt="Travis Howard" className={classes.logo} variant="rounded" src={logo} />
-          </IconButton>
-        </div>
-        <Divider />
-        <List>{mainListItems}</List>
-        <Divider />
-        <List>{secondaryListItems}</List>
-      </Drawer>
-     </div> 
-     )
-    }
- }
- HomeNavBar.propTypes = {
+          </Toolbar>
+        </AppBar>
+        <Drawer
+          variant="permanent"
+          classes={{
+            paper: clsx(classes.drawerPaper, !this.state.open && classes.drawerPaperClose),
+          }}
+          open={this.state.open}
+        >
+          <div className={classes.toolbarIcon}>
+            <IconButton onClick={this.handleDrawerClose}>
+              <ChevronLeftIcon />
+              <img alt="Travis Howard" className={classes.logo} variant="rounded" src={logo} />
+            </IconButton>
+          </div>
+          <Divider />
+          <List>{mainListItems}</List>
+          <Divider />
+          <List>{secondaryListItems}</List>
+        </Drawer>
+      </div>
+    )
+  }
+}
+HomeNavBar.propTypes = {
   auth: PropTypes.object.isRequired
 };
 const mapStateToProps = state => ({
   auth: state.auth
-}); 
+});
 export default connect(mapStateToProps)(
   withStyles(styles)(HomeNavBar)
 ); 

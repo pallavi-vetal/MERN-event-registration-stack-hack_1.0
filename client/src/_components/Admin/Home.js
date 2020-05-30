@@ -1,15 +1,18 @@
+/*
+ * Admin Home Page
+ */
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../_actions/usersActions";
 import { withStyles } from "@material-ui/core/styles";
 import Dashboard from './Dashboard/Dashboard'
-import {Copyright} from '../Other/Footer';
+import { Copyright } from '../Other/Footer';
 import Box from '@material-ui/core/Box';
-import {fetchEventCount,fetchRegistrationTypeDetails} from '../../_actions/eventsActions';
+
 const styles = theme => ({
   snack: {
-    width:"50%",
+    width: "50%",
     backgroundColor: theme.palette.error.dark,
     margin: theme.spacing(2),
   },
@@ -20,7 +23,6 @@ const styles = theme => ({
   }
 });
 
-
 class Home extends Component {
   constructor(props) {
     super(props);
@@ -29,32 +31,24 @@ class Home extends Component {
     };
   }
   componentDidMount() {
-    // If logged in and user navigates to Register page, should redirect them to dashboard
     if (!this.props.auth.isAuthenticated) {
       this.props.history.push("/login");
     }
-    this.props.fetchEventCount();
-    this.props.fetchRegistrationTypeDetails();
-   
-   
   }
   onLogoutClick = e => {
     e.preventDefault();
     this.props.logoutUser();
     this.props.history.push("/");
   };
-  
+
   render() {
-    
-    console.log(this.state.userLocation);
     return (
       <div >
-       
         <br></br>
-        <Dashboard onClick={this.onLogoutClick} />  
+        <Dashboard onClick={this.onLogoutClick} />
         <Box mt={6}>
-              <Copyright />
-            </Box>
+          <Copyright />
+        </Box>
       </div>
     );
   }
@@ -62,12 +56,9 @@ class Home extends Component {
 Home.propTypes = {
   auth: PropTypes.object.isRequired,
   logoutUser: PropTypes.func.isRequired,
-  fetchEventCount:PropTypes.func.isRequired,
-  events:PropTypes.object.isRequired,
-  fetchRegistrationTypeDetails:PropTypes.func.isRequired
 };
 const mapStateToProps = state => ({
   auth: state.auth,
   events: state.eventType
 });
-export default connect(mapStateToProps, { logoutUser,fetchEventCount,fetchRegistrationTypeDetails })(withStyles(styles)(Home));
+export default connect(mapStateToProps, { logoutUser })(withStyles(styles)(Home));
