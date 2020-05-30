@@ -31,8 +31,12 @@
   - #### MERN (mongoDb-Express-React-Node)
 
 ## Table of Contents
+- [Sending Feedback](#sending-feedback)
 - [Folder Structure](#folder-structure)
 
+## Sending Feedback
+
+We are always open to [your feedback](https://github.com/omkarlanghe/MERN-event-registration-stack-hack_1.0/issues).
 ## Folder Structure
 
 ```
