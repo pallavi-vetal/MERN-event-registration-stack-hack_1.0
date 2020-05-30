@@ -35,10 +35,10 @@
 - [Folder Structure](#folder-structure)
 - [Available Scripts](#available-scripts)
 
-## Sending Feedback :
+## Sending Feedback
 
 We are always open to [your feedback](https://github.com/omkarlanghe/MERN-event-registration-stack-hack_1.0/issues).
-## Folder Structure :
+## Folder Structure
 
 ```
 MERN-EVENT-REGISTRATION-STACK-HACK_1.0/
@@ -75,7 +75,7 @@ MERN-EVENT-REGISTRATION-STACK-HACK_1.0/
     README.md
     server.js
 ```
-## Available Scripts :
+## Available Scripts
 In this project directory, you can run:
 
 ### `npm run server or node server.js`
