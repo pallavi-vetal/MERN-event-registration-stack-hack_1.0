@@ -12,14 +12,10 @@
     "@testing-library/user-event": "^7.2.1",
     "axios": "^0.19.0",
     "classnames": "^2.2.6",
-    "doka": "^0.1.0",
     "filepond": "^4.13.6",
     "filepond-plugin-file-validate-type": "^1.2.5",
-    "filepond-plugin-image-crop": "^2.0.4",
-    "filepond-plugin-image-edit": "^1.6.1",
     "filepond-plugin-image-exif-orientation": "^1.0.9",
     "filepond-plugin-image-preview": "^4.6.4",
-    "filepond-plugin-image-resize": "^2.0.7",
     "is-empty": "^1.2.0",
     "jwt-decode": "^2.2.0",
     "material-table": "^1.54.2",
@@ -58,9 +54,9 @@
     ]
   },
   "proxy": "http://localhost:3007",
-  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "description": "Created for HackerEarth FullStack development challenge powered by UpSkills.",
   "main": "index.js",
   "devDependencies": {},
-  "author": "pallavi-vetal",
+  "author": "FrontEnd : pallavi-vetal & BackEnd : Omkar Langhe",
   "license": "ISC"
 }

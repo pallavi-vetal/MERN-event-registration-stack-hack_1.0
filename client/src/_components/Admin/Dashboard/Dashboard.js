@@ -1,3 +1,7 @@
+/*
+ * Component integrates all dashboard components like area graph and pie chart
+ * Represents admin dashboard
+ */
 import React, { Component } from 'react';
 import clsx from 'clsx';
 import PropTypes from "prop-types";
@@ -83,12 +87,13 @@ class Dashboard extends Component {
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>
           <Grid container spacing={1}>
-            {/* Chart */}
+            {/* Area Graph */}
             <Grid item xs={12} md={4} lg={12}>
               <Paper className={fixedHeightPaper}>
                 <Chart />
               </Paper>
             </Grid>
+            {/* Pie Chart */}
             <Grid item xs={12} md={4} lg={6}>
               <Paper className={fixedHeightPaper}>
                 <Example />

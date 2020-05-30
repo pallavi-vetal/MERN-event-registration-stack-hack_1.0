@@ -1,3 +1,6 @@
+/*
+ * Admin Login Page
+ */
 import React, { Component } from "react";
 import { withStyles } from "@material-ui/core/styles";
 import Avatar from '@material-ui/core/Avatar';
@@ -14,34 +17,33 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { loginUser } from "../../_actions/usersActions";
 import VerticalNav from '../Navigation/VerticalNav';
-import {Copyright} from '../Other/Footer';
+import { Copyright } from '../Other/Footer';
 const useStyles = theme => ({
-    margin: {
-      margin: theme.spacing(1),
-    },
-    paper: {
-        marginTop: theme.spacing(10),
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-      },
-      avatar: {
-        margin: theme.spacing(1),
-        backgroundColor: theme.palette.secondary.main,
-      },
-      form: {
-        width: '100%', // Fix IE 11 issue.
-        marginTop: theme.spacing(1),
-      },
-      submit: {
-        margin: theme.spacing(3, 0, 2),
-      },
-      
-  });
- 
-  
-class Login extends Component{
-  constructor(props){
+  margin: {
+    margin: theme.spacing(1),
+  },
+  paper: {
+    marginTop: theme.spacing(10),
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+  avatar: {
+    margin: theme.spacing(1),
+    backgroundColor: theme.palette.secondary.main,
+  },
+  form: {
+    width: '100%',
+    marginTop: theme.spacing(1),
+  },
+  submit: {
+    margin: theme.spacing(3, 0, 2),
+  },
+
+});
+
+class Login extends Component {
+  constructor(props) {
     super(props);
     this.state = {
       email: "",
@@ -51,16 +53,15 @@ class Login extends Component{
   }
 
   componentDidMount() {
-    // If logged in and user navigates to Login page, should redirect them to dashboard
     if (this.props.auth.isAuthenticated) {
-  
+
       this.props.history.push("/home");
     }
   }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.auth.isAuthenticated) {
-      
+
       this.props.history.push("/home");
     }
 
@@ -81,78 +82,77 @@ class Login extends Component{
       email: this.state.email,
       password: this.state.password
     };
-    
+
     this.props.loginUser(userData);
 
   };
-    render(){
-        const {classes} = this.props;
-        const { errors } = this.state;
-        return(
-            <Container component="main" maxWidth="xs">
-              <VerticalNav />
-            <CssBaseline />
-            <div className={classes.paper}>
-              <Avatar className={classes.avatar}>
-                <LockOutlinedIcon />
-              </Avatar>
-              <Typography component="h1" variant="h5">
-                Sign in
+  render() {
+    const { classes } = this.props;
+    const { errors } = this.state;
+    return (
+      <Container component="main" maxWidth="xs">
+        <VerticalNav />
+        <CssBaseline />
+        <div className={classes.paper}>
+          <Avatar className={classes.avatar}>
+            <LockOutlinedIcon />
+          </Avatar>
+          <Typography component="h1" variant="h5">
+            Sign in
               </Typography>
-              <form className={classes.form} noValidate onSubmit={this.onSubmit}>
-                <TextField
-                  variant="outlined"
-                  margin="normal"
-                  required
-                  fullWidth
-                  id="email"
-                  label="Email Address"
-                  name="email"
-                  autoComplete="email"
-                  autoFocus
-                  onChange={this.onChange}
-                />
-                <label htmlFor="email"></label>
-        <Typography variant="h8" color="error">{errors.email}</Typography> 
-                <TextField
-                  variant="outlined"
-                  margin="normal"
-                  required
-                  fullWidth
-                  name="password"
-                  label="Password"
-                  type="password"
-                  id="password"
-                  autoComplete="current-password"
-                  onChange={this.onChange}
-                />
-               <label htmlFor="password"></label>
-        <Typography variant="h8" color="error">{errors.password}</Typography> 
-                <Button
-                  type="submit"
-                  fullWidth
-                  variant="contained"
-                  color="primary"
-                  className={classes.submit}
-                >
-                  Sign In
+          <form className={classes.form} noValidate onSubmit={this.onSubmit}>
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              id="email"
+              label="Email Address"
+              name="email"
+              autoComplete="email"
+              autoFocus
+              onChange={this.onChange}
+            />
+            <label htmlFor="email"></label>
+            <Typography variant="h8" color="error">{errors.email}</Typography>
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              name="password"
+              label="Password"
+              type="password"
+              id="password"
+              autoComplete="current-password"
+              onChange={this.onChange}
+            />
+            <label htmlFor="password"></label>
+            <Typography variant="h8" color="error">{errors.password}</Typography>
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="primary"
+              className={classes.submit}
+            >
+              Sign In
                 </Button>
-                <Grid container justify="center">
-                  
-                  <Grid item>
-                    <Link href="/register" variant="body2">
-                      {"Don't have an account? Sign Up"}
-                    </Link>
-                  </Grid>
-                </Grid>
-              </form>
-            </div>
-            <Box mt={8}>
-              <Copyright />
-            </Box>
-          </Container>
-        );
-    }
+            <Grid container justify="center">
+              <Grid item>
+                <Link href="/register" variant="body2">
+                  {"Don't have an account? Sign Up"}
+                </Link>
+              </Grid>
+            </Grid>
+          </form>
+        </div>
+        <Box mt={8}>
+          <Copyright />
+        </Box>
+      </Container>
+    );
+  }
 }
 Login.propTypes = {
   loginUser: PropTypes.func.isRequired,
@@ -165,4 +165,4 @@ const mapStateToProps = state => ({
   errors: state.errors
 });
 
-export default connect(mapStateToProps,{ loginUser })(withStyles(useStyles)(Login));
+export default connect(mapStateToProps, { loginUser })(withStyles(useStyles)(Login));

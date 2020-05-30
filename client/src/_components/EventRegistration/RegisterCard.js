@@ -1,3 +1,6 @@
+/*
+ * Component is responsible for integration all forms and submiting form to server.
+ */
 import React, { Component } from 'react';
 import Paper from '@material-ui/core/Paper';
 import Stepper from '@material-ui/core/Stepper';
@@ -14,7 +17,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { registerEvent } from "../../_actions/usersActions";
 import Alert from '@material-ui/lab/Alert';
-import {Copyright} from '../Other/Footer';
+import { Copyright } from '../Other/Footer';
 const useStyles = theme => ({
   layout: {
     width: 'auto',
@@ -95,9 +98,7 @@ class RegisterCard extends Component {
   handleNext = (e) => {
     this.setState({ "activeStep": this.state.activeStep + 1 })
     if (this.state.activeStep === 2) {
-      console.log(this.state.activeStep)
       e.preventDefault();
-
       const userData = {
         email: this.state.email,
         fullName: this.state.fullName,
@@ -117,14 +118,12 @@ class RegisterCard extends Component {
   handleBack = (e) => {
     this.setState({ "activeStep": this.state.activeStep - 1 })
   };
- 
-  onChange = (e) => {
-    console.log(e.target.id)
 
+  onChange = (e) => {
     this.setState({ [e.target.id]: e.target.value });
-    if(e.target.id==="registrationType" && e.target.value==="Self")
-    this.setState({numberOfTickets:"1"})
-    
+    if (e.target.id === "registrationType" && e.target.value === "Self")
+      this.setState({ numberOfTickets: "1" })
+
 
   };
   getStepContent(step) {
@@ -144,33 +143,32 @@ class RegisterCard extends Component {
   render() {
 
     const { classes } = this.props;
-    
-
-
-
     const steps = ['Basic Details', 'Event details', 'Review your order'];
-    //issue
-    const { errors } = this.state.errors;
-    const { registrationID } = this.state.registrationID;
-    console.log("my errors:", errors, "registrationID", registrationID)
+
     function Greeting(state) {
-      //const {state1} = state;
-      //console.log(state,"232323")
-      if (state.state.errors.hasOwnProperty("error") || Object.keys(state.state.errors).length>0) {
-        return <Alert severity="error">Something Went Wrong. <br></br>
-      Error Message :  <b>{state.state.errors.error}<br></br>
-      {state.state.errors.name}<br></br>
-      {state.state.errors.mobile}<br></br>
-      {state.state.errors.email}<br></br>{
-      state.state.errors.registrationType}</b></Alert>;
+      if (state.state.errors.hasOwnProperty("error") || Object.keys(state.state.errors).length > 0) {
+        return <Alert severity="error">
+          Something Went Wrong. <br></br>
+                  Error Message :
+                  <b>{state.state.errors.error}<br></br>
+            {state.state.errors.name}<br></br>
+            {state.state.errors.mobile}<br></br>
+            {state.state.errors.email}<br></br>{
+              state.state.errors.registrationType}
+          </b>
+        </Alert>;
       }
-      return <Alert severity="success">Thanks for showing interest in event. <br></br>Please note your registration number : &nbsp;
-       <b>{state.state.registrationID.registrationID}</b></Alert>;
+      return <Alert severity="success">
+        Thanks for showing interest in event. <br></br>
+                Please note your registration number : &nbsp;
+              <b>{state.state.registrationID.registrationID}</b>
+        <br></br>
+              We have sent an email to your registered email. Please check your mail inbox.
+      </Alert>;
     }
     let activeStep = this.state.activeStep;
     return (
       <React.Fragment>
-
         <main className={classes.layout}>
           <Paper className={classes.paper}>
             <Typography component="h1" variant="h4" align="center">
@@ -191,11 +189,9 @@ class RegisterCard extends Component {
                 </Typography>
                   <Typography variant="subtitle1">
                     <Greeting state={this.props} />
-
                     <Link href="/" to={{ pathname: `/` }} trim="trim">
                       Home
                 </Link>
-
                   </Typography>
                 </React.Fragment>
               ) : (
