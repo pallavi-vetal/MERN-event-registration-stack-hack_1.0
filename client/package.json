@@ -53,7 +53,7 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:3007",
+  "proxy": "https://stackhack-by-pallavi-and-omkar.herokuapp.com:3007",
   "description": "Created for HackerEarth FullStack development challenge powered by UpSkills.",
   "main": "index.js",
   "devDependencies": {},
