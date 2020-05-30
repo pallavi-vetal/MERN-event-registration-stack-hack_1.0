@@ -4,8 +4,8 @@ import Link from '@material-ui/core/Link';
 import Box from '@material-ui/core/Box';
 export const Copyright = ()=> {
     return (
-        <Box pt={4}>
-        
+        <Box pt={6}>
+        <p align="center">For Any queries, please drop an email to <b>teamstackhackpo@gmail.com</b></p>
       <Typography variant="body2" color="textSecondary" align="center">
         {'Copyright © '}
         <Link color="inherit" href="https://material-ui.com/">

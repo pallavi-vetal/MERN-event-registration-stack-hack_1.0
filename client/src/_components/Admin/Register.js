@@ -1,3 +1,6 @@
+/*
+ * Admin Registration Page --- Secret code is secret
+ */
 import React, { Component } from "react";
 import { withStyles } from "@material-ui/core/styles";
 import Avatar from '@material-ui/core/Avatar';
@@ -12,29 +15,29 @@ import Container from '@material-ui/core/Container';
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { registerUser } from "../../_actions/usersActions";
-import {Copyright} from '../Other/Footer';
+import { Copyright } from '../Other/Footer';
 import VerticalNav from '../Navigation/VerticalNav';
 const useStyles = theme => ({
-    paper: {
-        marginTop: theme.spacing(10),
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-      },
-      avatar: {
-        margin: theme.spacing(1),
-        backgroundColor: theme.palette.secondary.main,
-      },
-      form: {
-        width: '100%', // Fix IE 11 issue.
-        marginTop: theme.spacing(3),
-      },
-      submit: {
-        margin: theme.spacing(3, 0, 2),
-      },
-  });
-  
-class Register extends Component{
+  paper: {
+    marginTop: theme.spacing(10),
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+  avatar: {
+    margin: theme.spacing(1),
+    backgroundColor: theme.palette.secondary.main,
+  },
+  form: {
+    width: '100%',
+    marginTop: theme.spacing(3),
+  },
+  submit: {
+    margin: theme.spacing(3, 0, 2),
+  },
+});
+
+class Register extends Component {
   constructor() {
     super();
     this.state = {
@@ -42,17 +45,16 @@ class Register extends Component{
       email: "",
       password: "",
       password2: "",
-      adminPassCode:"",
-      errors:{}
+      adminPassCode: "",
+      errors: {}
     };
   }
 
   componentDidMount() {
-    // If logged in and user navigates to Register page, should redirect them to dashboard
     if (this.props.auth.isAuthenticated) {
       this.props.history.push("/home");
     }
-    
+
   }
 
   componentWillReceiveProps(nextProps) {
@@ -63,7 +65,7 @@ class Register extends Component{
     }
   }
 
-  
+
   onChange = e => {
     this.setState({ [e.target.id]: e.target.value });
   };
@@ -75,111 +77,110 @@ class Register extends Component{
       name: this.state.name,
       email: this.state.email,
       password: this.state.password,
-      adminPassCode:this.state.adminPassCode
+      adminPassCode: this.state.adminPassCode
     };
 
     this.props.registerUser(newUser, this.props.history);
   };
 
-    render(){
-        const {classes} = this.props;
-        const {errors}  = this.state;
-        console.log("errors:",errors);
-        //this.setState({ selectedFile: event.target.files[0] }); 
-        return(
-            <Container component="main" maxWidth="xs">
-              <VerticalNav />
-      <CssBaseline />
-      <div className={classes.paper}>
-        <Avatar className={classes.avatar}>
-          <LockOutlinedIcon />
-        </Avatar>
-        <Typography component="h1" variant="h5">
-          Sign up
+  render() {
+    const { classes } = this.props;
+    const { errors } = this.state;
+
+    return (
+      <Container component="main" maxWidth="xs">
+        <VerticalNav />
+        <CssBaseline />
+        <div className={classes.paper}>
+          <Avatar className={classes.avatar}>
+            <LockOutlinedIcon />
+          </Avatar>
+          <Typography component="h1" variant="h5">
+            Sign up
         </Typography>
-        <form className={classes.form} noValidate onSubmit={this.onSubmit}>
-          <Grid container spacing={2}>
-            <Grid item xs={12} sm={12}>
-              <TextField
-                autoComplete="fname"
-                name="firstName"
-                variant="outlined"
-                required
-                fullWidth
-                id="name"
-                label="Full Name"
-                autoFocus
-                onChange = {this.onChange}
-              />
-              <label htmlFor="name"></label>
-        <Typography variant="h8" color="error">{errors.name}</Typography> 
-            </Grid>
-          
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="email"
-                label="Email Address"
-                name="email"
-                autoComplete="email"
-                onChange = {this.onChange}
-              />
-              <label htmlFor="email"></label>
-        <Typography variant="h8" color="error">{errors.email}{errors.error}</Typography>
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                name="password"
-                label="Password"
-                type="password"
-                id="password"
-                autoComplete="current-password"
-                onChange = {this.onChange}
-              />
-              <label htmlFor="password"></label>
-        <Typography variant="h8" color="error">{errors.password}</Typography> 
-            </Grid>
-            <Grid item xs={12} sm={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="adminPassCode"
-                label="Admin Pass Code"
-                name="adminPassCode"
-                autoComplete="adminPassCode"
-                onChange = {this.onChange}
-              />
+          <form className={classes.form} noValidate onSubmit={this.onSubmit}>
+            <Grid container spacing={2}>
+              <Grid item xs={12} sm={12}>
+                <TextField
+                  autoComplete="fname"
+                  name="firstName"
+                  variant="outlined"
+                  required
+                  fullWidth
+                  id="name"
+                  label="Full Name"
+                  autoFocus
+                  onChange={this.onChange}
+                />
+                <label htmlFor="name"></label>
+                <Typography variant="h8" color="error">{errors.name}</Typography>
               </Grid>
-           </Grid>
-           <Typography variant="h8" color="error">{errors.adminPassCode}</Typography> 
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-          >
-            Sign Up
-          </Button>
-          <Grid container justify="center">
-            <Grid item alignItems="flex-center">
-              <Link  href="/login" variant="body2" align="center">
-                Already have an admin account? Sign in
-              </Link>
+
+              <Grid item xs={12}>
+                <TextField
+                  variant="outlined"
+                  required
+                  fullWidth
+                  id="email"
+                  label="Email Address"
+                  name="email"
+                  autoComplete="email"
+                  onChange={this.onChange}
+                />
+                <label htmlFor="email"></label>
+                <Typography variant="h8" color="error">{errors.email}{errors.error}</Typography>
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  variant="outlined"
+                  required
+                  fullWidth
+                  name="password"
+                  label="Password"
+                  type="password"
+                  id="password"
+                  autoComplete="current-password"
+                  onChange={this.onChange}
+                />
+                <label htmlFor="password"></label>
+                <Typography variant="h8" color="error">{errors.password}</Typography>
+              </Grid>
+              <Grid item xs={12} sm={12}>
+                <TextField
+                  variant="outlined"
+                  required
+                  fullWidth
+                  id="adminPassCode"
+                  label="Admin Pass Code"
+                  name="adminPassCode"
+                  autoComplete="adminPassCode"
+                  onChange={this.onChange}
+                />
+              </Grid>
             </Grid>
-          </Grid>
-        </form>
-      </div>
-     <Copyright/>
-    </Container>
-        );
-    }
+            <Typography variant="h8" color="error">{errors.adminPassCode}</Typography>
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="primary"
+              className={classes.submit}
+            >
+              Sign Up
+          </Button>
+            <Grid container justify="center">
+              <Grid item alignItems="flex-center">
+                <Link href="/login" variant="body2" align="center">
+                  Already have an admin account? Sign in
+              </Link>
+              </Grid>
+            </Grid>
+          </form>
+        </div>
+        <Copyright />
+      </Container>
+    );
+  }
 }
 Register.propTypes = {
   registerUser: PropTypes.func.isRequired,
@@ -192,4 +193,4 @@ const mapStateToProps = state => ({
   errors: state.errors
 });
 
-export default connect(mapStateToProps,{ registerUser })(withStyles(useStyles)(Register));
+export default connect(mapStateToProps, { registerUser })(withStyles(useStyles)(Register));

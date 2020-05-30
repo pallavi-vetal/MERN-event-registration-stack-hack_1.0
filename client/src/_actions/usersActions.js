@@ -1,8 +1,8 @@
-import axios from "axios";
-import setAuthToken from "../utils/setAuthToken";
-import jwt_decode from "jwt-decode";
+import axios from "axios"; //axios to create GET/POST request to server
+import setAuthToken from "../utils/setAuthToken"; //require for jwt authentication token
+import jwt_decode from "jwt-decode"; //require to decode jwt token
 
-import { GET_ERRORS, SET_CURRENT_USER, USER_LOADING,REGISTER_EVENT } from "../_constants/authConst";
+import { GET_ERRORS, SET_CURRENT_USER, USER_LOADING, REGISTER_EVENT } from "../_constants/authConst";
 
 // Register User
 export const registerUser = (userData, history) => dispatch => {
@@ -23,7 +23,6 @@ export const loginUser = userData => dispatch => {
     .post("/api/user/login", userData)
     .then(res => {
       // Save to localStorage
-      //console.log(Res)
       // Set token to localStorage
       const { token } = res.data;
       localStorage.setItem("jwtToken", token);
@@ -31,7 +30,6 @@ export const loginUser = userData => dispatch => {
       setAuthToken(token);
       // Decode token to get user data
       const decoded = jwt_decode(token);
-      console.log(localStorage.getItem("jwtToken"))
       // Set current user
       dispatch(setCurrentUser(decoded));
     })
@@ -68,6 +66,8 @@ export const logoutUser = () => dispatch => {
   // Set current user to empty object {} which will set isAuthenticated to false
   dispatch(setCurrentUser({}));
 };
+
+//Submit feedback
 export const submitFeedback = (userData, history) => dispatch => {
   axios
     .post("/api/feedback", userData)
@@ -85,14 +85,11 @@ export const registerEvent = userData => dispatch => {
   axios
     .post("/api/events/registerEvent", userData)
     .then(res => {
-      // Save to localStorage
-
-      // Set token to localStorage
-      const { token } = res.data;
-      console.log(res.data);
-      localStorage.setItem("registerID", token);
       
-      console.log(res);
+      const { token } = res.data;
+      //save registerID to localStorage
+      localStorage.setItem("registerID", token);
+      //set current registration
       dispatch(setCurrentRegistration(res.data.insertedId));
     })
     .catch(err =>

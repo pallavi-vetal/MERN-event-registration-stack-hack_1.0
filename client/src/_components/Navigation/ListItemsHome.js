@@ -1,3 +1,6 @@
+/**
+ * Component provides list of left navigation menu
+ */
 import React from 'react';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';

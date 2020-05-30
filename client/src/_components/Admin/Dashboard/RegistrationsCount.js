@@ -1,3 +1,7 @@
+/*
+ * Component is responsible for rendering count of registrations and tickets.
+ * Data used : Total number of tickets sold and number of registrations made till date.
+ */
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
@@ -19,7 +23,6 @@ class RegistrationsCount extends Component {
         }
     }
     componentDidMount() {
-        // If logged in and user navigates to Register page, should redirect them to dashboard
         if (!this.props.auth.isAuthenticated) {
             this.props.history.push("/login");
         }
