@@ -1,4 +1,10 @@
 
+/**
+ * wsUser.js : This Javascipt file contains all the menthods required to deal with user registration, login.
+ * user login supports authentication using jwt and passport.
+ * It is a wrapper for user controller
+ */
+
 exports.registerUser = async (req, res) => {
     let { basicError, errorObject } = require('../utils/error');
     let { registerUser } = require('../components/user/user.presentation');

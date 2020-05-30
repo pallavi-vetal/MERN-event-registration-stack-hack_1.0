@@ -1,3 +1,7 @@
+/**
+ * routes.js : This Javascipt file contains all API endpoints routes which navigates to their respective API request.
+ */
+
 const event = require('./wsEvent');
 const user = require('./wsUser');
 

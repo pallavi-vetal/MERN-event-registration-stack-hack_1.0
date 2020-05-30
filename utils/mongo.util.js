@@ -1,3 +1,7 @@
+/**
+ * mongo.util.js : Shares common mongo client instance with entire application to perform all mongodb operations.
+ */
+
 const MongoClient = require('mongodb').MongoClient;
 const database = require('../configurations/config').database;
 const mongo_url = database.url;

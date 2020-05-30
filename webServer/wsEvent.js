@@ -1,4 +1,8 @@
 
+/**
+ * wsEvent.js : This Javascipt file contains all the menthods required to deal with event registration.
+ * It is a wrapper for event controller
+ */
 
 exports.registerEvent = async (req, res) => {
     let { basicError, errorObject } = require('../utils/error');

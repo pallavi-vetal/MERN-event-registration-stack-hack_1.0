@@ -1,15 +1,21 @@
+/**
+ * service.mail.js: mailing service initiated when user successfully register's for an event.
+ * Confirmation mail is sent, once registration succeeds.
+ */
+
 const node_mailer = require('nodemailer');
+const { email } = require('../../configurations/config');
 
 const mail_transporter = node_mailer.createTransport({
     service: 'gmail',
-    auth: { user: 'mail address of email service provider', pass: 'password of email service provider' }
+    auth: { user: email.emailId, pass: email.password }
 });
 
 exports.sendMail = (p_details) => {
     try {
         let mail_options = {
-            from: 'mail address of email service provider',
-            to: 'senders mail address',
+            from: email.emailId,
+            to: p_details.email,
             subject: 'StackHack 1.0 Event Registration.',
             html: `
         <h2> Thank you for stack hack 1.0 registration.</h2>

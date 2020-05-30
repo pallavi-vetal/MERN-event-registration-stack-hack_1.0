@@ -1,3 +1,7 @@
+/**
+ * error.js : This Javascipt shares common error object and method for an entire application's error messages 
+ */
+
 exports.basicError = (message) => {
     if (typeof message === 'string') {
         let error = new Error(message);

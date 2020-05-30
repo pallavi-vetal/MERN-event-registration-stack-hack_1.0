@@ -1,3 +1,7 @@
+/**
+ * server.js : Main file where execution starts.
+ */
+
 const express = require('express');
 const nocache = require('nocache');
 const body_parser = require('body-parser');

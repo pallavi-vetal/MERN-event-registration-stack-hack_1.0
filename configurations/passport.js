@@ -1,3 +1,7 @@
+/**
+ * passport.js: Defines authentication strategy.
+ */
+
 const mongo_util = require('../utils/mongo.util');
 const mongo_config = require('./mongo.config');
 const jwt_strategy = require('passport-jwt').Strategy;

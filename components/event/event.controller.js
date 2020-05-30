@@ -15,7 +15,6 @@ exports.registerEvent = async (p_registration_details) => {
     }
 };
 
-
 exports.uploadImage = (req, res) => {
     try {
         let { uploadImage } = require('./event.DAL');

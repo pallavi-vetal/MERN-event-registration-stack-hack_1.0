@@ -1,4 +1,8 @@
 
+/**
+ * user.validation.js : This Javascipt file contains all the required validation criteria's for valid I/O for user registration
+ */
+
 const validator = require('validator').default;
 
 exports.registerValidator = (p_data) => {
@@ -6,7 +10,7 @@ exports.registerValidator = (p_data) => {
     let errors = {};
     let only_spaces = /^\s*$/;
 
-    if (only_spaces.test(p_data.name)  || validator.isEmpty(p_data.name)) {
+    if (only_spaces.test(p_data.name) || validator.isEmpty(p_data.name)) {
         errors.name = 'Please provide name';
         bool_flag_isValid = false;
     }

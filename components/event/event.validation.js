@@ -1,4 +1,8 @@
 
+/**
+ * event.validation.js : This Javascipt file contains all the required validation criteria's for valid I/O for event registration
+ */
+
 const validator = require('validator').default;
 
 exports.eventValidator = (p_data) => {
