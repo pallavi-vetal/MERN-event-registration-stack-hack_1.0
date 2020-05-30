@@ -32,6 +32,10 @@
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0"
   },
+  "devServer": {
+    "compress": true,
+    "disableHostCheck": true
+ } ,
   "scripts": {
     "start": "react-scripts --max-old-space-size=4096 start",
     "build": "react-scripts --max-old-space-size=4096 build",

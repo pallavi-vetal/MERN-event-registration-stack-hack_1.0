@@ -13,7 +13,7 @@ const host_name = configuration.host_name;
 const routes = require('./webServer/routes');
 const fileUpload = require('express-fileupload')
 const passport = require('passport');
-
+const path = require("path")
 require('./configurations/passport')(passport);
 app.use(passport.initialize());
 
