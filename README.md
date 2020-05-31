@@ -108,6 +108,6 @@ You can refer [to the React documentation](https://reactjs.org/docs/react-dom.ht
 ## Additional Features
 Following are the additional features in this web app:
 - Jwt and Passport based authentication strategy.
-- Basic feedback submission
+- Basic feedback submission.
 - Image upload using mongoDb GridFs.
 - Email service when user registers for an event, a confirmation mail is sent on the registered email address with registration details.
