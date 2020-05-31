@@ -6,8 +6,8 @@ const dot_env = require('dotenv');
 dot_env.config();
 
 const database = {
-    url: process.env.DATABASE_URL,
-    name: process.env.DATABASE_NAME
+    url: process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/',
+    name: process.env.DATABASE_NAME || 'events'
 };
 
 const email_credentials = {
