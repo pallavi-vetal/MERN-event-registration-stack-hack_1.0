@@ -11,7 +11,9 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
 const useStyles = theme => ({
-
+root:{
+  color:"inherit"
+}
 });
 
 class Chart extends Component {

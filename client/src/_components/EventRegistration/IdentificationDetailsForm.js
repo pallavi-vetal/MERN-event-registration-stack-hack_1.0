@@ -47,7 +47,7 @@ class IdentificationDetailsForm extends Component {
         Event details
       </Typography>
       <Grid container spacing={2} xs={9} md={12} lg={12}>
-        <Grid item md={6}>
+        <Grid item xs={12} md={6}>
           <br></br>
           <FormControl className={classes.formControl}>
             <InputLabel htmlFor="age-native-simple">Registration Type</InputLabel>
@@ -56,7 +56,7 @@ class IdentificationDetailsForm extends Component {
               value={this.props.registrationType}
               onChange={this.props.onChange}
               required
-
+              color="secondary"
               inputProps={{
                 name: 'registrationType',
                 id: 'registrationType',
@@ -75,9 +75,10 @@ class IdentificationDetailsForm extends Component {
           <FormLabel>Number of tickets</FormLabel>
           <TextField required id="numberOfTickets"
             name="numberOfTickets"
-            vaule={this.props.state1.numberOfTickets}
+            value={this.props.state1.numberOfTickets}
             onChange={this.props.onChange}
             placeholder={numbertick}
+            color="secondary"
             fullWidth
           />
         </Grid>

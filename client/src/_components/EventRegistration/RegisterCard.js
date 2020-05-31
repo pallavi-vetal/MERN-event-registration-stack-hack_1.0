@@ -10,6 +10,7 @@ import Button from '@material-ui/core/Button';
 import Link from '@material-ui/core/Link';
 import Typography from '@material-ui/core/Typography';
 import BasicDetailsForm from './BasicDetailsForm';
+import clsx from 'clsx';
 import IdentificationDetailsForm from './IdentificationDetailsForm';
 import { withStyles } from "@material-ui/core/styles";
 import Review from './Review';
@@ -18,15 +19,105 @@ import { connect } from "react-redux";
 import { registerEvent } from "../../_actions/usersActions";
 import Alert from '@material-ui/lab/Alert';
 import { Copyright } from '../Other/Footer';
+import PersonIcon from '@material-ui/icons/Person';
+import TodayIcon from '@material-ui/icons/Today';
+import VideoLabelIcon from '@material-ui/icons/VideoLabel';
+import StepConnector from '@material-ui/core/StepConnector';
+import { makeStyles } from '@material-ui/core/styles';
+import HomeIcon from '@material-ui/icons/Home';
+import { IconButton, Badge, Tooltip } from '@material-ui/core';
+const HomeLink = props => <Link href="/" to={{ pathname: `/` }} {...props} />;
+const ColorlibConnector = withStyles({
+  alternativeLabel: {
+    top: 22,
+  },
+  active: {
+    '& $line': {
+      backgroundImage:
+        'linear-gradient( 95deg,rgb(242,113,33) 0%,rgb(233,64,87) 50%,rgb(138,35,135) 100%)',
+    },
+  },
+  completed: {
+    '& $line': {
+      backgroundImage:
+        'linear-gradient( 95deg,rgb(242,113,33) 0%,rgb(233,64,87) 50%,rgb(138,35,135) 100%)',
+    },
+  },
+  line: {
+    height: 3,
+    border: 0,
+    backgroundColor: '#eaeaf0',
+    borderRadius: 1,
+  },
+})(StepConnector);
+
+const useColorlibStepIconStyles = makeStyles({
+  root: {
+    backgroundColor: '#ccc',
+    zIndex: 1,
+    color: '#fff',
+    width: 50,
+    height: 50,
+    display: 'flex',
+    borderRadius: '50%',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  active: {
+    backgroundImage:
+      'linear-gradient( 136deg, rgb(242,113,33) 0%, rgb(233,64,87) 50%, rgb(138,35,135) 100%)',
+    boxShadow: '0 4px 10px 0 rgba(0,0,0,.25)',
+  },
+  completed: {
+    backgroundImage:
+      'linear-gradient( 136deg, rgb(242,113,33) 0%, rgb(233,64,87) 50%, rgb(138,35,135) 100%)',
+  },
+});
+
+function ColorlibStepIcon(props) {
+  const classes = useColorlibStepIconStyles();
+  const { active, completed } = props;
+
+  const icons = {
+    1: <PersonIcon />,
+    2: <TodayIcon />,
+    3: <VideoLabelIcon />,
+  };
+
+  return (
+    <div
+      className={clsx(classes.root, {
+        [classes.active]: active,
+        [classes.completed]: completed,
+      })}
+    >
+      {icons[String(props.icon)]}
+    </div>
+  );
+}
+
+ColorlibStepIcon.propTypes = {
+  /**
+   * Whether this step is active.
+   */
+  active: PropTypes.bool,
+  /**
+   * Mark the step as completed. Is passed to child components.
+   */
+  completed: PropTypes.bool,
+  /**
+   * The label displayed in the step icon.
+   */
+  icon: PropTypes.node,
+};
+
 const useStyles = theme => ({
   layout: {
     width: 'auto',
     marginLeft: theme.spacing(2),
-    marginRight: theme.spacing(2),
     [theme.breakpoints.up(600 + theme.spacing(3) * 2)]: {
       width: 600,
-      marginLeft: 'auto',
-      marginRight: 'auto',
+      
     },
     marginTop: "0%"
   },
@@ -34,7 +125,7 @@ const useStyles = theme => ({
     marginTop: theme.spacing(10),
     marginBottom: theme.spacing(2),
     padding: theme.spacing(2),
-    [theme.breakpoints.up(600 + theme.spacing(3) * 2)]: {
+    [theme.breakpoints.up(200 + theme.spacing(3) * 2)]: {
       marginTop: theme.spacing(1),
       marginBottom: theme.spacing(6),
       padding: theme.spacing(3),
@@ -42,6 +133,7 @@ const useStyles = theme => ({
   },
   stepper: {
     padding: theme.spacing(3, 0, 5),
+    iconColor: 'green' 
   },
   buttons: {
     display: 'flex',
@@ -51,6 +143,7 @@ const useStyles = theme => ({
     marginTop: theme.spacing(1),
     marginLeft: theme.spacing(1),
   },
+  
 });
 
 class RegisterCard extends Component {
@@ -143,7 +236,7 @@ class RegisterCard extends Component {
   render() {
 
     const { classes } = this.props;
-    const steps = ['Basic Details', 'Event details', 'Review your order'];
+    const steps = ['Basic Details', 'Event details', 'Review '];
 
     function Greeting(state) {
       if (state.state.errors.hasOwnProperty("error") || Object.keys(state.state.errors).length > 0) {
@@ -169,15 +262,16 @@ class RegisterCard extends Component {
     let activeStep = this.state.activeStep;
     return (
       <React.Fragment>
-        <main className={classes.layout}>
+        <main className={classes.layout} >
           <Paper className={classes.paper}>
             <Typography component="h1" variant="h4" align="center">
               Register for Event
           </Typography>
-            <Stepper activeStep={activeStep} className={classes.stepper}>
+            <Stepper activeStep={activeStep} className={classes.stepper} alternativeLabel 
+             connector={<ColorlibConnector />}>
               {steps.map((label) => (
-                <Step key={label}>
-                  <StepLabel>{label}</StepLabel>
+                <Step key={label} >
+                  <StepLabel StepIconComponent={ColorlibStepIcon} >{label}</StepLabel>
                 </Step>
               ))}
             </Stepper>
@@ -189,9 +283,13 @@ class RegisterCard extends Component {
                 </Typography>
                   <Typography variant="subtitle1">
                     <Greeting state={this.props} />
-                    <Link href="/" to={{ pathname: `/` }} trim="trim">
-                      Home
-                </Link>
+                    <IconButton aria-label="home" color="default" component={HomeLink}>
+                                <Tooltip title="Home" aria-label="">
+                                    <Badge  color="secondary">
+                                        <HomeIcon /> 
+                                    </Badge>
+                                </Tooltip>
+                            </IconButton>  
                   </Typography>
                 </React.Fragment>
               ) : (
@@ -205,7 +303,7 @@ class RegisterCard extends Component {
                       )}
                       <Button
                         variant="contained"
-                        color="primary"
+                        color="secondary"
                         onClick={this.handleNext}
                         className={classes.button}
                       >

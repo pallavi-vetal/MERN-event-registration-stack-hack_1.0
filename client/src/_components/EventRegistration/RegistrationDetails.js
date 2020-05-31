@@ -10,7 +10,6 @@ import ListItem from '@material-ui/core/ListItem';
 import Divider from '@material-ui/core/Divider';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
-import HomeNavBar from '../Navigation/HomeNavBar';
 import Container from '@material-ui/core/Container';
 import { Paper } from '@material-ui/core';
 import { fetchEventsByID, fetchImage } from "../../_actions/eventsActions";
@@ -22,6 +21,7 @@ import TableRow from '@material-ui/core/TableRow';
 import { logoutUser } from "../../_actions/usersActions";
 import Link from '@material-ui/core/Link';
 import { Copyright } from '../Other/Footer';
+import Navbar from '../Navigation/Navbar';
 const drawerWidth = 240;
 const styles = theme => ({
   root: {
@@ -84,7 +84,7 @@ const styles = theme => ({
   appBarSpacer: theme.mixins.toolbar,
   content: {
     flexGrow: 1,
-    height: '100vh',
+    height: '140vh',
     overflow: 'auto',
   },
   container: {
@@ -94,14 +94,14 @@ const styles = theme => ({
   paper: {
     padding: theme.spacing(2),
     display: 'flex',
-    overflow: 'auto',
     flexDirection: 'column',
+    height:"50%"
   },
   fixedHeight: {
-    height: 420,
+    height: 240,
   },
   section: {
-    height: "100%",
+    height: "50%",
     paddingTop: 5,
     backgroundColor: "#fff"
   },
@@ -149,7 +149,7 @@ class RegistrationDetails extends Component {
     const { classes } = this.props;
     return (
       <div className={classes.root}>
-        <HomeNavBar onClick={this.onLogoutClick} />
+      <Navbar/>
         <main className={classes.content}>
           <div className={classes.appBarSpacer} />
           <Container maxWidth="lg" className={classes.container}>

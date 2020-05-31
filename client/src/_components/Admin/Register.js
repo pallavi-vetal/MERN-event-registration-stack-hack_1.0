@@ -16,7 +16,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { registerUser } from "../../_actions/usersActions";
 import { Copyright } from '../Other/Footer';
-import VerticalNav from '../Navigation/VerticalNav';
+import Navbar from "../Navigation/Navbar";
 const useStyles = theme => ({
   paper: {
     marginTop: theme.spacing(10),
@@ -89,7 +89,7 @@ class Register extends Component {
 
     return (
       <Container component="main" maxWidth="xs">
-        <VerticalNav />
+        <Navbar />
         <CssBaseline />
         <div className={classes.paper}>
           <Avatar className={classes.avatar}>
@@ -110,6 +110,7 @@ class Register extends Component {
                   id="name"
                   label="Full Name"
                   autoFocus
+                  color="secondary"
                   onChange={this.onChange}
                 />
                 <label htmlFor="name"></label>
@@ -125,6 +126,7 @@ class Register extends Component {
                   label="Email Address"
                   name="email"
                   autoComplete="email"
+                  color="secondary"
                   onChange={this.onChange}
                 />
                 <label htmlFor="email"></label>
@@ -138,6 +140,7 @@ class Register extends Component {
                   name="password"
                   label="Password"
                   type="password"
+                  color="secondary"
                   id="password"
                   autoComplete="current-password"
                   onChange={this.onChange}
@@ -153,6 +156,7 @@ class Register extends Component {
                   id="adminPassCode"
                   label="Admin Pass Code"
                   name="adminPassCode"
+                  color="secondary"
                   autoComplete="adminPassCode"
                   onChange={this.onChange}
                 />
@@ -163,7 +167,7 @@ class Register extends Component {
               type="submit"
               fullWidth
               variant="contained"
-              color="primary"
+              color="inherit"
               className={classes.submit}
             >
               Sign Up

@@ -13,18 +13,21 @@ import Paper from '@material-ui/core/Paper';
 import Chart from './Chart';
 import RegistrationsCount from './RegistrationsCount';
 import Example from './PieChart';
-import HomeNavBar from '../../Navigation/HomeNavBar';
 import AdminFeedbacks from './AdminFeedbacks';
+import Navbar from '../../Navigation/Navbar';
+
 const styles = theme => ({
   root: {
     display: 'flex',
-    marginTop:"-1.5%"
+    marginTop:"-1.5%",
+    color:"inherit"
   },
   appBarSpacer: theme.mixins.toolbar,
   content: {
-    flexGrow: 1,
-    height: '230vh',
+    flexGrow:5,
+    height: '240vh',
     overflow: 'auto',
+    color:"inherit"
   },
   container: {
     paddingTop: theme.spacing(2),
@@ -83,7 +86,7 @@ class Dashboard extends Component {
     return ( 
       <div className={classes.root}>
      
-      <HomeNavBar onClick={this.props.onClick}/>
+      <Navbar/>
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>
@@ -107,8 +110,10 @@ class Dashboard extends Component {
               </Paper>
             </Grid>
             <Grid item xs={12} md={4} lg={12}>
-             
-                <AdminFeedbacks />
+             <Paper>
+             <AdminFeedbacks />
+             </Paper>
+               
                
             </Grid>
           </Grid>

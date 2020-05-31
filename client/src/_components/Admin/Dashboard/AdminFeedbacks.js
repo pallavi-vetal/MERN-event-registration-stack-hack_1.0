@@ -7,12 +7,10 @@ import { withStyles } from '@material-ui/core/styles';
 import MaterialTable from 'material-table'
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import HomeNavBar from '../../Navigation/HomeNavBar';
 import { logoutUser, fetchFeedbacks } from "../../../_actions/usersActions";
-import clsx from 'clsx';
 import { Link } from 'react-router-dom';
-import { Typography, Paper } from '@material-ui/core';
-const drawerWidth = 240;
+import { Typography, Container } from '@material-ui/core';
+import Navbar from '../../Navigation/Navbar';
 const useStyles = theme => ({
     depositContext: {
         flex: 1,
@@ -20,30 +18,16 @@ const useStyles = theme => ({
     root: {
         display: 'flex',
     },
-    appBar: {
-        zIndex: theme.zIndex.drawer + 1,
-        transition: theme.transitions.create(['width', 'margin'], {
-            easing: theme.transitions.easing.sharp,
-            duration: theme.transitions.duration.leavingScreen,
-        }),
-    },
-    appBarShift: {
-        marginLeft: drawerWidth,
-        width: `calc(100% - ${drawerWidth}px)`,
-        transition: theme.transitions.create(['width', 'margin'], {
-            easing: theme.transitions.easing.sharp,
-            duration: theme.transitions.duration.enteringScreen,
-        }),
-    },
+    
     appBarSpacer: theme.mixins.toolbar,
     content: {
-        flexGrow: 1,
+        flexGrow: 5,
         height: '100vh',
-        overflow: 'auto',
     },
     container: {
         paddingTop: theme.spacing(8),
         paddingBottom: theme.spacing(2),
+        width:"100%",
     },
     paper: {
         padding: theme.spacing(2),
@@ -111,12 +95,12 @@ class AdminFeedbacks extends Component {
             
 
         ];
-        const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
-        let nav;
+       
+        
         let linkText;
         console.log(window.location.pathname)
         if (window.location.pathname === "/adminfeedbacks") {
-            nav = <HomeNavBar onClick={this.onLogoutClick} />
+            
             linkText = <Link color="primary" href="/home" to={{ pathname: `/home` }}  >
                             <Typography variant="h8">Back</Typography>
                         </Link>;
@@ -129,12 +113,12 @@ class AdminFeedbacks extends Component {
         }
         return (
             <div className={classes.root}>
-                {nav}
-                <main className={classes.content}>
+                <Navbar />
+              
                     
-                    <Paper maxWidth="lg" className={classes.container}>
+                    <Container maxWidth="lg" className={classes.container}>
                         <MaterialTable
-                            className={fixedHeightPaper}
+                            
                             title="Feedbacks"
                             columns={columns}
                             data={this.props.auth.feedbacks}
@@ -148,8 +132,8 @@ class AdminFeedbacks extends Component {
                         <div>
                            {linkText}
                          </div>
-                 </Paper>
-                </main>
+                 </Container>
+              
             </div>
 
 
