@@ -42,7 +42,7 @@ const useStyles = theme => ({
         overflow: 'auto',
     },
     container: {
-        paddingTop: theme.spacing(2),
+        paddingTop: theme.spacing(8),
         paddingBottom: theme.spacing(2),
     },
     paper: {
@@ -108,6 +108,7 @@ class AdminFeedbacks extends Component {
                 ),
 
             },
+            
 
         ];
         const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
@@ -139,8 +140,10 @@ class AdminFeedbacks extends Component {
                             data={this.props.auth.feedbacks}
                             options={{
                                 sorting: true,
-                                filtering: true
+                                filtering: true,
+                                exportButton:true
                             }}
+                           
                         />
                         <div>
                            {linkText}

@@ -119,7 +119,8 @@ class RegistrationsTable extends Component {
                 data={this.props.events.events}
                 options={{
                   sorting: true,
-                  filtering: true
+                  filtering: true,
+                  exportButton:true
                 }}
               />
             </React.Fragment>
