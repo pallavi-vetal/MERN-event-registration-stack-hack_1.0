@@ -37,6 +37,7 @@
 - [Folder Structure](#folder-structure)
 - [Available Scripts](#available-scripts)
 - [Additional Features](#additional-features)
+- [API Testing](#api-testing)
 
 ## Sending Feedback
 
@@ -111,3 +112,7 @@ Following are the additional features in this web app:
 - Basic feedback submission.
 - Image upload using mongoDb GridFs.
 - Email service when user registers for an event, a confirmation mail is sent on the registered email address with registration details.
+
+## API Testing
+Please find all [API signatures here](https://www.getpostman.com/collections/8977920279c340c5ccf4)
+
