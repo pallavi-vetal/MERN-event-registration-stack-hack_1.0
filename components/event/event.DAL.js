@@ -70,7 +70,7 @@ exports.getAllRegisteredEvents = async () => {
     try {
         let dateFormat = require('dateformat');
         let mongo_client = await mongo_util.dbClient();
-        let response = await mongo_client.collection(mongo_config.collection_names.registeredEvents).find({}).toArray().then(result => {
+        let response = await mongo_client.collection(mongo_config.collection_names.registeredEvents).find({}).sort({ date: -1 }).toArray().then(result => {
             for (let i = 0; i < result.length; i++) {
                 result[i].date = dateFormat(result[i].date, `ddd dS mmm yyyy hh:MM:ss TT`);
             }
@@ -221,7 +221,7 @@ exports.getAllFeedbacks = async () => {
     try {
         let dateFormat = require('dateformat');
         let mongo_client = await mongo_util.dbClient();
-        let response = await mongo_client.collection(mongo_config.collection_names.feedbacks).find({}).toArray().then(result => {
+        let response = await mongo_client.collection(mongo_config.collection_names.feedbacks).find({}).sort({ date: -1 }).toArray().then(result => {
             for (let i = 0; i < result.length; i++) {
                 result[i].date = dateFormat(result[i].date, `ddd dS mmm yyyy hh:MM:ss TT`);
             }
