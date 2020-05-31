@@ -73,7 +73,7 @@ class Chart extends Component {
         data.push({
           "Day": value,
           "Total number of tickets sold": key.tickets,
-          "Total number of regitrations": key.count
+          "Total number of registrations": key.count
         })
       })
 
@@ -103,7 +103,7 @@ class Chart extends Component {
             <Tooltip wrapperStyle={{ top: -50, left: 200,right:300 }}/>
             <Legend />
             <Area type="monotone" dataKey="Total number of tickets sold"  stroke="#82ca9d"  stackId="1" fill="#82ca9d" activeDot={{ r: 8 }} />
-            <Area type="monotone" dataKey="Total number of regitrations" stroke="#8884d8"   stackId="1" />
+            <Area type="monotone" dataKey="Total number of registrations" stroke="#8884d8"   stackId="1" />
           </AreaChart>
         </ResponsiveContainer>
       </React.Fragment>
