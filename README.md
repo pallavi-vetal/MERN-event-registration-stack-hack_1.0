@@ -114,5 +114,5 @@ Following are the additional features in this web app:
 - Email service when user registers for an event, a confirmation mail is sent on the registered email address with registration details.
 
 ## API Testing
-Please find all [API signatures here](https://www.getpostman.com/collections/8977920279c340c5ccf4)
+Please find all [API signatures](https://www.getpostman.com/collections/8977920279c340c5ccf4) here
 
