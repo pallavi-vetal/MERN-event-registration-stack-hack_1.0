@@ -1,4 +1,5 @@
 # MERN-event-registration-stack-hack_1.0
+[https://stackhack-by-pallavi-and-omkar.herokuapp.com/](https://stackhack-by-pallavi-and-omkar.herokuapp.com/)
 ## (Application Overview)
 ## On Front End :
 
@@ -31,9 +32,11 @@
   - #### MERN (mongoDb-Express-React-Node)
 
 ## Table of Contents :
+- [View Website](https://stackhack-by-pallavi-and-omkar.herokuapp.com/)
 - [Sending Feedback](#sending-feedback)
 - [Folder Structure](#folder-structure)
 - [Available Scripts](#available-scripts)
+- [Additional Features](#additional-features)
 
 ## Sending Feedback
 
@@ -101,3 +104,10 @@ See the section about [deployment](#deployment) for more information.
 By default, the generated project uses the latest version of React.
 
 You can refer [to the React documentation](https://reactjs.org/docs/react-dom.html#browser-support) for more information about supported browsers.
+
+## Additional Features
+Following are the additional features in this web app:
+- Jwt and Passport based authentication strategy.
+- Basic feedback submission
+- Image upload using mongoDb GridFs.
+- Email service when user registers for an event, a confirmation mail is sent on the registered email address with registration details.
