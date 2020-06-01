@@ -16,8 +16,9 @@ import Container from '@material-ui/core/Container';
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { loginUser } from "../../_actions/usersActions";
-import VerticalNav from '../Navigation/VerticalNav';
 import { Copyright } from '../Other/Footer';
+import NavBar from "../Navigation/Navbar";
+
 const useStyles = theme => ({
   margin: {
     margin: theme.spacing(1),
@@ -91,7 +92,7 @@ class Login extends Component {
     const { errors } = this.state;
     return (
       <Container component="main" maxWidth="xs">
-        <VerticalNav />
+       <NavBar/>
         <CssBaseline />
         <div className={classes.paper}>
           <Avatar className={classes.avatar}>
@@ -111,6 +112,7 @@ class Login extends Component {
               name="email"
               autoComplete="email"
               autoFocus
+              color="secondary"
               onChange={this.onChange}
             />
             <label htmlFor="email"></label>
@@ -124,6 +126,7 @@ class Login extends Component {
               label="Password"
               type="password"
               id="password"
+              color="secondary"
               autoComplete="current-password"
               onChange={this.onChange}
             />
@@ -133,7 +136,7 @@ class Login extends Component {
               type="submit"
               fullWidth
               variant="contained"
-              color="primary"
+              color="#f48fb1"
               className={classes.submit}
             >
               Sign In

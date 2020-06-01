@@ -12,12 +12,13 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { submitFeedback } from "../../_actions/usersActions";
 import SendIcon from '@material-ui/icons/Send';
-import { green, red } from '@material-ui/core/colors';
-import HomeNavBar from "../Navigation/VerticalNav";
+import { blue, red } from '@material-ui/core/colors';
+import NavBar from "../Navigation/Navbar";
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import SnackbarContent from '@material-ui/core/SnackbarContent';
 import { Copyright } from '../Other/Footer';
 import clsx from 'clsx';
+import InfoIcon from "@material-ui/icons/Info";
 const useStyles = theme => ({
 
   paper: {
@@ -39,7 +40,7 @@ const useStyles = theme => ({
     margin: theme.spacing(3, 0, 2),
   },
   success: {
-    backgroundColor: green[600],
+    backgroundColor: blue[700],
     opacity: 0.9,
     marginRight: theme.spacing(1),
   },
@@ -143,7 +144,7 @@ class Feedback extends Component {
     const { errors } = this.state;
     return (
       <div  >
-        <HomeNavBar onClick={this.onLogoutClick} />
+       <NavBar />
         <Container component="main" maxWidth="xs" >
           <div className={classes.snack} >
             {this.state.iserror && (<div>
@@ -153,7 +154,7 @@ class Feedback extends Component {
                 aria-describedby="feedback-snackbar"
                 message={
                   <span id="feedback-snackbar" className={classes.message}>
-                    <CheckCircleIcon className={clsx(classes.icon, classes.iconVariant)} />
+                    <InfoIcon className={clsx(classes.icon, classes.iconVariant)} />
                     {"Please Check errors!"}
                   </span>
                 }
@@ -188,6 +189,7 @@ class Feedback extends Component {
                     name="name"
                     variant="outlined"
                     required
+                    color="secondary"
                     fullWidth
                     id="name"
                     label="Your Name"
@@ -203,6 +205,7 @@ class Feedback extends Component {
                   <TextField
                     autoComplete="email"
                     name="email"
+                    color="secondary"
                     variant="outlined"
                     required
                     fullWidth
@@ -219,6 +222,7 @@ class Feedback extends Component {
                   <TextField
                     autoComplete="feedback"
                     name="feedback"
+                    color="secondary"
                     variant="outlined"
                     required
                     fullWidth
@@ -238,7 +242,7 @@ class Feedback extends Component {
                 type="submit"
                 fullWidth
                 variant="contained"
-                color="primary"
+                color="inherit"
                 className={classes.submit}
                 startIcon={<SendIcon />}
               >

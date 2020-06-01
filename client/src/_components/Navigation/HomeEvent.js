@@ -1,7 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import RegisterCard from '../EventRegistration/RegisterCard';
-import VerticalNav from './VerticalNav';
+import NavBar from "./Navbar";
 const drawerWidth = 240;
 
 const useStyles = makeStyles(theme => ({
@@ -72,7 +72,7 @@ export default function HomeEvent() {
   return (
     <div className={classes.root}>
       
-      <VerticalNav />
+      <NavBar />
       <main className={classes.content}>
         <div className={classes.toolbar} />
         <RegisterCard />

@@ -16,6 +16,7 @@ import About from "./_components/Other/About";
 import RegistrationsTable from './_components/Admin/Dashboard/RegistrationsTable';
 import HomeEvent from './_components/Navigation/HomeEvent';
 import AdminFeedbacks from './_components/Admin/Dashboard/AdminFeedbacks';
+
 if (localStorage.jwtToken) {
   // Set auth token header auth
   const token = localStorage.jwtToken;
@@ -34,6 +35,7 @@ if (localStorage.jwtToken) {
   }
 }
 class App extends Component{
+ 
   render(){
     return (
       <Provider store={store}> 

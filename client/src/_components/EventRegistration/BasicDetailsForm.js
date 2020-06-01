@@ -39,7 +39,8 @@ class BasicDetailsForm extends Component {
         <Typography variant="h6" gutterBottom>
           Basic Details
             </Typography>
-        <Grid container spacing={2} xs={9} md={12} lg={12} >
+        <Grid container spacing={2} xs={12} md={12} lg={12} >
+          <br></br>
           <Grid item xs={12}>
             <TextField
               required
@@ -47,6 +48,7 @@ class BasicDetailsForm extends Component {
               name="fullName"
               label="Full Name"
               fullWidth
+              color="secondary"
               autoComplete="fullName"
               onChange={this.props.onChange}
             />
@@ -58,6 +60,7 @@ class BasicDetailsForm extends Component {
               name="mobile"
               label="Mobile No"
               fullWidth
+              color="secondary"
               autoComplete="mobile"
               onChange={this.props.onChange}
             />
@@ -69,6 +72,7 @@ class BasicDetailsForm extends Component {
               name="email"
               label="Email ID"
               fullWidth
+              color="secondary"
               autoComplete="email"
               onChange={this.props.onChange}
             />

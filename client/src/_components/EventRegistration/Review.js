@@ -13,6 +13,7 @@ import Avatar from '@material-ui/core/Avatar';
 import { fetchImage } from "../../_actions/eventsActions";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import { Grid } from '@material-ui/core';
 const styles = (theme) => ({
   listItem: {
     padding: theme.spacing(1, 0),
@@ -64,10 +65,10 @@ class Review extends Component {
         <Typography variant="h6" gutterBottom>
           Registration summary
       </Typography>
-            
+      <Grid container spacing={2} xs={12} md={12} lg={12} >     
         <TableContainer >
           <Table className={classes.table} aria-label="custom pagination table" >
-            <TableBody>
+            <TableBody >
               <TableRow>
               <TableCell component="th" scope="row">
               <Avatar alt="Identification document" variant="rounded" src={this.state.img} className={classes.avatar} />
@@ -113,14 +114,10 @@ class Review extends Component {
                   {this.props.state1.numberOfTickets}
                 </TableCell>
               </TableRow>
-
-
-
-
             </TableBody>
-
           </Table>
         </TableContainer>
+        </Grid>
         <br></br>
      
       </React.Fragment>

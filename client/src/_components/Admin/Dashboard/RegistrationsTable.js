@@ -10,10 +10,10 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import TouchAppIcon from '@material-ui/icons/TouchApp';
-import HomeNavBar from '../../Navigation/HomeNavBar';
 import Container from '@material-ui/core/Container';
 import { logoutUser } from "../../../_actions/usersActions";
 import { Copyright } from '../../Other/Footer';
+import Navbar from '../../Navigation/Navbar';
 const drawerWidth = 240;
 const useStyles = theme => ({
   depositContext: {
@@ -39,13 +39,14 @@ const useStyles = theme => ({
   },
   appBarSpacer: theme.mixins.toolbar,
   content: {
-    flexGrow: 1,
+    flexGrow: 5,
     height: '100vh',
-    overflow: 'auto',
+
   },
   container: {
     paddingTop: theme.spacing(2),
     paddingBottom: theme.spacing(2),
+    marginLeft:"0px"
   },
 });
 class RegistrationsTable extends Component {
@@ -108,10 +109,10 @@ class RegistrationsTable extends Component {
     ];
     return (
       <div className={classes.root}>
-        <HomeNavBar onClick={this.onLogoutClick} />
+        <Navbar />
         <main className={classes.content}>
           <div className={classes.appBarSpacer} />
-          <Container maxWidth="lg" className={classes.container}>
+          <Container maxWidth="lg" className={classes.container} >
             <React.Fragment>
               <MaterialTable
                 title="Registration List"
