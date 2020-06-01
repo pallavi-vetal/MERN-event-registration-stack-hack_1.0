@@ -170,8 +170,19 @@ exports.getTimeSeriesDataForCurrentMonth = async () => {
         let mongo_client = await mongo_util.dbClient();
         let month_list = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
 
+        let from_date = new Date();
+        from_date = from_date.setMonth(from_date.getMonth());
+        from_date = new Date(from_date).setDate(1);
+
+        let to_date = new Date(from_date).setMonth(new Date(from_date).getMonth() + 1);
+
+        from_date = new Date(from_date).setHours(00, 00, 00, 00);
+        to_date = new Date(to_date).setHours(00, 00, 00, 00);
+
         let response = await mongo_client.collection(mongo_config.collection_names.registeredEvents).aggregate([
             {
+                '$match': { 'date': { '$gte': new Date(from_date), '$lt': new Date(to_date) } }
+            }, {
                 '$group': {
                     '_id': {
                         'day': { '$dayOfMonth': '$date' },
