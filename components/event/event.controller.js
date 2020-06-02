@@ -73,10 +73,10 @@ exports.getImageById = (req, res) => {
     }
 };
 
-exports.getTimeSeriesDataForCurrentMonth = async () => {
+exports.getTimeSeriesDataForCurrentMonth = async (month) => {
     try {
         let { getTimeSeriesDataForCurrentMonth } = require('./event.DAL');
-        let result = await getTimeSeriesDataForCurrentMonth();
+        let result = await getTimeSeriesDataForCurrentMonth(month);
         return (result);
     } catch (error) {
         throw error;

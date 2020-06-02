@@ -120,7 +120,7 @@ exports.getTimeSeriesDataForCurrentMonth = async (req, res) => {
     let { getTimeSeriesDataForCurrentMonth } = require('../components/event/event.presention');
 
     try {
-        let result = await getTimeSeriesDataForCurrentMonth();
+        let result = await getTimeSeriesDataForCurrentMonth(req.body.id);
         res.status(200).json(result);
     } catch (error) {
         error.status = 400;

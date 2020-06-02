@@ -10,10 +10,10 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import TouchAppIcon from '@material-ui/icons/TouchApp';
-import Container from '@material-ui/core/Container';
 import { logoutUser } from "../../../_actions/usersActions";
 import { Copyright } from '../../Other/Footer';
 import Navbar from '../../Navigation/Navbar';
+import { TableContainer, Table, TableBody, TableRow, TableCell, Typography, Paper } from '@material-ui/core';
 const drawerWidth = 240;
 const useStyles = theme => ({
   depositContext: {
@@ -39,14 +39,14 @@ const useStyles = theme => ({
   },
   appBarSpacer: theme.mixins.toolbar,
   content: {
-    flexGrow: 5,
-    height: '100vh',
+    flexGrow: 6,
+    height: '120vh',
 
   },
   container: {
-    paddingTop: theme.spacing(2),
-    paddingBottom: theme.spacing(2),
-    marginLeft:"0px"
+    paddingTop: theme.spacing(0),
+    paddingBottom: theme.spacing(0),
+    marginLeft:"-4%"
   },
 });
 class RegistrationsTable extends Component {
@@ -59,7 +59,7 @@ class RegistrationsTable extends Component {
       this.props.history.push("/login");
     }
     this.props.fetchEvents();
-
+    
 
   }
   onLogoutClick = e => {
@@ -75,11 +75,18 @@ class RegistrationsTable extends Component {
         field: "_id",
         render: rowData => (
           <Link href="/registration" to={{ pathname: `/registration/${rowData["_id"]}` }} trim="trim">
-            <span><TouchAppIcon /><small> {rowData["_id"]}</small></span>
+            <span><TouchAppIcon /></span>
           </Link>
 
         ),
-
+        cellStyle: {
+          width: 5,
+          maxWidth: 5
+        },
+        headerStyle: {
+          width:5,
+          maxWidth: 5
+        }   
       },
       {
         title: "Full Name",
@@ -87,6 +94,14 @@ class RegistrationsTable extends Component {
         render: rowData => (
           rowData['fullName']
         ),
+        cellStyle: {
+          width: 5,
+          maxWidth: 5
+        },
+        headerStyle: {
+          width:5,
+          maxWidth: 5
+        }   
 
       },
       {
@@ -95,6 +110,14 @@ class RegistrationsTable extends Component {
         render: rowData => (
           rowData["registrationType"]
         ),
+        cellStyle: {
+          width: 5,
+          maxWidth: 5
+        },
+        headerStyle: {
+          width:5,
+          maxWidth: 5
+        }   
 
       },
       {
@@ -103,6 +126,14 @@ class RegistrationsTable extends Component {
         render: rowData => (
           rowData['date']
         ),
+        cellStyle: {
+          width: 5,
+          maxWidth: 5
+        },
+        headerStyle: {
+          width:5,
+          maxWidth: 5
+        }   
 
       },
 
@@ -112,7 +143,7 @@ class RegistrationsTable extends Component {
         <Navbar />
         <main className={classes.content}>
           <div className={classes.appBarSpacer} />
-          <Container maxWidth="lg" className={classes.container} >
+          <Paper maxWidth="lg" className={classes.container} >
             <React.Fragment>
               <MaterialTable
                 title="Registration List"
@@ -123,10 +154,84 @@ class RegistrationsTable extends Component {
                   filtering: true,
                   exportButton:true
                 }}
+                detailPanel={[
+                  {
+                    tooltip: 'Show Registration Details',
+                    render: rowData => {
+                      return (
+                        <TableContainer >
+                    <Table className={classes.table} aria-label="custom pagination table"  >
+                      <TableBody>
+                        <TableRow>
+                          <TableCell component="th">
+                            <Typography variant="h6" gutterBottom>
+                              Registration ID : <small>{rowData._id}</small>
+                            </Typography>
+                          </TableCell>
+                        </TableRow>
+                        <TableRow key={this.props.events.eventID.fullName}>
+                          <TableCell component="th" scope="row">
+                            <b>Name</b>
+                          </TableCell>
+                          <TableCell component="td" scope="row">
+                            {rowData.fullName}
+                          </TableCell>
+                        </TableRow>
+                        <TableRow key={rowData.mobile}>
+                          <TableCell component="th" scope="row">
+                            <b>Mobile No</b>
+                          </TableCell>
+                          <TableCell component="td" scope="row">
+                            {rowData.mobile}
+                          </TableCell>
+                        </TableRow>
+                        <TableRow key={rowData.email}>
+                          <TableCell component="th" scope="row">
+                            <b>Email ID</b>
+                          </TableCell>
+                          <TableCell component="td" scope="row">
+                            {rowData.email}
+                          </TableCell>
+                        </TableRow>
+                        <TableRow key={rowData.registrationType}>
+                          <TableCell component="th" scope="row">
+                            <b>Registration Type</b>
+                          </TableCell>
+                          <TableCell component="td" scope="row">
+                            {rowData.registrationType}
+                          </TableCell>
+                        </TableRow>
+                        <TableRow key={rowData.numberOfTickets}>
+                          <TableCell component="th" scope="row">
+                            <b>Number of Tickets</b>
+                          </TableCell>
+                          <TableCell component="td" scope="row">
+                            {rowData.numberOfTickets}
+                          </TableCell>
+                        </TableRow>
+                      </TableBody>
+                    </Table>
+                  
+                  </TableContainer>
+                      )
+                      
+                    },
+                    cellStyle: {
+                      width: 1,
+                      maxWidth: 1
+                    },
+                    headerStyle: {
+                      width:1,
+                      maxWidth: 1
+                    }   
+                  },
+                  
+                ]}
               />
             </React.Fragment>
-            <Copyright />
-          </Container>
+          
+          </Paper>
+          <Copyright />
         </main>
       </div>
 

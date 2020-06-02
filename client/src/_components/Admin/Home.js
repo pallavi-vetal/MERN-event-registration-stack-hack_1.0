@@ -7,8 +7,6 @@ import { connect } from "react-redux";
 import { logoutUser } from "../../_actions/usersActions";
 import { withStyles } from "@material-ui/core/styles";
 import Dashboard from './Dashboard/Dashboard'
-import { Copyright } from '../Other/Footer';
-import Box from '@material-ui/core/Box';
 
 const styles = theme => ({
   snack: {
@@ -46,9 +44,7 @@ class Home extends Component {
       <div >
         <br></br>
         <Dashboard onClick={this.onLogoutClick} />
-        <Box mt={6}>
-          <Copyright />
-        </Box>
+      
       </div>
     );
   }

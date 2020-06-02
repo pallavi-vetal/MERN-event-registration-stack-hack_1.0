@@ -180,12 +180,12 @@ class NavBar extends Component {
                         <MenuItem component={RegistrationsLink} color="inherit">
                             <IconButton aria-label="show registrations" color="inherit">
                                 <Badge badgeContent={this.state.countRegistrations} color="secondary">
-                                    <NotificationsIcon />
+                                    <PermContactCalendarIcon />
                                 </Badge>
                             </IconButton>
                             <p>Registrations</p>
                         </MenuItem>
-                        <MenuItem omponent={AdminFeedbackLink} color="inherit">
+                        <MenuItem component={AdminFeedbackLink} color="inherit">
                             <IconButton aria-label="show 11 new notifications" color="inherit">
                                 <Badge badgeContent={11} color="secondary">
                                     <NotificationsIcon />
@@ -283,14 +283,14 @@ class NavBar extends Component {
                             <IconButton aria-label="show 4 new registrations" color="inherit" component={RegistrationsLink}>
                                 <Tooltip title="Total Registrations Count...See more" aria-label="show 4 new registrations">
                                     <Badge badgeContent={this.state.countRegistrations} color="secondary">
-                                        <NotificationsIcon />
+                                        <PermContactCalendarIcon />
                                     </Badge>
                                 </Tooltip>
                             </IconButton>
                             <IconButton aria-label="show 17 new feedbacks" color="inherit" component={AdminFeedbackLink}>
                                 <Tooltip title="Want to see feedbacks" aria-label="show 17 new feedbacks">
                                     <Badge badgeContent={17} color="secondary">
-                                        <PermContactCalendarIcon />
+                                        <NotificationsIcon />
                                     </Badge>
                                 </Tooltip>
                             </IconButton>  
