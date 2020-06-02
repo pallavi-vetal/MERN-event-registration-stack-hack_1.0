@@ -48,7 +48,7 @@ class RegistrationsCount extends Component {
                 </Typography>
                 <div>
                     <Link color="primary"href="/registrations" to={{pathname:`/registrations`}}  >
-                    View all registrations
+                    View all Registrations
                     </Link>
                 </div>
             </React.Fragment>

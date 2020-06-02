@@ -105,9 +105,9 @@ export const setImage = img => {
  * and tickets count on each day in current month.
  * We will use this data to render time series area graph
  */
-export const fetchTimeSeriesData = () => dispatch => {
+export const fetchTimeSeriesData = (id) => dispatch => {
   return axios
-    .get(`/api/events/month/getTimeSeriesData`)
+    .post(`/api/events/month/getTimeSeriesData`,id)
     .then(res => {
       console.log(res.data);
       return dispatch(setTimeSeriesData(res.data));

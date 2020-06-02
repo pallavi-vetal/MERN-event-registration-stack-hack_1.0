@@ -13,8 +13,8 @@ import Paper from '@material-ui/core/Paper';
 import Chart from './Chart';
 import RegistrationsCount from './RegistrationsCount';
 import Example from './PieChart';
-import AdminFeedbacks from './AdminFeedbacks';
 import Navbar from '../../Navigation/Navbar';
+import RegistrationsTable from './RegistrationsTable';
 
 const styles = theme => ({
   root: {
@@ -25,7 +25,7 @@ const styles = theme => ({
   appBarSpacer: theme.mixins.toolbar,
   content: {
     flexGrow:5,
-    height: '240vh',
+    height: '270vh',
     overflow: 'auto',
     color:"inherit"
   },
@@ -40,7 +40,7 @@ const styles = theme => ({
     flexDirection: 'column',
   },
   fixedHeight: {
-    height: 350,
+    height: 400,
   },
   
 });
@@ -110,11 +110,7 @@ class Dashboard extends Component {
               </Paper>
             </Grid>
             <Grid item xs={12} md={4} lg={12}>
-             <Paper>
-             <AdminFeedbacks />
-             </Paper>
-               
-               
+             <RegistrationsTable />
             </Grid>
           </Grid>
           

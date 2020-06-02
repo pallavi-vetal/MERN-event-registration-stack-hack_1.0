@@ -8,9 +8,9 @@ import MaterialTable from 'material-table'
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser, fetchFeedbacks } from "../../../_actions/usersActions";
-import { Link } from 'react-router-dom';
-import { Typography, Container } from '@material-ui/core';
+import { Container } from '@material-ui/core';
 import Navbar from '../../Navigation/Navbar';
+import { Copyright } from '../../Other/Footer';
 const useStyles = theme => ({
     depositContext: {
         flex: 1,
@@ -18,19 +18,20 @@ const useStyles = theme => ({
     root: {
         display: 'flex',
     },
-    
+
     appBarSpacer: theme.mixins.toolbar,
     content: {
-        flexGrow: 5,
+        flexGrow: 6,
         height: '100vh',
     },
     container: {
-        paddingTop: theme.spacing(8),
+        paddingTop: theme.spacing(2),
         paddingBottom: theme.spacing(2),
-        width:"100%",
+        width: "100%",
+        marginLeft:"-1%"
     },
     paper: {
-        padding: theme.spacing(2),
+        padding: theme.spacing(0),
         display: 'flex',
         overflow: 'auto',
         flexDirection: 'column',
@@ -66,22 +67,31 @@ class AdminFeedbacks extends Component {
                 render: rowData => (
                     rowData['name']
                 ),
+                cellStyle: {
+                    width: 5,
+                    maxWidth: 5
+                  },
+                  headerStyle: {
+                    width:5,
+                    maxWidth: 5
+                  }  
 
             },
-            {
-                title: "Email",
-                field: "email",
-                render: rowData => (
-                    rowData['email']
-                ),
-
-            },
+           
             {
                 title: "Feedback",
                 field: "feedback",
                 render: rowData => (
                     rowData["feedback"]
                 ),
+                cellStyle: {
+                    width: 20,
+                    minWidth: 20
+                  },
+                  headerStyle: {
+                    width:20,
+                    minWidth: 20
+                  }    
 
             },
             {
@@ -90,50 +100,57 @@ class AdminFeedbacks extends Component {
                 render: rowData => (
                     rowData["date"]
                 ),
-
+                cellStyle: {
+                    width: 20,
+                    maxWidth: 20
+                  },
+                  headerStyle: {
+                    width:20,
+                    maxWidth: 20
+                  }  
             },
-            
+            {
+                title: "Email",
+                field: "email",
+                render: rowData => (
+                    rowData['email']
+                ),
+                cellStyle: {
+                    width: 20,
+                    minWidth: 20
+                  },
+                  headerStyle: {
+                    width:20,
+                    minWidth: 20
+                  }  
+            },
 
         ];
-       
-        
-        let linkText;
-        console.log(window.location.pathname)
-        if (window.location.pathname === "/adminfeedbacks") {
-            
-            linkText = <Link color="primary" href="/home" to={{ pathname: `/home` }}  >
-                            <Typography variant="h8">Back</Typography>
-                        </Link>;
-        }
-        else {
-            
-            linkText =  <Link color="primary" href="/adminfeedbacks" to={{ pathname: `/adminfeedbacks` }}  >
-                            <Typography variant="h8">View all Feedbacks</Typography>
-                        </Link>;
-        }
+
+
         return (
             <div className={classes.root}>
                 <Navbar />
-              
-                    
-                    <Container maxWidth="lg" className={classes.container}>
-                        <MaterialTable
-                            
-                            title="Feedbacks"
-                            columns={columns}
-                            data={this.props.auth.feedbacks}
-                            options={{
-                                sorting: true,
-                                filtering: true,
-                                exportButton:true
-                            }}
-                           
-                        />
-                        <div>
-                           {linkText}
-                         </div>
-                 </Container>
-              
+                <main className={classes.content}>
+                    <div className={classes.appBarSpacer} />
+                    <Container maxWidth="lg" className={classes.container} >
+                        <React.Fragment>
+                            <MaterialTable
+                                title="Feedbacks"
+                                columns={columns}
+                                data={this.props.auth.feedbacks}
+                                options={{
+                                    sorting: true,
+                                    filtering: true,
+                                    exportButton: true
+                                }}
+                                width="100%"
+                                
+                            />
+                        </React.Fragment>
+                       <Copyright />
+                    </Container>
+                </main>
             </div>
 
 

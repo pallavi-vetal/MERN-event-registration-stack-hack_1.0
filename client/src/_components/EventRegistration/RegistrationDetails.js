@@ -11,7 +11,7 @@ import Divider from '@material-ui/core/Divider';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
-import { Paper } from '@material-ui/core';
+import { Paper, Hidden } from '@material-ui/core';
 import { fetchEventsByID, fetchImage } from "../../_actions/eventsActions";
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -26,6 +26,7 @@ const drawerWidth = 240;
 const styles = theme => ({
   root: {
     display: 'flex',
+   
   },
   toolbar: {
     paddingRight: 24,
@@ -92,7 +93,7 @@ const styles = theme => ({
     paddingBottom: theme.spacing(2),
   },
   paper: {
-    padding: theme.spacing(2),
+    padding: theme.spacing(0),
     display: 'flex',
     flexDirection: 'column',
     height:"50%"
@@ -159,9 +160,9 @@ class RegistrationDetails extends Component {
                 </Link>
               <List className={classes.root}>
                 <ListItem alignItems="flex-start">
-                  <ListItem>
+                <Hidden xsDown>
                     <Avatar alt="Identification document" variant="rounded" src={this.state.img} className={classes.avatar} />
-                  </ListItem>
+                  </Hidden>
                 </ListItem>
                 <ListItem>
                   <TableContainer >
