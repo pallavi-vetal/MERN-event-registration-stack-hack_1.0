@@ -3,9 +3,9 @@
 <!-- [![FVCproductions](https://avatars1.githubusercontent.com/u/4284691?v=3&s=200)](http://fvcproductions.com) -->
 
 
-# HackerEarth FullStack Challenge sponsored b UpSkills 
+# HackerEarth FullStack Challenge sponsored by UpSkills 
 
-> Theme : Event Registration Web App 
+> Theme :  [Event Registration Application ](https://www.hackerearth.com/challenges/hackathon/stackhack-v1/) 
 
 > Built user-friendly event registration web application using MERN stack
 
