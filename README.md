@@ -160,7 +160,7 @@ MERN-EVENT-REGISTRATION-STACK-HACK_1.0/
   - A local copy of this remote repository will be cloned on your local machine at specified location.
   
   ### 2. Navigate inside your local git respository you just cloned by refering step 1 by typing below command on terminal.
-  - cd MERN-event-registration-stack-hack_1.0.git
+  - cd MERN-event-registration-stack-hack_1.0
 
   ### 3. Once you are inside this repository, type the below command in terminal.
   - npm install
