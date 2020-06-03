@@ -168,14 +168,12 @@ Code
 
 > Backend Developer : Omkar Langhe
 
-
 | <a href="https://www.linkedin.com/in/pallavi-vetal-21031996/" target="_blank">**Pallavi Vetal**</a> | <a href="https://www.linkedin.com/in/omkar-langhe-787bb5134/" target="_blank">**Omkar Langhe**</a> |
 | :---: |:---:|
-| [![Pallavi Vetal](https://media-exp1.licdn.com/dms/image/C5603AQGvUOzxXZv5sg/profile-displayphoto-shrink_100_100/0?e=1596672000&v=beta&t=aMNlChdJqEkQdhsIJpwj4JBZiP3PhHaY_BZhcuXPPOY)](https://github.com/pallavi-vetal).  |
-| [![Omkar Langhe](https://media-exp1.licdn.com/dms/image/C5103AQG2ZR444IUhXA/profile-displayphoto-shrink_100_100/0?e=1596672000&v=beta&t=FMJo2tf7Ja850Xs_GdNBoCA6GZOv4d5YvNGpXi_0iBA)](https://github.com/omkarlanghe).  |
-| <a href="http://github.com/pallavi-vetal" target="_blank">`github.com/pallavi-vetal`</a> |
+| [![Pallavi Vetal](https://media-exp1.licdn.com/dms/image/C5603AQGvUOzxXZv5sg/profile-displayphoto-shrink_100_100/0?e=1596672000&v=beta&t=aMNlChdJqEkQdhsIJpwj4JBZiP3PhHaY_BZhcuXPPOY)](https://github.com/pallavi-vetal) | [![Omkar Langhe](https://media-exp1.licdn.com/dms/image/C5103AQG2ZR444IUhXA/profile-displayphoto-shrink_100_100/0?e=1596672000&v=beta&t=FMJo2tf7Ja850Xs_GdNBoCA6GZOv4d5YvNGpXi_0iBA)](https://github.com/omkarlanghe)  |
 
-<a href="http://github.com/omkarlanghe" target="_blank">`github.com/omkarlanghe`</a> |
+| <a href="http://github.com/pallavi-vetal" target="_blank">`github.com/pallavi-vetal`</a> | <a href="http://github.com/omkarlanghe" target="_blank">`github.com/omkarlanghe`</a> |
+
 
 ---
 
