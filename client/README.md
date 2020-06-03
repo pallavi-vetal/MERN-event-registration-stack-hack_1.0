@@ -165,14 +165,10 @@ Code
 
 > Frontend Developer : Pallavi Vetal
 > Backend Developer : Omkar Langhe
+| <a href="https://www.linkedin.com/in/pallavi-vetal-21031996/" target="_blank">**Pallavi Vetal**</a> | <a href="https://www.linkedin.com/in/omkar-langhe-787bb5134/" target="_blank">**Omkar Langhe**</a> | <a href="http://fvcproductions.com" target="_blank">**FVCproductions**</a> |
 
-| <a href="https://www.linkedin.com/in/pallavi-vetal-21031996/" target="_blank">**Pallavi Vetal**</a> | <a href="https://www.linkedin.com/in/omkar-langhe-787bb5134/" target="_blank">**Omkar Langhe**</a> 
-| :---: |:---:| :---:|
-| [![FVCproductions](https://avatars1.githubusercontent.com/u/4284691?v=3&s=200)](http://fvcproductions.com)    | [![FVCproductions](https://avatars1.githubusercontent.com/u/4284691?v=3&s=200)](http://fvcproductions.com) | [![FVCproductions](https://avatars1.githubusercontent.com/u/4284691?v=3&s=200)](http://fvcproductions.com)  |
-| <a href="http://github.com/fvcproductions" target="_blank">`github.com/fvcproductions`</a> | <a href="http://github.com/fvcproductions" target="_blank">`github.com/fvcproductions`</a> | <a href="http://github.com/fvcproductions" target="_blank">`github.com/fvcproductions`</a> |
-
-- You can just grab their GitHub profile image URL
-- You should probably resize their picture using `?s=200` at the end of the image URL.
+| [![Pallavi Vetal](https://media-exp1.licdn.com/dms/image/C5603AQGvUOzxXZv5sg/profile-displayphoto-shrink_100_100/0?e=1596672000&v=beta&t=aMNlChdJqEkQdhsIJpwj4JBZiP3PhHaY_BZhcuXPPOY)](https://github.com/pallavi-vetal)    | [![Omkar Langhe](https://media-exp1.licdn.com/dms/image/C5103AQG2ZR444IUhXA/profile-displayphoto-shrink_100_100/0?e=1596672000&v=beta&t=FMJo2tf7Ja850Xs_GdNBoCA6GZOv4d5YvNGpXi_0iBA)](https://github.com/omkarlanghe) | 
+| <a href="http://github.com/pallavi-vetal" target="_blank">`github.com/pallavi-vetal`</a> | <a href="http://github.com/omkarlanghe" target="_blank">`github.com/omkarlanghe`</a> | 
 
 ---
 
