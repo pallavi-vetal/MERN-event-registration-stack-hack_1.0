@@ -172,14 +172,14 @@ exports.getTimeSeriesDataForCurrentMonth = async (month) => {
 
         let from_date = new Date();
         from_date = from_date.setMonth(month);
-        console.log("month passed: ",month);
+        // console.log("month passed: ",month);
         from_date = new Date(from_date).setDate(1);
 
         let to_date = new Date(from_date).setMonth(new Date(from_date).getMonth() + 1);
 
         from_date = new Date(from_date).setHours(00, 00, 00, 00);
         to_date = new Date(to_date).setHours(00, 00, 00, 00);
-        console.log("from : ",from_date,"to : ",to_date)
+        // console.log("from : ",from_date,"to : ",to_date)
         let response = await mongo_client.collection(mongo_config.collection_names.registeredEvents).aggregate([
             {
                 '$match': { 'date': { '$gte': new Date(from_date), '$lt': new Date(to_date) } }
