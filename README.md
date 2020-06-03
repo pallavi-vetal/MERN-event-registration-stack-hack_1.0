@@ -166,7 +166,7 @@ MERN-EVENT-REGISTRATION-STACK-HACK_1.0/
   - npm install
   - This will install all the dependancies required to run backend server (i.e all npm packages, third party libraries, etc).
 
-  ### 4. Navigate to the client folder located inside MERN-event-registration-stack-hack_1.0 by typing below command on termincal.
+  ### 4. Navigate to the client folder located inside MERN-event-registration-stack-hack_1.0 by typing below command on terminal.
   - cd client
 
   ### 5. Once you are inside this repository, type the below command on terminal.
