@@ -55,6 +55,7 @@
 
 
 - [Requirements](#requirements)
+- [Sending Feedbacks](#sending-feedbacks)
 - [Features](#features)
 - [Folder Structure](#folder-structure)
 - [Running project on local machine](#Setup) 
@@ -96,7 +97,8 @@
 
 
 ---
-
+## Sending Feedbacks
+We are always open to [your feedback](https://github.com/omkarlanghe/MERN-event-registration-stack-hack_1.0/issues).
 
 
 ## Additional Features
@@ -104,7 +106,7 @@
 - Admin Dashboard : Admin is presented with intuitive dashboard containing multiple graphs giving insights on registrations and event tickets sold.
 - User Interface : User friendly and responsive is provided.
 - Feedback Service is provided to user where user can give valuable feedback about event.
-- Query mailbox : Query mailbox is provided to user to resolve any issues/queries
+- Query mailbox : Query mailbox is provided to user to resolve any issues/queries.
 
 
 ---
@@ -152,7 +154,25 @@ MERN-EVENT-REGISTRATION-STACK-HACK_1.0/
 
 ## Setup
 ```
-Code
+  1. Clone this repository:
+    - Navigate to the directory where you want to clone this repository from git command line.
+    - Once you navigate to the directory, On git command line type - git clone https://github.com/omkarlanghe/MERN-event-registration-stack-hack_1.0.git
+    - A local copy of this remote repository will be cloned on your local machine at specified location.
+  
+  2. Navigate inside your local git respository you just cloned by refering step 1 by typing below command on terminal.
+    - cd MERN-event-registration-stack-hack_1.0.git
+
+  3. Once you are inside this repository, type the below command in terminal.
+    - npm install
+    - This will install all the dependancies required to run backend server (i.e all npm packages, third party libraries, etc).
+
+  4. Navigate to the client folder located inside MERN-event-registration-stack-hack_1.0.git by typing below command on termincal.
+    - cd client
+
+  5. Once you are inside this repository, type the below command in terminal.
+    - npm install
+    - This will install all the dependancies required to run react front end (i.e all npm packages, third party libraries, etc).
+
 ```
 
 
