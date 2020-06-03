@@ -9,21 +9,20 @@
 
 > Built user-friendly event registration web application using MERN stack
 
-> TechStack Used : 
-- FrontEnd : 
+> FrontEnd : 
     - ReactJS
     - React-Redux
     - Material-UI
     - FilePond
- - BackEnd :
+> BackEnd :
     - NodeJS - Express Framework
     - bcryptjs     
     - nodemailer
     - jsonwebtoken
     - passport-jwt authentication
-- Database :
+> Database :
     - MongoDB
-- Deployment :
+> Deployment :
     - Heroku CLI
 
 
