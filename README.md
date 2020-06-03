@@ -58,7 +58,8 @@
 - [Sending Feedbacks](#sending-feedbacks)
 - [Additional Features](#features)
 - [Folder Structure](#folder-structure)
-- [Running project on local machine](#Setup) 
+- [Running project on local machine](#Setup)
+- [API Testing](#api-testing)
 - [Team](#team)
 
 
@@ -178,6 +179,8 @@ MERN-EVENT-REGISTRATION-STACK-HACK_1.0/
 
 ---
 
+## API Testing
+Please find all [API signatures](https://www.getpostman.com/collections/8977920279c340c5ccf4) here
 
 
 ## Team
