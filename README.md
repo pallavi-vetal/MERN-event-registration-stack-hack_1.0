@@ -159,17 +159,17 @@ MERN-EVENT-REGISTRATION-STACK-HACK_1.0/
   - Once you navigate to the directory, On git command line type, git clone https://github.com/omkarlanghe/MERN-event-registration-stack-hack_1.0.git
   - A local copy of this remote repository will be cloned on your local machine at specified location.
   
-  ### 2. Navigate inside your local git respository you just cloned by refering step 1 by typing below command on terminal.
+  ### 2. Navigate inside your local git respository by typing below command on terminal.
   - cd MERN-event-registration-stack-hack_1.0
 
-  ### 3. Once you are inside this repository, type the below command in terminal.
+  ### 3. Once you are inside this repository, type the below command on terminal.
   - npm install
   - This will install all the dependancies required to run backend server (i.e all npm packages, third party libraries, etc).
 
-  ### 4. Navigate to the client folder located inside MERN-event-registration-stack-hack_1.0.git by typing below command on termincal.
+  ### 4. Navigate to the client folder located inside MERN-event-registration-stack-hack_1.0 by typing below command on termincal.
   - cd client
 
-  ### 5. Once you are inside this repository, type the below command in terminal.
+  ### 5. Once you are inside this repository, type the below command on terminal.
   - npm install
   - This will install all the dependancies required to run react front end (i.e all npm packages, third party libraries, etc).
 
