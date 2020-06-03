@@ -121,7 +121,7 @@ class Feedback extends Component {
 
     await this.props.submitFeedback(newFeedback, this.props.history);
     if (!this.props.errors.name || !this.props.errors.email || !this.props.errors.feedback) {
-      this.setState({ iserror: false,isSubmit:true });
+      this.setState({ iserror: true,isSubmit:false });
       this.setState({
         name: "",
         email: "",
@@ -129,7 +129,7 @@ class Feedback extends Component {
       })
     }
     else {
-      this.setState({ iserror: true, isSubmit: false });
+      this.setState({ iserror: false, isSubmit: true });
       this.setState({
         name: "",
         email: "",
