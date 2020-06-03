@@ -10,25 +10,24 @@
 > Built user-friendly event registration web application using MERN stack
 
 > FrontEnd : 
-    - ReactJS
-    - React-Redux
-    - Material-UI
-    - FilePond
+- ReactJS
+- React-Redux
+- Material-UI
+- FilePond
 > BackEnd :
-    - NodeJS - Express Framework
-    - bcryptjs     
-    - nodemailer
-    - jsonwebtoken
-    - passport-jwt authentication
+- NodeJS - Express Framework
+- bcryptjs     
+- nodemailer
+- jsonwebtoken
+- passport-jwt authentication
 > Database :
-    - MongoDB
+- MongoDB
 > Deployment :
-    - Heroku CLI
+- Heroku CLI
 
 
 [![Build Status](http://img.shields.io/travis/badges/badgerbadgerbadger.svg?style=flat-square)](https://travis-ci.org/badges/badgerbadgerbadger) [![Coverage Status](http://img.shields.io/coveralls/badges/badgerbadgerbadger.svg?style=flat-square)](https://coveralls.io/r/badges/badgerbadgerbadger)
 
-- For more on these wonderful ~~badgers~~ badges, refer to <a href="http://badges.github.io/badgerbadgerbadger/" target="_blank">`badgerbadgerbadger`</a>.
 
 ***INSERT ANOTHER GRAPHIC HERE***
 
