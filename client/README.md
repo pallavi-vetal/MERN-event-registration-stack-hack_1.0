@@ -29,25 +29,20 @@
 [![Build Status](http://img.shields.io/travis/badges/badgerbadgerbadger.svg?style=flat-square)](https://travis-ci.org/badges/badgerbadgerbadger) [![Coverage Status](http://img.shields.io/coveralls/badges/badgerbadgerbadger.svg?style=flat-square)](https://coveralls.io/r/badges/badgerbadgerbadger)
 
 
+
+
 ***DESKTOP View***
 
 ![temp (2)](https://user-images.githubusercontent.com/21281869/83600020-45e69d00-a58b-11ea-9a2f-b9220a907eea.gif)
 
 
+
+
+
+
 ***Mobile View View***
 
 ![temp2 (1)](https://user-images.githubusercontent.com/21281869/83601863-1043b300-a58f-11ea-891f-85f588fc4c69.gif)
-
-- Most people will glance at your `README`, *maybe* star it, and leave
-- Ergo, people should understand instantly what your project is about based on your repo
-
-> Tips
-
-- HAVE WHITE SPACE
-- MAKE IT PRETTY
-- GIFS ARE REALLY COOL
-
-> GIF Tools
 
 
 ## Table of Contents (Optional)
