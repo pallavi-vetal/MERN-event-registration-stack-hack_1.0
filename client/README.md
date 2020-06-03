@@ -33,6 +33,8 @@
 
 ***DESKTOP View***
 
+
+
 ![temp (2)](https://user-images.githubusercontent.com/21281869/83600020-45e69d00-a58b-11ea-9a2f-b9220a907eea.gif)
 
 
@@ -42,107 +44,129 @@
 
 ***Mobile View View***
 
+
+
 ![temp2 (1)](https://user-images.githubusercontent.com/21281869/83601863-1043b300-a58f-11ea-891f-85f588fc4c69.gif)
 
 
-## Table of Contents (Optional)
 
-> If your `README` has a lot of info, section headers might be nice.
 
-- [Installation](#installation)
+## Table of Contents 
+
+
+- [Requirements](#requirements)
 - [Features](#features)
-- [Contributing](#contributing)
+- [Folder Structure](#folder-structure)
+- [Running project on local machine](#Setup) 
 - [Team](#team)
-- [FAQ](#faq)
-- [Support](#support)
-- [License](#license)
 
 
 ---
 
-## Example (Optional)
 
-```javascript
-// code away!
 
-let generateProject = project => {
-  let code = [];
-  for (let js = 0; js < project.length; js++) {
-    code.push(js);
-  }
-};
+## Requirements
+
+### On Front End :
+
+> A form on the UI which captures :
+  - Fields for Data Capture (All fields are mandatory)
+    - Full Name
+    - Mobile
+    - E-Mail
+    - Upload ID Card (Formats: png, jpeg)
+    - Registration type : Self/Group/Corporate/Others
+    - No of Tickets: (If self prepopulate to 1, rest case mandate user to enter)
+> Provide a preview Screen which should :
+  - List all the fields as above.
+  - Display ID card in the preview.
+
+> On Submission :
+  - Registration ID is generated and displayed on Success Screen.
+  - Store all the information captured in a local database (we have used mongoDb)
+  - (Registration Date is generated as system date and get stored in Database)
+
+### On Back end :
+  - This Backend has database bindings to store the event registration info received from the Front End.
+  - The backend is able to receive from and render to Front End all the event information, also store in and fetch from the database.
+  - Admin Login functionality using jwt and passport authenctication strategy.
+  - Display a Chart detailing count of Registration types.
+  - List all Registrations (Registration No, Date, Name fields should be displayed)
+  - Hyperlink to view on Click on Registration No
+
+
+---
+
+
+
+## Additional Features
+- Mail Service : User will get event registration summary on the registered mail address.
+- Admin Dashboard : Admin is presented with intuitive dashboard containing multiple graphs giving insights on registrations and event tickets sold.
+- User Interface : User friendly and responsive is provided.
+- Feedback Service is provided to user where user can give valuable feedback about event.
+- Query mailbox : Query mailbox is provided to user to resolve any issues/queries
+
+
+---
+
+
+## Folder Structure
+This node express server directory structure, error handling guidelines, etc is inspired from [NODE.js Best Practices](https://github.com/goldbergyoni/nodebestpractices). 
+```
+MERN-EVENT-REGISTRATION-STACK-HACK_1.0/
+    client/
+    components/
+        event/
+            event.controller.js
+            event.DAL.js
+            event.presentation.js
+            event.validation.js
+        user/
+            user.controller.js
+            user.DAL.js
+            user.presentation.js
+            user.validation.js
+    configurations/
+        config.js
+        mongo.config.js
+        passport.js
+    node_modules/
+    services/
+        mail/
+            service.mail.js
+    utils/
+        error.js
+        mongo.util.js
+    webServer/
+        routes.js
+        wsEvent.js
+        wsUser.js
+    .env
+    .gitignore
+    package.json
+    README.md
+    server.js
 ```
 
 ---
 
-## Installation
-
-- All the `code` required to get started
-- Images of what it should look like
-
-### Clone
-
-- Clone this repo to your local machine using `https://github.com/fvcproductions/SOMEREPO`
-
-### Setup
-
-- If you want more syntax highlighting, format your code like this:
-
-> update and install this package first
-
-```shell
-$ brew update
-$ brew install fvcproductions
+## Setup
+```
+Code
 ```
 
-> now install npm and bower packages
 
-```shell
-$ npm install
-$ bower install
-```
-
-- For all the possible languages that support syntax highlithing on GitHub (which is basically all of them), refer <a href="https://github.com/github/linguist/blob/master/lib/linguist/languages.yml" target="_blank">here</a>.
 
 ---
 
-## Features
-## Usage (Optional)
-## Documentation (Optional)
-## Tests (Optional)
 
-- Going into more detail on code and technologies used
-- I utilized this nifty <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet" target="_blank">Markdown Cheatsheet</a> for this sample `README`.
-
----
-
-## Contributing
-
-> To get started...
-
-### Step 1
-
-- **Option 1**
-    - 🍴 Fork this repo!
-
-- **Option 2**
-    - 👯 Clone this repo to your local machine using `https://github.com/joanaz/HireDot2.git`
-
-### Step 2
-
-- **HACK AWAY!** 🔨🔨🔨
-
-### Step 3
-
-- 🔃 Create a new pull request using <a href="https://github.com/joanaz/HireDot2/compare/" target="_blank">`https://github.com/joanaz/HireDot2/compare/`</a>.
-
----
 
 ## Team
 
-> Or Contributors/People
+> Frontend Developer : Pallavi Vetal
+> Backend Developer : Omkar Langhe
 
-| <a href="http://fvcproductions.com" target="_blank">**FVCproductions**</a> | <a href="http://fvcproductions.com" target="_blank">**FVCproductions**</a> | <a href="http://fvcproductions.com" target="_blank">**FVCproductions**</a> |
+| <a href="https://www.linkedin.com/in/pallavi-vetal-21031996/" target="_blank">**Pallavi Vetal**</a> | <a href="https://www.linkedin.com/in/omkar-langhe-787bb5134/" target="_blank">**Omkar Langhe**</a> 
 | :---: |:---:| :---:|
 | [![FVCproductions](https://avatars1.githubusercontent.com/u/4284691?v=3&s=200)](http://fvcproductions.com)    | [![FVCproductions](https://avatars1.githubusercontent.com/u/4284691?v=3&s=200)](http://fvcproductions.com) | [![FVCproductions](https://avatars1.githubusercontent.com/u/4284691?v=3&s=200)](http://fvcproductions.com)  |
 | <a href="http://github.com/fvcproductions" target="_blank">`github.com/fvcproductions`</a> | <a href="http://github.com/fvcproductions" target="_blank">`github.com/fvcproductions`</a> | <a href="http://github.com/fvcproductions" target="_blank">`github.com/fvcproductions`</a> |
@@ -152,35 +176,3 @@ $ bower install
 
 ---
 
-## FAQ
-
-- **How do I do *specifically* so and so?**
-    - No problem! Just do this.
-
----
-
-## Support
-
-Reach out to me at one of the following places!
-
-- Website at <a href="http://fvcproductions.com" target="_blank">`fvcproductions.com`</a>
-- Twitter at <a href="http://twitter.com/fvcproductions" target="_blank">`@fvcproductions`</a>
-- Insert more social links here.
-
----
-
-## Donations (Optional)
-
-- You could include a <a href="https://cdn.rawgit.com/gratipay/gratipay-badge/2.3.0/dist/gratipay.png" target="_blank">Gratipay</a> link as well.
-
-[![Support via Gratipay](https://cdn.rawgit.com/gratipay/gratipay-badge/2.3.0/dist/gratipay.png)](https://gratipay.com/fvcproductions/)
-
-
----
-
-## License
-
-[![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)
-
-- **[MIT license](http://opensource.org/licenses/mit-license.php)**
-- Copyright 2015 © <a href="http://fvcproductions.com" target="_blank">FVCproductions</a>.
