@@ -56,7 +56,7 @@
 
 - [Requirements](#requirements)
 - [Sending Feedbacks](#sending-feedbacks)
-- [Features](#features)
+- [Additional Features](#features)
 - [Folder Structure](#folder-structure)
 - [Running project on local machine](#Setup) 
 - [Team](#team)
