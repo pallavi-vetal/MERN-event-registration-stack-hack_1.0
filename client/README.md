@@ -1,178 +1,68 @@
-<a href="https://stackhack-by-pallavi-and-omkar.herokuapp.com/"><img src="https://user-images.githubusercontent.com/21281869/83597857-f18cee80-a585-11ea-9bcf-3e63cefcef95.png" title="stackhack" alt="stackhack-logo"></a>
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-<!-- [![FVCproductions](https://avatars1.githubusercontent.com/u/4284691?v=3&s=200)](http://fvcproductions.com) -->
+## Available Scripts
 
+In the project directory, you can run:
 
-# HackerEarth FullStack Challenge sponsored by UpSkills 
+### `npm start`
 
-> Theme :  [Event Registration Application ](https://www.hackerearth.com/challenges/hackathon/stackhack-v1/) 
+Runs the app in the development mode.<br />
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-> Built user-friendly event registration web application using MERN stack
+The page will reload if you make edits.<br />
+You will also see any lint errors in the console.
 
-> FrontEnd : 
-- ReactJS
-- React-Redux
-- Material-UI
-- FilePond
-> BackEnd :
-- NodeJS - Express Framework
-- bcryptjs     
-- nodemailer
-- jsonwebtoken
-- passport-jwt authentication
-> Database :
-- MongoDB
-> Deployment :
-- Heroku CLI
+### `npm test`
 
+Launches the test runner in the interactive watch mode.<br />
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-[![Build Status](http://img.shields.io/travis/badges/badgerbadgerbadger.svg?style=flat-square)](https://travis-ci.org/badges/badgerbadgerbadger) [![Coverage Status](http://img.shields.io/coveralls/badges/badgerbadgerbadger.svg?style=flat-square)](https://coveralls.io/r/badges/badgerbadgerbadger)
+### `npm run build`
 
+Builds the app for production to the `build` folder.<br />
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
+The build is minified and the filenames include the hashes.<br />
+Your app is ready to be deployed!
 
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-***DESKTOP View***
+### `npm run eject`
 
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-![temp (2)](https://user-images.githubusercontent.com/21281869/83600020-45e69d00-a58b-11ea-9a2f-b9220a907eea.gif)
+Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
+## Learn More
 
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
+To learn React, check out the [React documentation](https://reactjs.org/).
 
+### Code Splitting
 
-***Mobile View View***
+This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
 
+### Analyzing the Bundle Size
 
+This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
 
-![temp2 (1)](https://user-images.githubusercontent.com/21281869/83601863-1043b300-a58f-11ea-891f-85f588fc4c69.gif)
+### Making a Progressive Web App
 
+This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
 
+### Advanced Configuration
 
+This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
 
-## Table of Contents 
+### Deployment
 
+This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
 
-- [Requirements](#requirements)
-- [Features](#features)
-- [Folder Structure](#folder-structure)
-- [Running project on local machine](#Setup) 
-- [Team](#team)
+### `npm run build` fails to minify
 
-
----
-
-
-
-## Requirements
-
-### On Front End :
-
-> A form on the UI which captures :
-  - Fields for Data Capture (All fields are mandatory)
-    - Full Name
-    - Mobile
-    - E-Mail
-    - Upload ID Card (Formats: png, jpeg)
-    - Registration type : Self/Group/Corporate/Others
-    - No of Tickets: (If self prepopulate to 1, rest case mandate user to enter)
-> Provide a preview Screen which should :
-  - List all the fields as above.
-  - Display ID card in the preview.
-
-> On Submission :
-  - Registration ID is generated and displayed on Success Screen.
-  - Store all the information captured in a local database (we have used mongoDb)
-  - (Registration Date is generated as system date and get stored in Database)
-
-### On Back end :
-  - This Backend has database bindings to store the event registration info received from the Front End.
-  - The backend is able to receive from and render to Front End all the event information, also store in and fetch from the database.
-  - Admin Login functionality using jwt and passport authenctication strategy.
-  - Display a Chart detailing count of Registration types.
-  - List all Registrations (Registration No, Date, Name fields should be displayed)
-  - Hyperlink to view on Click on Registration No
-
-
----
-
-
-
-## Additional Features
-- Mail Service : User will get event registration summary on the registered mail address.
-- Admin Dashboard : Admin is presented with intuitive dashboard containing multiple graphs giving insights on registrations and event tickets sold.
-- User Interface : User friendly and responsive is provided.
-- Feedback Service is provided to user where user can give valuable feedback about event.
-- Query mailbox : Query mailbox is provided to user to resolve any issues/queries
-
-
----
-
-
-## Folder Structure
-This node express server directory structure, error handling guidelines, etc is inspired from [NODE.js Best Practices](https://github.com/goldbergyoni/nodebestpractices). 
-```
-MERN-EVENT-REGISTRATION-STACK-HACK_1.0/
-    client/
-    components/
-        event/
-            event.controller.js
-            event.DAL.js
-            event.presentation.js
-            event.validation.js
-        user/
-            user.controller.js
-            user.DAL.js
-            user.presentation.js
-            user.validation.js
-    configurations/
-        config.js
-        mongo.config.js
-        passport.js
-    node_modules/
-    services/
-        mail/
-            service.mail.js
-    utils/
-        error.js
-        mongo.util.js
-    webServer/
-        routes.js
-        wsEvent.js
-        wsUser.js
-    .env
-    .gitignore
-    package.json
-    README.md
-    server.js
-```
-
----
-
-## Setup
-```
-Code
-```
-
-
-
----
-
-
-
-## Team
-
-> Frontend Developer : Pallavi Vetal
-
-
-> Backend Developer : Omkar Langhe
-
-| <a href="https://www.linkedin.com/in/pallavi-vetal-21031996/" target="_blank">**Pallavi Vetal**</a> | <a href="https://www.linkedin.com/in/omkar-langhe-787bb5134/" target="_blank">**Omkar Langhe**</a> |
-| :---: |:---:|
-| [![Pallavi Vetal](https://media-exp1.licdn.com/dms/image/C5603AQGvUOzxXZv5sg/profile-displayphoto-shrink_100_100/0?e=1596672000&v=beta&t=aMNlChdJqEkQdhsIJpwj4JBZiP3PhHaY_BZhcuXPPOY)](https://github.com/pallavi-vetal) | [![Omkar Langhe](https://media-exp1.licdn.com/dms/image/C5103AQG2ZR444IUhXA/profile-displayphoto-shrink_100_100/0?e=1596672000&v=beta&t=FMJo2tf7Ja850Xs_GdNBoCA6GZOv4d5YvNGpXi_0iBA)](https://github.com/omkarlanghe)  |
-| <a href="http://github.com/pallavi-vetal" target="_blank">`github.com/pallavi-vetal`</a> | <a href="http://github.com/omkarlanghe" target="_blank">`github.com/omkarlanghe`</a> |
-
-
----
-
+This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
