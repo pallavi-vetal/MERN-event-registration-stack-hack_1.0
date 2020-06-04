@@ -178,7 +178,7 @@ MERN-EVENT-REGISTRATION-STACK-HACK_1.0/
 ---
 
 ## Available Scripts
-- In this project directory, you can run:
+In this project directory, you can run:
 
 ### `npm run server or node server.js`
 - Runs node express server in development mode on http://localhost/8000.<br>
