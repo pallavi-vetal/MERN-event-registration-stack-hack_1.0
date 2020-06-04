@@ -178,19 +178,22 @@ MERN-EVENT-REGISTRATION-STACK-HACK_1.0/
 ---
 
 ## Available Scripts
-In this project directory, you can run:
+- In this project directory, you can run:
+
 ### `npm run server or node server.js`
-Runs node express server in development mode on http://localhost/8000.<br>
+- Runs node express server in development mode on http://localhost/8000.<br>
+
 ### `npm run client or npm start --prefix client`
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:8000) to view it in the browser.
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+- Runs the app in the development mode.<br>
+- Open [http://localhost:3000](http://localhost:8000) to view it in the browser.
+- The page will reload if you make edits.<br>
+- You will also see any lint errors in the console.
+
 ### `npm run build --prefix client`
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+- Builds the app for production to the `build` folder.<br>
+- It correctly bundles React in production mode and optimizes the build for the best performance.
+- The build is minified and the filenames include the hashes.<br>
+- Your app is ready to be deployed!
 
 ---
 
