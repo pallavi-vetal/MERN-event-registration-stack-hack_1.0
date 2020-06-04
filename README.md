@@ -55,9 +55,13 @@
 
 
 - [Requirements](#requirements)
-- [Features](#features)
+- [Sending Feedbacks](#sending-feedbacks)
+- [Additional Features](#Additional-Features)
 - [Folder Structure](#folder-structure)
-- [Running project on local machine](#Setup) 
+- [Setup](#setup)
+- [Available Scripts](#available-scripts)
+- [MongoDb Data restore](#mongodb-data-restore)
+- [API Testing](#api-testing)
 - [Team](#team)
 
 
@@ -96,7 +100,8 @@
 
 
 ---
-
+## Sending Feedbacks
+We are always open to [your feedback](https://github.com/omkarlanghe/MERN-event-registration-stack-hack_1.0/issues).
 
 
 ## Additional Features
@@ -104,7 +109,7 @@
 - Admin Dashboard : Admin is presented with intuitive dashboard containing multiple graphs giving insights on registrations and event tickets sold.
 - User Interface : User friendly and responsive is provided.
 - Feedback Service is provided to user where user can give valuable feedback about event.
-- Query mailbox : Query mailbox is provided to user to resolve any issues/queries
+- Query mailbox : Query mailbox is provided to user to resolve any issues/queries.
 
 
 ---
@@ -151,14 +156,58 @@ MERN-EVENT-REGISTRATION-STACK-HACK_1.0/
 ---
 
 ## Setup
-```
-Code
-```
 
+  ### 1. Clone this repository:
+  - Navigate to the directory where you want to clone this repository from git command line.
+  - Once you navigate to the directory, On git command line type,<br>
+  `git clone https://github.com/omkarlanghe/MERN-event-registration-stack-hack_1.0.git`
+  - A local copy of this remote repository will be cloned on your local machine at specified location.
+  
+  ### 2. Navigate inside your local git respository by typing below command on terminal.
+  `cd MERN-event-registration-stack-hack_1.0`
 
+  ### 3. Once you are inside this repository, type the below command on terminal.
+  `npm install`
+  - This will install all the dependancies required to run backend server (i.e all npm packages, third party libraries, etc).
+
+  ### 4. Navigate to the client folder located inside MERN-event-registration-stack-hack_1.0 by typing below command on terminal.
+  `cd client`
+
+  ### 5. Once you are inside this repository, type the below command on terminal.
+  `npm install`
+  - This will install all the dependancies required to run react front end (i.e all npm packages, third party libraries, etc).
 
 ---
 
+## Available Scripts
+In this project directory, you can run:
+
+### `npm run server or node server.js`
+- Runs node express server in development mode on http://localhost/8000.<br>
+
+### `npm run client or npm start --prefix client`
+- Runs the app in the development mode.<br>
+- Open [http://localhost:3000](http://localhost:8000) to view it in the browser.
+- The page will reload if you make edits.<br>
+- You will also see any lint errors in the console.
+
+### `npm run build --prefix client`
+- Builds the app for production to the `build` folder.<br>
+- It correctly bundles React in production mode and optimizes the build for the best performance.
+- The build is minified and the filenames include the hashes.<br>
+- Your app is ready to be deployed!
+
+---
+
+## MongoDb Data restore
+Go to your installation directory where mongodb is installed and inside "/bin" folder, type
+### `mongorestore.exe --db events <dump location of bson files of your collections>`<br>
+### `example: mongorestore.exe --db events dump/events`
+- This will restore your database locally.
+---
+
+## API Testing
+Please find all [API signatures](https://www.getpostman.com/collections/8977920279c340c5ccf4) here
 
 
 ## Team
