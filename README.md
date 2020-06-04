@@ -159,7 +159,7 @@ MERN-EVENT-REGISTRATION-STACK-HACK_1.0/
 
   ### 1. Clone this repository:
   - Navigate to the directory where you want to clone this repository from git command line.
-  - Once you navigate to the directory, On git command line type, 
+  - Once you navigate to the directory, On git command line type,<br>
   `git clone https://github.com/omkarlanghe/MERN-event-registration-stack-hack_1.0.git`
   - A local copy of this remote repository will be cloned on your local machine at specified location.
   
