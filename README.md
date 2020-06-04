@@ -200,9 +200,9 @@ In this project directory, you can run:
 
 ## MongoDb Data restore
 Go to your installation directory where mongodb is installed and inside "/bin" folder, type
-### `mongorestore.exe --db events <mongo dump location containing bson files of your collections>`
+### `mongorestore.exe --db events <dump location containing bson files of your collections>`
 ### `example: mongorestore.exe --db events dump/events`
-- This will restore all your database locally.
+- This will restore your database locally.
 ---
 
 ## API Testing
