@@ -56,7 +56,7 @@
 
 - [Requirements](#requirements)
 - [Sending Feedbacks](#sending-feedbacks)
-- [Additional Features](#features)
+- [Additional Features](#Additional Features)
 - [Folder Structure](#folder-structure)
 - [Setup](#setup)
 - [Available Scripts](#available-scripts)
