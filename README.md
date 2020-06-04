@@ -175,6 +175,8 @@ MERN-EVENT-REGISTRATION-STACK-HACK_1.0/
   - npm install
   - This will install all the dependancies required to run react front end (i.e all npm packages, third party libraries, etc).
 
+---
+
 ## Available Scripts
 In this project directory, you can run:
 ### `npm run server or node server.js`
