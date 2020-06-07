@@ -46,7 +46,7 @@ const styles = theme => ({
     }),
   },
   appBarShift: {
-    marginLeft: drawerWidth,
+    marginLeft: "2px",
     width: `calc(100% - ${drawerWidth}px)`,
     transition: theme.transitions.create(['width', 'margin'], {
       easing: theme.transitions.easing.sharp,
@@ -77,7 +77,7 @@ const styles = theme => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
-    width: theme.spacing(7),
+    width: theme.spacing(5),
     [theme.breakpoints.up('sm')]: {
       width: theme.spacing(9),
     },
@@ -87,16 +87,19 @@ const styles = theme => ({
     flexGrow: 1,
     height: '140vh',
     overflow: 'auto',
+    marginLeft:"10%",
+    marginRight:"20%"
   },
   container: {
     paddingTop: theme.spacing(2),
     paddingBottom: theme.spacing(2),
+    
   },
   paper: {
     padding: theme.spacing(0),
     display: 'flex',
     flexDirection: 'column',
-    height:"50%"
+    height:"50%",
   },
   fixedHeight: {
     height: 240,
