@@ -13,8 +13,8 @@ import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css';
 import { Component } from 'react';
 import FormLabel from '@material-ui/core/FormLabel';
 import FilePondPluginFileValidateType from 'filepond-plugin-file-validate-type';
-
-registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview, FilePondPluginFileValidateType);
+import FilePondPluginImageResize from 'filepond-plugin-image-resize';
+registerPlugin(FilePondPluginImageExifOrientation,FilePondPluginImageResize, FilePondPluginImagePreview, FilePondPluginFileValidateType);
 class BasicDetailsForm extends Component {
   constructor(props) {
     super(props);
@@ -84,7 +84,7 @@ class BasicDetailsForm extends Component {
             </FormLabel>
             <br></br>
             <FilePond ref={ref => this.pond = ref}
-              allowImageCrop={true}
+              imageResizeTargetWidth={"200px"}
               allowMultiple={false}
               allowImagePreview={true}
               maxFiles={3}
