@@ -1,1 +1,0 @@
-{"options":{},"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_","ns":"heroku_hb18r25r.fs.chunks"},{"v":{"$numberInt":"2"},"unique":true,"key":{"files_id":{"$numberInt":"1"},"n":{"$numberInt":"1"}},"name":"files_id_1_n_1","ns":"heroku_hb18r25r.fs.chunks"}],"uuid":"769da0c4c83a4f94b30085190ce65dc4"}
