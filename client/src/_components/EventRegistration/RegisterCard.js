@@ -26,6 +26,7 @@ import StepConnector from '@material-ui/core/StepConnector';
 import { makeStyles } from '@material-ui/core/styles';
 import HomeIcon from '@material-ui/icons/Home';
 import { IconButton, Badge, Tooltip } from '@material-ui/core';
+var QRCode = require('qrcode.react');
 const HomeLink = props => <Link href="/" to={{ pathname: `/` }} {...props} />;
 const ColorlibConnector = withStyles({
   alternativeLabel: {
@@ -157,6 +158,7 @@ class RegisterCard extends Component {
       email: "",
       mobile: "",
       selectedFile: "",
+      _id:"",
       file: [{
         source: '',
         options: {
@@ -232,13 +234,24 @@ class RegisterCard extends Component {
         throw new Error('Unknown step');
     }
   }
-
+   downloadQR = () => { // will implement soon}
+   const canvas = document.getElementById("123456");
+  const pngUrl = canvas
+    .toDataURL("image/png")
+    .replace("image/png", "image/octet-stream");
+  let downloadLink = document.createElement("a");
+  downloadLink.href = pngUrl;
+  downloadLink.download = "123456.png";
+  document.body.appendChild(downloadLink);
+  downloadLink.click();
+  document.body.removeChild(downloadLink);
+}
   render() {
 
     const { classes } = this.props;
     const steps = ['Basic Details', 'Event details', 'Review '];
 
-    function Greeting(state) {
+    function Greeting(state,id) {
       if (state.state.errors.hasOwnProperty("error") || Object.keys(state.state.errors).length > 0) {
         return <Alert severity="error">
           Something Went Wrong. <br></br>
@@ -249,6 +262,7 @@ class RegisterCard extends Component {
             {state.state.errors.email}<br></br>{
               state.state.errors.registrationType}
           </b>
+         
         </Alert>;
       }
       return <Alert severity="success">
@@ -256,7 +270,18 @@ class RegisterCard extends Component {
                 Please note your registration number : &nbsp;
               <b>{state.state.registrationID.registrationID}</b>
         <br></br>
-              We have sent an email to your registered email. Please check your mail inbox.
+        {console.log("checksdfsdf",state)}
+         We have sent an email to your registered email. Please check your mail inbox.
+              <div>
+              <QRCode
+                id={123456}
+                value={JSON.stringify(state.state.registrationID)}
+                size={290}
+                level={"H"}
+                includeMargin={true}
+              />
+             <br></br> <a onClick={state.downloadQR}> Download QR </a>
+            </div>
       </Alert>;
     }
     let activeStep = this.state.activeStep;
@@ -282,7 +307,7 @@ class RegisterCard extends Component {
                     Thank you for your time.
                 </Typography>
                   <Typography variant="subtitle1">
-                    <Greeting state={this.props} />
+                    <Greeting state={this.props} downloadQR={this.downloadQR} id={this.state.registrationID}  />
                     <IconButton aria-label="home" color="default" component={HomeLink}>
                                 <Tooltip title="Home" aria-label="">
                                     <Badge  color="secondary">
